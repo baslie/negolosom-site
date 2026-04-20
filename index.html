@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Не пиши голосовое! — голосовые заметки в текст на Android, офлайн</title>
+  <meta name="description" content="Приложение для Android: голосовые заметки с локальным распознаванием речи на русском. Без облака, без аккаунтов, без интернета.">
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Не пиши голосовое! — голосовые заметки в текст на Android, офлайн">
+  <meta property="og:description" content="Приложение для Android: голосовые заметки с локальным распознаванием речи на русском. Без облака, без интернета.">
+  <meta property="og:image" content="logo.svg">
+  <meta property="og:locale" content="ru_RU">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Caveat:wght@700&display=swap">
+
+  <style>
+    :root {
+      --bg: #EDEBE3;
+      --surface: #FFFFFF;
+      --text: #1A1A18;
+      --text-2: #3D3D38;
+      --text-3: #6A6A64;
+      --accent: #2F8B5C;
+      --accent-hover: #256F48;
+      --accent-warm: #DE3B2E;
+      --border: rgba(26, 26, 24, 0.1);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Source Sans 3', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: clamp(20px, 3vh, 40px) clamp(16px, 4vw, 32px);
+      max-width: 780px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: clamp(14px, 2vh, 22px);
+      padding: clamp(16px, 3vh, 32px) 0;
+    }
+
+    .logo {
+      width: clamp(96px, 14vh, 150px);
+      height: auto;
+      display: block;
+    }
+
+    .tagline {
+      font-family: 'Caveat', cursive;
+      font-weight: 700;
+      font-size: clamp(44px, 8vw, 72px);
+      letter-spacing: -0.03em;
+      color: var(--accent-warm);
+      margin: 0;
+      line-height: 1;
+    }
+
+    .lede {
+      max-width: 540px;
+      margin: 0;
+      font-size: clamp(17px, 2vw, 20px);
+      color: var(--text-2);
+    }
+
+    .tiles {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      width: 100%;
+      max-width: 680px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tile {
+      background: var(--surface);
+      border: 1px solid rgba(26, 26, 24, 0.06);
+      border-radius: 14px;
+      padding: 22px 22px 24px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      transition: border-color 240ms ease;
+    }
+
+    .tile:hover {
+      border-color: rgba(47, 139, 92, 0.35);
+    }
+
+    .tile .kicker {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 12px;
+      background: rgba(47, 139, 92, 0.1);
+      color: var(--accent);
+      border-radius: 999px;
+      font-family: 'Source Sans 3', system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 11.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 1;
+      margin: 0 0 14px;
+    }
+
+    .tile .title {
+      font-family: 'Source Sans 3', system-ui, sans-serif;
+      font-size: clamp(18px, 2vw, 22px);
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      line-height: 1.15;
+      color: var(--text);
+      margin: 0 0 6px;
+      display: inline-flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tile .body {
+      font-family: 'Source Sans 3', system-ui, sans-serif;
+      font-size: clamp(13px, 1.45vw, 14px);
+      color: var(--text-2);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .info {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      cursor: help;
+      outline: none;
+    }
+
+    .info__icon {
+      display: inline-grid;
+      place-items: center;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: rgba(47, 139, 92, 0.15);
+      color: var(--accent);
+      font-family: 'Source Sans 3', system-ui, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: 0;
+      user-select: none;
+      transition: background 160ms ease;
+    }
+
+    .info:hover .info__icon,
+    .info:focus-visible .info__icon {
+      background: rgba(47, 139, 92, 0.28);
+    }
+
+    .info__tip {
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      width: max-content;
+      max-width: 260px;
+      padding: 8px 12px;
+      background: var(--text);
+      color: var(--bg);
+      border-radius: 8px;
+      font-family: 'Source Sans 3', system-ui, sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.4;
+      letter-spacing: 0;
+      text-transform: none;
+      text-align: left;
+      box-shadow: 0 6px 18px rgba(26, 26, 24, 0.18);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease, transform 180ms ease;
+      z-index: 10;
+    }
+
+    .info__tip::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top-color: var(--text);
+    }
+
+    .info:hover .info__tip,
+    .info:focus-within .info__tip {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+      pointer-events: auto;
+    }
+
+    @media (max-width: 560px) {
+      .tiles {
+        grid-template-columns: 1fr;
+        max-width: 380px;
+        gap: 10px;
+      }
+      .tile {
+        padding: 18px 20px 20px;
+      }
+    }
+
+    .cta-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: background 150ms ease, color 150ms ease;
+    }
+
+    .cta--disabled {
+      background: var(--surface);
+      color: var(--text-3);
+      border-color: var(--border);
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .cta--ghost {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .cta--ghost:hover {
+      background: var(--accent-hover);
+    }
+
+    .cta--rustore {
+      background: #0077FF;
+      color: #FFFFFF;
+      border-color: #0077FF;
+    }
+
+    .cta--rustore:hover {
+      background: #0061CC;
+      border-color: #0061CC;
+    }
+
+    .cta-soon {
+      margin-left: 6px;
+      font-weight: 500;
+      opacity: 0.7;
+    }
+
+    .platform-note {
+      margin: 10px 0 0;
+      font-size: 12.5px;
+      color: var(--text-3);
+      line-height: 1.35;
+    }
+
+    footer {
+      text-align: center;
+      padding-top: clamp(12px, 2vh, 20px);
+      font-size: 13px;
+      color: var(--text-3);
+    }
+
+    footer a {
+      color: var(--text-2);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+    }
+
+    footer a:hover { color: var(--accent); border-color: var(--accent); }
+
+    footer .dot { margin: 0 8px; opacity: 0.5; }
+
+    @media (max-height: 640px) {
+      .hero { gap: 10px; }
+      .logo { width: clamp(80px, 12vh, 110px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="hero">
+      <svg class="logo" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 522 460" aria-label="Логотип приложения Не пиши голосовое!">
+        <path fill="#a7c4a7" d="M227.105 426.044c-175.9419 0-175.9419 14.473-175.9419 14.473S51.1631 460 227.105 460c175.941 0 178.406-19.483 178.406-19.483s-2.465-14.473-178.406-14.473"/>
+        <path fill="#9de827" d="M47.1029 86.8582 36.7678 131.886l-9.5969 10.334-21.77765 28.051 15.13355 29.526 11.8116 37.647 20.6703 60.529 45.7699 45.397 70.1314 40.599 73.453 5.167 63.487-5.167 85.265-30.634 37.65-26.574 55.367-28.788 26.576-33.586h-64.226l-11.811-31.003-23.993-33.587-41.34-29.526-31.744-28.051-18.086-55.3618-31.744-42.4444-45.401-23.9903-56.474-13.65604-56.474 6.64344-54.6287 31.0029z"/>
+        <path fill="#5dc927" d="M337.963 367.73c-149.859 8.119-218.002-31.01-257.6399-111.094l-45.0316-22.145 26.2069 64.589 49.0916 52.779 100.03 40.599 89.325-6.643z"/>
+        <path fill="#5fc924" d="M406.987 339.68c-110.985 15.098-186.032-44.291-160.194-122.536l165.731 81.198c-19.194.37-5.537 41.338-5.537 41.338"/>
+        <path fill="#49c013" d="M429.872 244.087c-39.864-29.157-117.378-77.876-183.079-27.681 0 0-1.548 3.534-2.215 5.905-2.784 9.886 2.215 26.205 2.215 26.205l39.495 52.04 68.285 18.085 66.071-23.621z"/>
+        <path fill="#fa4146" d="m41.5662 234.491-19.5629-45.397 15.8718-4.429 27.3143 16.978 28.7907 7.381 43.9239-3.69 22.885-5.906 13.288-13.287 29.529 2.953-3.691 12.549-28.052 29.895-31.375 17.347-59.0577 4.429z"/>
+        <path fill="#fa4146" d="m14.6212 156.246-6.27495 24.728 11.81155 8.12 17.7174-4.429 15.1336-3.691 26.5761.738 14.3954 2.953 16.6097-1.107 21.778-4.798 21.039 4.798 22.516 4.06h18.825l20.301-8.858-20.301-15.133-28.053-19.561-23.992-7.751-27.683-1.845-22.5162 9.596-18.0865-7.751-30.2672 5.536z"/>
+        <path fill="#fff" d="m62.9747 180.605-18.4556 4.429 14.3954 14.763 22.1467 6.275 42.4478 1.476 37.28-8.858 11.074-8.12-8.121-5.536-28.421-4.429h-13.288l-15.872 4.429-15.1337-1.476z"/>
+        <path fill="#fd767d" d="M161.159 214.93c-48.703 8.822-72.4668 9.422-106.3047 0 0 0 4.632 6.007 10.7043 9.383 22.2785 12.385 52.8444 13.754 79.3594 0 6.984-3.623 16.241-9.383 16.241-9.383"/>
+        <path stroke="#fd767d" stroke-linecap="round" stroke-width="16.2396" d="M45.2574 149.971s18.7606-7.128 30.2659-4.002c5.1666 1.404 12.4053 5.836 12.4053 5.836s2.0451 1.227 3.5827 1.236c8.7087.052 14.0337-8.517 34.2127-10.451 14.505-1.391 27.812 7.89 32.228 10.451"/>
+        <path fill="#11540e" d="M149.347 1.4527c-24.706 3.83845-47.64 12.6964-66.3418 25.6881-9.5477 6.6927-26.8713 23.8181-33.2693 32.8729-5.9058 8.3659-14.7644 25.7865-17.9142 35.5303-3.8388 11.319-5.9058 22.243-7.087 35.727l-.5905 7.874-5.8074 3.74C8.39538 149.282 1.50529 160.502.127269 172.313c-.689009 6.299 1.476461 16.338 5.118371 23.72 2.6576 5.314 10.82726 16.535 15.94566 22.046 2.4607 2.559 3.0513 4.232 3.5434 9.842 3.0514 30.905 18.7017 68.108 39.0767 92.911 27.0682 32.872 59.9436 54.821 103.2526 68.796l11.32 3.642.295 10.531.295 10.433h-11.319c-26.773 0-38.486 4.429-39.667 14.96-.394 3.248-.049 6.816 3.273 8.292s39.445.566 39.445.566c22.541-.197 40.553-.787 42.325-1.279 9.745-3.052 7.481-16.043-3.347-18.701l-4.33-1.181.295-9.448c.197-5.61.689-9.35 1.279-9.252 7.875 1.28 35.534 2.362 47.05 1.87l14.469-.59v15.452l-12.008.492c-18.111.689-24.509 4.232-24.805 13.681-.098 3.346 2.018 5.684 2.756 6.299.739.615 4.233 2.559 5.906 2.854 1.674.295 21.556.59 44.195.689 39.963.295 41.144.197 43.802-1.772 1.968-1.476 2.756-2.952 2.952-5.905.296-3.346-.196-4.331-2.952-7.086-4.036-3.937-9.843-5.611-22.344-6.496l-9.941-.788v-5.511c0-3.051.295-7.776.59-10.531l.689-5.118 5.02-.591c11.32-1.476 36.124-8.661 52.758-15.354 22.639-8.956 54.531-28.837 66.342-41.239 2.067-2.165 3.839-3.051 6.103-3.051 13.485 0 42.522-12.105 59.944-25.097 12.008-8.858 23.918-23.425 29.036-35.432 2.953-6.791 6.103-20.176 5.414-22.834-.59-2.559-1.673-2.657-9.449-1.279-4.429.787-46.065 3.937-52.759 3.937-1.574 0-3.051-1.772-6.299-7.677-10.237-18.799-23.722-36.712-39.667-52.656-16.143-16.24-33.27-28.838-56.007-41.042-10.729-5.807-11.91-6.693-12.205-9.35-2.855-22.637-12.993-51.5731-24.411-69.3874-15.946-25.0976-34.253-41.2388-62.011-55.0179-19.883-9.84215-36.812-15.25535-57.089-18.30643-12.402-1.870017-39.963-1.771589-52.66.09843m60.534 16.0427c30.809 6.3975 58.369 20.5702 78.252 40.4514 21.753 21.6528 33.073 46.5532 38.486 84.8392 1.083 7.677 2.264 14.272 2.658 14.665.394.296 3.543 1.575 7.087 2.756 9.744 3.445 27.954 13.189 38.387 20.57 11.025 7.776 29.037 25.295 36.715 35.629 7.382 10.039 15.552 23.72 15.256 25.59-.393 2.067-11.516 7.381-18.898 8.956-11.516 2.559-30.12 1.476-44.392-2.657-2.854-.886 7.678 9.743 14.961 14.96 8.268 6.004 21.163 11.909 31.498 14.369 4.823 1.181 9.351 2.264 10.138 2.461.886.295-.59 1.673-3.937 3.74-19.391 12.204-40.553 11.712-74.61-1.673-5.61-2.166-10.433-3.74-10.729-3.347-1.771 1.674 12.107 18.504 19.883 24.015l2.953 2.067-11.319.099c-18.899 0-37.109-5.118-53.546-14.96-8.268-5.02-22.049-17.815-27.167-25.393-9.646-14.173-15.355-31.102-14.568-43.109.394-5.413.197-6.004-.885-4.429-6.005 8.071-7.776 33.562-3.445 47.538 3.937 12.499 7.579 18.306 18.406 29.034 11.319 11.122 22.048 18.307 36.321 24.212 36.419 14.96 77.169 13.779 110.339-3.445 15.848-8.07 34.943-24.605 42.621-36.711 2.46-3.937 2.952-4.232 7.087-4.232 2.46 0 10.138-.296 17.126-.689l12.698-.591-2.855 5.315c-1.575 3.149-6.594 9.153-12.205 14.665-14.371 14.369-27.856 21.357-45.573 23.818-7.973.984-8.17 1.083-14.469 6.889-18.308 16.929-48.329 34.448-73.527 43.109-31.203 10.728-57.779 15.059-93.804 15.157-28.938 0-52.266-3.149-74.216-10.236-59.846-19.29-101.2845-58.167-119.2972-111.807-4.3309-12.992-4.3309-14.173-.0984-11.023 6.8901 5.315 22.3436 11.318 34.5489 13.484 7.5791 1.378 29.0367 1.378 36.6157 0 23.82-4.232 45.573-15.649 64.275-33.759 12.697-12.401 26.478-30.905 33.761-45.373 4.627-9.153 5.02-8.365-6.791-14.763-5.906-3.051-17.226-9.94-25.395-15.058-18.013-11.516-34.746-19.98-45.278-22.933-14.764-4.035-34.155-2.657-47.0494 3.445-3.9372 1.969-5.4137 2.264-6.9886 1.378-7.6775-4.134-25.0996-4.921-37.5018-1.772-4.2324 1.083-7.7759 1.87-7.8743 1.772-.5906-.689 1.7717-18.011 3.445-25.59 10.2367-47.0453 47.4432-82.2803 96.9531-91.7288 12.599-2.3621 12.796-2.3621 34.943-2.0669 16.536.2953 23.328.7874 31.005 2.3621M139.996 141.113c6.3 1.575 23.426 9.547 31.498 14.468 2.756 1.772 10.433 6.595 17.225 10.925 6.792 4.331 13.288 8.464 14.568 9.252 8.76 5.315-8.17 10.334-27.856 8.169-11.221-1.28-13.485-1.673-25.789-4.528-13.878-3.248-24.509-3.149-36.714.197-12.009 3.347-21.1625 3.445-32.4819.394-13.4849-3.642-24.1154-3.346-39.5689 1.181-15.355 4.626-19.4891 4.823-22.442 1.083-6.1026-7.874 4.6262-23.917 21.753-32.578 16.8316-8.563 30.5133-8.956 45.3762-1.378l7.5791 3.839 5.1184-3.347c12.5001-8.464 27.6591-11.22 41.7341-7.677m-52.6598 44.389c10.3351 1.771 20.6698 1.377 29.5288-1.083 10.04-2.756 23.82-1.772 40.652 2.657 7.382 1.969 7.579 2.067 6.004 3.839-3.051 3.346-13.19 7.775-17.816 7.775-5.118 0-9.744-2.165-10.63-4.921-.689-2.165-2.461-2.657-2.461-.689 0 1.772-4.823 6.299-8.17 7.48-6.102 2.362-19.39.099-21.753-3.642-.394-.688-1.575-.098-3.1495 1.28-6.6933 6.201-19.9813 3.445-23.6232-4.823-.689-1.673-1.2796-2.46-1.378-1.771 0 .689-1.0828 2.362-2.4608 3.641-4.4293 4.528-12.2053 2.658-19.0954-4.429-2.2639-2.263-4.0356-4.527-4.0356-4.921 0-1.575 10.532-2.854 19.686-2.362 5.1183.295 13.5833 1.181 18.7017 1.969m-45.7699 9.054c11.1225 10.728 27.4619 17.913 45.1793 19.882 16.3394 1.87 50.7894-2.067 69.9834-7.973 8.367-2.46 17.619-7.48 23.623-12.696 4.233-3.642 4.528-3.74 10.04-3.248 3.15.295 5.906.787 6.201.984.788.689-4.232 9.35-9.941 17.027-18.8 25.393-49.806 40.353-83.862 40.353-14.2727 0-21.0644-1.082-31.3011-5.019-21.2608-8.169-37.108-25.688-41.6358-45.865-.8859-3.937-1.5749-7.283-1.5749-7.578 0-.296 1.4765-.985 3.2482-1.477 1.6733-.492 3.1498-.984 3.1498-.984.0984-.098 3.1497 2.854 6.8901 6.594"/>
+        <ellipse cx="89.5508" cy="101.991" fill="#1f2a32" rx="23.6232" ry="23.6212"/>
+        <ellipse cx="96.9332" cy="92.3945" fill="#fff" rx="7.38224" ry="7.38164"/>
+        <ellipse cx="213.573" cy="109.372" fill="#1f2a32" rx="31.0054" ry="31.0029"/>
+        <ellipse cx="223.262" cy="96.7773" fill="#fff" rx="9.68919" ry="9.6884"/>
+      </svg>
+
+      <h1 class="tagline">Не пиши голосовое!</h1>
+
+      <p class="lede">Наговорили — получили текст. Прямо на телефоне, без облака, без аккаунтов, без интернета.</p>
+
+      <ul class="tiles">
+        <li class="tile">
+          <span class="kicker">быстро</span>
+          <span class="title">Один тап</span>
+          <p class="body">Зажали кнопку, наговорили, получили расшифровку.</p>
+        </li>
+        <li class="tile">
+          <span class="kicker">приватно</span>
+          <span class="title">Всё на телефоне</span>
+          <p class="body">Ни одного байта наружу. Работает в самолёте и метро.</p>
+        </li>
+        <li class="tile">
+          <span class="kicker">точно</span>
+          <span class="title">
+            GigaAM v3
+            <span class="info" tabindex="0" aria-describedby="gigaam-tip" aria-label="Подробнее о точности модели">
+              <span class="info__icon" aria-hidden="true">?</span>
+              <span class="info__tip" role="tooltip" id="gigaam-tip">WER 8,3% (~92% точности) в среднем по 10 публичным бенчмаркам. В 2,5× точнее Whisper-large-v3. Релиз: ноябрь 2025.</span>
+            </span>
+          </span>
+          <p class="body">Модель от Сбера, заточенная под русскую речь.</p>
+        </li>
+      </ul>
+
+      <div class="cta-row">
+        <a class="cta cta--rustore cta--disabled" aria-disabled="true" role="button">Скачать на RuStore<span class="cta-soon">(скоро)</span></a>
+        <a class="cta cta--ghost" href="https://vk.com/negolosom" target="_blank" rel="noopener noreferrer">Группа ВКонтакте</a>
+      </div>
+      <p class="platform-note">Приложение для Android. Версия для iOS — позже.</p>
+    </section>
+
+    <footer>
+      <a href="https://vk.com/negolosom" target="_blank" rel="noopener noreferrer">vk.com/negolosom</a>
+      <span class="dot">·</span>
+      <a href="mailto:baslie@yandex.ru">baslie@yandex.ru</a>
+      <span class="dot">·</span>
+      © 2026 baslie
+    </footer>
+  </div>
+</body>
+</html>
