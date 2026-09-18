@@ -12,11 +12,15 @@
 (function () {
   'use strict';
 
-  var has = {
-    gsap: !!(window.gsap && window.ScrollTrigger),
-    lenis: typeof window.Lenis === 'function',
-    embla: typeof window.EmblaCarousel === 'function'
-  };
+  /* Библиотеки подгружаются после первой отрисовки (см. loadVendors в конце
+     файла), поэтому флаги пересчитываются, а не берутся один раз на старте. */
+  var has = { gsap: false, lenis: false, embla: false };
+
+  function refreshFeatures() {
+    has.gsap = !!(window.gsap && window.ScrollTrigger);
+    has.lenis = typeof window.Lenis === 'function';
+    has.embla = typeof window.EmblaCarousel === 'function';
+  }
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   var lenis = null;
@@ -238,18 +242,22 @@
     if (!has.embla) return;
 
     /* Embla отключает зацикливание, если суммарная ширина слайдов меньше
-       ширины вьюпорта. Девять карточек по ~320 px с зазором дают 2880 px —
-       на мониторе 3440 этого не хватит, и лента упрётся в край. Поэтому
-       дублируем комплект: сетевой стоимости ноль, картинки те же и берутся
-       из кеша. */
-    var originals = $$('.carousel__slide', track);
-    originals.forEach(function (slide) {
-      var copy = slide.cloneNode(true);
-      copy.setAttribute('aria-hidden', 'true');
-      $$('a, button', copy).forEach(function (el) { el.setAttribute('tabindex', '-1'); });
-      $$('img', copy).forEach(function (img) { img.setAttribute('loading', 'lazy'); });
-      track.appendChild(copy);
-    });
+       ширины вьюпорта. Девять карточек дают около 2900 px — на мониторе 3440
+       этого не хватит, и лента упрётся в край. Тогда дублируем комплект:
+       сетевой стоимости ноль, картинки те же и берутся из кеша.
+
+       На телефоне дублировать нечего: девять карточек и так в семь раз шире
+       экрана, а лишние девять узлов с картинками — это заметная работа
+       раскладки на слабом процессоре. */
+    if (track.scrollWidth < viewport.clientWidth * 1.8) {
+      $$('.carousel__slide', track).forEach(function (slide) {
+        var copy = slide.cloneNode(true);
+        copy.setAttribute('aria-hidden', 'true');
+        $$('a, button', copy).forEach(function (el) { el.setAttribute('tabindex', '-1'); });
+        $$('img', copy).forEach(function (img) { img.setAttribute('loading', 'lazy'); });
+        track.appendChild(copy);
+      });
+    }
 
     viewport.classList.add('is-embla');
 
@@ -410,26 +418,74 @@
 
     buildReveals();
 
-    // Пересчёт после шрифтов и картинок: без него триггеры окажутся смещены
-    // на высоту, которую текст добрал при подстановке шрифта.
-    if (document.fonts && document.fonts.ready) {
+    /* Пересчёт нужен, только если шрифт ещё не подставлен: иначе триггеры
+       окажутся смещены на высоту, которую текст добрал при подстановке.
+       Библиотеки грузятся после события load, так что картинки к этому
+       моменту уже разложены и второй refresh был бы лишней полной
+       перекомпоновкой длинной страницы. */
+    if (document.fonts && document.fonts.status !== 'loaded') {
       document.fonts.ready.then(function () { window.ScrollTrigger.refresh(); });
     }
-    window.addEventListener('load', function () { window.ScrollTrigger.refresh(); });
   }
 
 
   /* --- Запуск --------------------------------------------------------------- */
 
+  /* Шесть вендорных сборок — это 160 КБ, которые браузер разбирает до первой
+     отрисовки, если подключить их тегами в <head>. На эмуляции среднего
+     телефона это почти секунда, в течение которой страница не отвечает, а
+     заголовок первого экрана не нарисован. Поэтому грузим их сами, после
+     события load: интерфейс к этому моменту уже работает — меню, подсказки и
+     карусель на нативном скролле подняты выше. */
+  var VENDORS = [
+    '/assets/js/vendor/gsap-3.15.0.min.js',
+    '/assets/js/vendor/ScrollTrigger-3.15.0.min.js',
+    '/assets/js/vendor/lenis-1.3.26.min.js',
+    '/assets/js/vendor/embla-carousel-8.6.0.umd.js',
+    '/assets/js/vendor/embla-carousel-auto-scroll-8.6.0.umd.js',
+    '/assets/js/vendor/embla-carousel-wheel-gestures-8.1.0.umd.js'
+  ];
+
+  function loadScript(src) {
+    return new Promise(function (resolve) {
+      var el = document.createElement('script');
+      el.src = src;
+      el.async = false;          // порядок обязателен: ScrollTrigger ищет gsap
+      el.onload = resolve;
+      el.onerror = function () { resolve(); };  // не роняем остальные
+      document.head.appendChild(el);
+    });
+  }
+
+  function loadVendors() {
+    /* Говорим страховочному таймеру из <head>, что загрузка пошла: иначе он
+       снимет .js-anim ровно в тот момент, когда библиотеки почти доехали, и
+       появления пропадут на ровном месте. Если загрузка всё-таки сорвётся,
+       класс снимем сами ниже. */
+    window.__animReady = true;
+
+    VENDORS.reduce(function (chain, src) {
+      return chain.then(function () { return loadScript(src); });
+    }, Promise.resolve()).then(function () {
+      refreshFeatures();
+      initCarousel();
+      initMotion();
+      if (!has.gsap) document.documentElement.classList.remove('js-anim');
+    });
+  }
+
+  function whenIdle(fn) {
+    if (window.requestIdleCallback) window.requestIdleCallback(fn, { timeout: 1200 });
+    else setTimeout(fn, 200);
+  }
+
+  // Сначала — всё, что написано на голом DOM и должно работать немедленно.
   initHeaderState();
   initBurger();
   initDisclosures();
   initFab();
-  initCarousel();
-  initMotion();
   initSkipLink();
 
-  // Если GSAP не загрузился, снимаем стартовые состояния сразу, не дожидаясь
-  // страховочного таймера из <head>.
-  if (!has.gsap) document.documentElement.classList.remove('js-anim');
+  if (document.readyState === 'complete') whenIdle(loadVendors);
+  else window.addEventListener('load', function () { whenIdle(loadVendors); });
 })();

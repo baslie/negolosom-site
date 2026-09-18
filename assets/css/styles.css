@@ -637,22 +637,6 @@ html.lenis body { height: auto; }
 .nav__link:hover,
 .nav__link[aria-current="page"] { color: var(--brand-ink); }
 
-/* На главной кнопка в шапке избыточна: под ней на первом экране уже стоят две
-   такие же. Поэтому она проявляется, только когда шапка прилипла. На
-   внутренних страницах она видна сразу, как в макете. */
-.site-header--home .site-header__cta {
-  opacity: 0;
-  translate: 8px 0;
-  pointer-events: none;
-  transition: opacity var(--t-base) var(--ease), translate var(--t-base) var(--ease);
-}
-
-.site-header--home.is-stuck .site-header__cta {
-  opacity: 1;
-  translate: 0 0;
-  pointer-events: auto;
-}
-
 .burger {
   display: inline-grid;
   place-items: center;
