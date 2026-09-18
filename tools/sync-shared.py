@@ -30,14 +30,6 @@ SOURCE = ROOT / "index.html"
 
 BLOCKS = ("header", "menu", "download", "footer", "fab")
 
-# Кнопка «Скачать» в шапке: на главной её нет (так в макете), на внутренних
-# страницах есть. Поэтому она не лежит в источнике, а подставляется здесь.
-HEADER_CTA = (
-    '      <a class="btn btn--sm btn--rustore site-header__cta"'
-    ' href="https://www.rustore.ru/catalog/app/com.baslie.negolosom"'
-    ' target="_blank" rel="noopener">Скачать</a>\n'
-)
-
 # Страница -> какой ссылке в шапке ставить aria-current.
 TARGETS = {
     "obnovleniya/index.html": "/obnovleniya/",
@@ -90,11 +82,6 @@ def main() -> None:
             body = body.replace('href="#', 'href="/#')
 
             if name == "header":
-                # На главной кнопки «Скачать» в шапке нет — так в макете, и под
-                # ней на первом экране всё равно стоят две такие же. На
-                # внутренних страницах макет её показывает, поэтому
-                # подставляем здесь.
-                body = body.replace("</ul>\n", "</ul>\n" + HEADER_CTA, 1)
                 if current:
                     body = body.replace(
                         f'<a class="nav__link" href="{current}">',

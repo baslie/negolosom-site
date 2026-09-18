@@ -166,6 +166,36 @@
   }
 
 
+  /* --- Меню «Скачать» в шапке ---------------------------------------------- */
+
+  /* Само раскрытие делает <details> — оно работает и без скриптов. Здесь
+     только то, чего у <details> нет из коробки: закрытие по Escape и по
+     клику мимо. В шапке блок виден с 840 px; на телефоне обе ссылки лежат
+     в бургер-меню обычными кнопками. */
+  function initDownloadMenu() {
+    var dl = $('[data-dl]');
+    if (!dl) return;
+
+    var close = function (returnFocus) {
+      if (!dl.open) return;
+      dl.open = false;
+      if (returnFocus) $('summary', dl).focus();
+    };
+
+    document.addEventListener('click', function (e) {
+      if (!dl.contains(e.target)) close(false);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') close(true);
+    });
+
+    dl.addEventListener('focusout', function (e) {
+      if (!dl.contains(e.relatedTarget)) close(false);
+    });
+  }
+
+
   /* --- Подсказки «i» ------------------------------------------------------ */
 
   /* Это disclosure, а не tooltip: открывается по клику и по клавиатуре,
@@ -234,7 +264,18 @@
   }
 
 
-  /* --- Карусель экранов ---------------------------------------------------- */
+  /* --- Карусель экранов ----------------------------------------------------
+
+     Про колесо мыши. Вьюпорту карусели нельзя ставить data-lenis-prevent:
+     Lenis тогда не обрабатывает прокрутку в этой зоне, а сам блок при живом
+     Embla имеет overflow:hidden — и страница намертво встаёт, стоит навести
+     курсор на карусель.
+
+     Разделение выходит само собой: Lenis работает только по вертикали и
+     смотрит на deltaY, а плагин wheel-gestures гасит событие лишь тогда,
+     когда жест преимущественно горизонтальный (preventWheelAction берётся из
+     оси карусели, то есть 'x'). Вертикальное колесо листает страницу,
+     горизонтальный жест трекпада — карусель. */
 
   var ICONS = {
     prev: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>',
@@ -506,6 +547,7 @@
   unhideAboveFold();
   initHeaderState();
   initBurger();
+  initDownloadMenu();
   initDisclosures();
   initFab();
   initSkipLink();

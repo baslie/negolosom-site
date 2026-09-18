@@ -637,6 +637,88 @@ html.lenis body { height: auto; }
 .nav__link:hover,
 .nav__link[aria-current="page"] { color: var(--brand-ink); }
 
+/* --- Кнопка «Скачать» в шапке с выбором источника.
+   Одна кнопка вместо двух: в шапке нет места на обе, а решение «RuStore или
+   APK» человек принимает уже после того, как решил ставить. */
+.dl { position: relative; }
+
+/* <details>, а не кнопка с обработчиком: так меню раскрывается силами
+   браузера и работает даже при выключенном JS. Скрипт добавляет только
+   закрытие по Escape и по клику мимо. */
+.dl__toggle {
+  padding-right: 18px;
+  list-style: none;
+  cursor: pointer;
+}
+
+.dl__toggle::-webkit-details-marker { display: none; }
+.dl__toggle::marker { content: ""; }
+
+.dl__chevron {
+  width: 15px;
+  height: 15px;
+  margin-left: -2px;
+  transition: rotate var(--t-base) var(--ease);
+}
+
+.dl[open] .dl__chevron { rotate: 180deg; }
+
+.dl__menu {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 286px;
+  padding: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-lift);
+}
+
+/* Уголок к кнопке. */
+.dl__menu::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  right: 26px;
+  border: 7px solid transparent;
+  border-bottom-color: var(--surface);
+}
+
+.dl__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  transition: background-color var(--t-fast) var(--ease);
+}
+
+.dl__item:hover { background: var(--surface-hover); }
+
+.dl__icon {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  color: var(--text);
+}
+
+.dl__text b {
+  display: block;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.dl__text span {
+  display: block;
+  margin-top: 2px;
+  font-size: var(--fs-tag);
+  line-height: 1.3;
+  color: var(--text-3);
+}
+
 .burger {
   display: inline-grid;
   place-items: center;
