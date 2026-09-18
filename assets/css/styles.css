@@ -467,6 +467,14 @@ html.lenis body { height: auto; }
 
 .tip[hidden] { display: none; }
 
+/* Наведение мышью открывает подсказку силами CSS — это работает и при
+   выключенном JS. На тач-экранах и с клавиатуры за открытие отвечает клик,
+   его обрабатывает main.js. */
+@media (hover: hover) {
+  .info:hover .tip,
+  .info:focus-visible .tip { display: block; }
+}
+
 .tip::after {
   content: "";
   position: absolute;
@@ -587,11 +595,15 @@ html.lenis body { height: auto; }
   gap: 24px;
 }
 
+/* Логотипная надпись набрана brand-ink, а не brand: 18 px/700 зелёным
+   #2F8B5C даёт 3.55:1 — порог «крупного текста» начинается с 18.66 px, так
+   что формально это мелкий текст и нужно 4.5:1. brand-ink даёт 5.12:1 и на
+   глаз от исходного зелёного почти не отличается. */
 .brand {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: var(--brand);
+  color: var(--brand-ink);
   font-size: 1.125rem;
   font-weight: 700;
   line-height: 1.2;

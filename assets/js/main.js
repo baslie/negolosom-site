@@ -143,7 +143,9 @@
 
   /* Это disclosure, а не tooltip: открывается по клику и по клавиатуре,
      закрывается по Escape и клику вне. Паттерн tooltip на hover не работает
-     на тач-экранах и не закрывается с клавиатуры. */
+     на тач-экранах и не закрывается с клавиатуры.
+     Наведение мышью открывает подсказку силами CSS — так она работает и при
+     выключенном JS. */
   function initDisclosures() {
     var triggers = $$('[data-disclosure]');
     if (!triggers.length) return;
@@ -167,21 +169,6 @@
         closeAll(btn);
         btn.setAttribute('aria-expanded', String(willOpen));
         panel.hidden = !willOpen;
-      });
-
-      // На мыши подсказка ведёт себя привычно и открывается по наведению.
-      btn.addEventListener('mouseenter', function () {
-        if (window.matchMedia('(hover: hover)').matches) {
-          closeAll(btn);
-          btn.setAttribute('aria-expanded', 'true');
-          panel.hidden = false;
-        }
-      });
-      btn.addEventListener('mouseleave', function () {
-        if (window.matchMedia('(hover: hover)').matches && document.activeElement !== btn) {
-          btn.setAttribute('aria-expanded', 'false');
-          panel.hidden = true;
-        }
       });
     });
 
@@ -352,6 +339,25 @@
       $$('[data-reveal-group]').forEach(function (group) {
         var items = Array.prototype.slice.call(group.children);
         if (!items.length) return;
+
+        /* Короткая группа — один триггер и каскад: заголовок, лид и контент
+           читаются как один жест. Длинный список (двенадцать релизов, восемь
+           вопросов) так нельзя: нижние элементы отработали бы задолго до того,
+           как до них доскроллят. Для них batch — каждый оживает, когда входит
+           в кадр. */
+        if (items.length > 6) {
+          window.ScrollTrigger.batch(items, {
+            start: 'top 92%',
+            once: true,
+            onEnter: function (batch) {
+              window.gsap.to(batch, {
+                opacity: 1, y: 0, duration: .5, ease: 'power2.out', stagger: .06
+              });
+            }
+          });
+          return;
+        }
+
         window.gsap.to(items, {
           opacity: 1,
           y: 0,
