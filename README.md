@@ -96,6 +96,32 @@ python tools/build-images.py
 Иконка для iOS снимается так же со страницы `tools/og/icon.html` в окне 180×180 и сохраняется
 сразу в `assets/img/apple-touch-icon.png`.
 
+### Новый выпуск приложения
+
+Номер версии и даты разъезжаются по многим файлам, а сборщика нет — пройдите по списку целиком:
+
+- [ ] `obnovleniya/index.html` — новый блок выпуска, `numberOfItems` и `itemListElement` в JSON-LD
+- [ ] `obnovleniya/index.html` — `article:modified_time` и `dateModified`
+- [ ] `index.html` — блок «Что нового» (две последние версии) и подпись под кнопками
+- [ ] `index.html` — `softwareVersion` и `dateModified` в JSON-LD
+- [ ] `sitemap.xml` — `lastmod` изменившихся страниц
+- [ ] `llms.txt` — номер версии и дата в абзаце после `>`
+- [ ] `llms-full.txt` — шапка и новый выпуск в разделе истории версий
+- [ ] `voprosy/index.html` и `politika-privatnosti/index.html` — если выпуск меняет ответы или
+      поведение с данными, поправить и текст, и `dateModified`
+
+После публикации — пинг поисковиков (Яндекс и Bing понимают IndexNow):
+
+```
+uv run --directory C:/Users/Roman/Desktop/seo-geo-tools seo-geo indexnow submit   --project negolosom https://negolosom.ru/ https://negolosom.ru/obnovleniya/
+```
+
+### Иконка сайта
+
+`favicon.ico` собирается из `assets/img/apple-touch-icon.png` командой `python tools/build-favicon.py`.
+Логотип лежит в SVG, но растрировать его нечем: Pillow не читает SVG. Пересобирать нужно только
+если поменялся логотип — тогда сначала переснимите `apple-touch-icon.png` (см. выше).
+
 ### Библиотеки
 
 GSAP + ScrollTrigger, Lenis, Embla Carousel с двумя плагинами лежат в `assets/js/vendor/` с
