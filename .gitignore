@@ -2,3 +2,7 @@
 .DS_Store
 Thumbs.db
 *.log
+
+# Артефакты локальной проверки
+.playwright-mcp/
+shot-*.png
