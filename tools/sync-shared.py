@@ -34,7 +34,7 @@ BLOCKS = ("header", "menu", "download", "footer", "fab")
 TARGETS = {
     "obnovleniya/index.html": "/obnovleniya/",
     "voprosy/index.html": "/voprosy/",
-    "politika-privatnosti/index.html": None,
+    "policy/index.html": None,
     "404.html": None,
 }
 

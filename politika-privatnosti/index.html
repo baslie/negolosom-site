@@ -1,388 +1,44 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Политика конфиденциальности — «Не пиши голосовое!»</title>
-  <meta name="description" content="Как приложение и сайт обращаются с данными. Распознавание идёт на телефоне, записи и расшифровки никуда не отправляются.">
-  <meta name="theme-color" content="#EEEBE4">
-  <meta name="color-scheme" content="light">
-  <link rel="canonical" href="https://negolosom.ru/politika-privatnosti/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Страница переехала — «Не пиши голосовое!»</title>
 
-  <link rel="icon" href="/favicon.ico" sizes="32x32">
-  <link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg">
-  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<!--
+  Страница жила по этому адресу меньше суток и успела уйти в Яндекс и Bing
+  через IndexNow. GitHub Pages не умеет серверные 301, поэтому переадресация
+  собрана разметкой: canonical склеивает старый адрес с новым и передаёт
+  накопленные сигналы, meta refresh уводит живого посетителя.
 
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://negolosom.ru/politika-privatnosti/">
-  <meta property="og:site_name" content="Не пиши голосовое!">
-  <meta property="og:title" content="Политика конфиденциальности — «Не пиши голосовое!»">
-  <meta property="og:description" content="Как приложение и сайт обращаются с данными. Распознавание идёт на телефоне, записи и расшифровки никуда не отправляются.">
-  <meta property="og:image" content="https://negolosom.ru/assets/img/og-cover.jpg">
-  <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Приложение «Не пиши голосовое!»: логотип, заголовок и три экрана — список заметок, запись и настройки.">
-  <meta property="og:locale" content="ru_RU">
+  noindex здесь ставить нельзя: он говорит «выбрось страницу», а canonical —
+  «считай её той же, что и новая». Вместе они противоречат друг другу, и
+  переезд не засчитается.
+-->
+<link rel="canonical" href="https://negolosom.ru/policy/">
+<meta http-equiv="refresh" content="0; url=/policy/">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Политика конфиденциальности — «Не пиши голосовое!»">
-  <meta name="twitter:description" content="Как приложение и сайт обращаются с данными. Распознавание идёт на телефоне, записи и расшифровки никуда не отправляются.">
-  <meta name="twitter:image" content="https://negolosom.ru/assets/img/og-cover.jpg">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg">
 
-  <link rel="preload" href="/assets/fonts/source-sans-3-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/css/styles.css?v=2026-09-18-2">
-
-  <script>
-    (function (d) {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      d.documentElement.classList.add('js-anim');
-      setTimeout(function () {
-        if (!window.__animReady) d.documentElement.classList.remove('js-anim');
-      }, 2500);
-    })(document);
-  </script>
-
-  <script defer src="/assets/js/main.js?v=2026-09-18-2"></script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Person",
-        "@id": "https://negolosom.ru/#author",
-        "name": "Роман Пуртов",
-        "url": "https://roman-purtow.ru"
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://negolosom.ru/#website",
-        "url": "https://negolosom.ru/",
-        "name": "Не пиши голосовое!",
-        "inLanguage": "ru",
-        "publisher": { "@id": "https://negolosom.ru/#author" }
-      },
-      {
-        "@type": "MobileApplication",
-        "@id": "https://negolosom.ru/#app",
-        "name": "Не пиши голосовое!",
-        "url": "https://negolosom.ru/",
-        "operatingSystem": "Android 7.0+",
-        "applicationCategory": "ProductivityApplication",
-        "softwareVersion": "2.6.1"
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://negolosom.ru/politika-privatnosti/#crumbs",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://negolosom.ru/" },
-          { "@type": "ListItem", "position": 2, "name": "Политика конфиденциальности", "item": "https://negolosom.ru/politika-privatnosti/" }
-        ]
-      },
-      {
-        "@type": "WebPage",
-        "@id": "https://negolosom.ru/politika-privatnosti/#webpage",
-        "url": "https://negolosom.ru/politika-privatnosti/",
-        "name": "Политика конфиденциальности — «Не пиши голосовое!»",
-        "inLanguage": "ru",
-        "datePublished": "2026-09-18",
-        "dateModified": "2026-09-18",
-        "description": "Что происходит с записями в приложении «Не пиши голосовое!» и какие данные собирает сайт.",
-        "isPartOf": { "@id": "https://negolosom.ru/#website" },
-        "author": { "@id": "https://negolosom.ru/#author" },
-        "publisher": { "@id": "https://negolosom.ru/#author" },
-        "about": { "@id": "https://negolosom.ru/#app" },
-        "breadcrumb": { "@id": "https://negolosom.ru/politika-privatnosti/#crumbs" }
-      }
-    ]
+<style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    gap: 12px;
+    padding: 24px;
+    background: #EEEBE4;
+    color: #1E1E1E;
+    font: 400 1.0625rem/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
+    text-align: center;
   }
-  </script>
-
-  <!-- Yandex.Metrika counter -->
-  <script type="text/javascript">
-      (function(m,e,t,r,i,k,a){
-          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-          m[i].l=1*new Date();
-          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108682111', 'ym');
-
-      ym(108682111, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-  </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/108682111" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-  <!-- /Yandex.Metrika counter -->
+  a { color: #1B6B4A; }
+</style>
 </head>
 <body>
-<a class="skip-link" href="#main">К основному содержимому</a>
-
-<!-- #region @shared:header -->
-<header class="site-header" data-header>
-  <div class="container site-header__inner">
-    <a class="brand" href="/" aria-label="Не пиши голосовое! — на главную">
-      <img src="/assets/img/logo.svg" alt="" width="36" height="32" aria-hidden="true">
-      <span>Не пиши голосовое!</span>
-    </a>
-
-    <nav class="nav" aria-label="Основная">
-      <ul class="nav__list">
-        <li><a class="nav__link" href="/#vozmozhnosti">Возможности</a></li>
-        <li><a class="nav__link" href="/obnovleniya/">Обновления</a></li>
-        <li><a class="nav__link" href="/voprosy/">Вопросы</a></li>
-      </ul>
-
-      <details class="dl" data-dl>
-        <summary class="btn btn--sm btn--rustore dl__toggle">
-          Скачать
-          <svg class="dl__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-        </summary>
-
-        <div class="dl__menu">
-          <a class="dl__item" href="https://www.rustore.ru/catalog/app/com.baslie.negolosom" target="_blank" rel="noopener">
-            <svg class="dl__icon" viewBox="0 0 24 23" fill="none" aria-hidden="true"><path d="M14.8263 15.6119C13.8535 15.3689 13.1714 14.4987 13.1714 13.5007V1.74229C13.1714 0.608661 14.2425 -0.22275 15.3475 0.0532736L22.3448 1.80123C23.3176 2.04424 23.9997 2.91444 23.9997 3.91249V15.6709C23.9997 16.8045 22.9285 17.6359 21.8236 17.3598L14.8263 15.6119Z" fill="#0070F0"/><path d="M1.65491 21.0269C0.682102 20.7839 0 19.9137 0 18.9157V7.15729C0 6.02365 1.0712 5.1923 2.17614 5.46831L9.1734 7.21627C10.1463 7.45928 10.8284 8.32945 10.8284 9.32749V21.0859C10.8284 22.2195 9.75712 23.0509 8.65216 22.7749L1.65491 21.0269Z" fill="#0070F0"/><path d="M8.24033 18.3194C7.26756 18.0764 6.58545 17.2062 6.58545 16.2082V4.44982C6.58545 3.31619 7.65661 2.48477 8.76157 2.76079L15.7588 4.5088C16.7317 4.75172 17.4138 5.62198 17.4138 6.62003V18.3784C17.4138 19.512 16.3425 20.3434 15.2377 20.0674L8.24033 18.3194Z" fill="#0070F0"/><path d="M12.8191 19.4668C12.5127 19.3888 12.2945 19.1178 12.2838 18.8017L11.9794 9.82194C11.8913 8.63353 11.0091 7.68824 10.0872 7.40992C10.0355 7.39428 9.9802 7.41534 9.94961 7.45987C9.91842 7.5051 9.93045 7.56779 9.97388 7.60139C10.2016 7.77761 10.8281 8.3527 10.8281 9.34473L10.8263 18.9618L12.8191 19.4668Z" fill="#0259AA"/><path d="M19.4045 16.7568C19.0984 16.6802 18.8801 16.41 18.8693 16.0946L18.5648 7.11544C18.4769 5.92694 17.5946 4.98175 16.6727 4.70333C16.6209 4.68778 16.5657 4.70884 16.5351 4.75337C16.5039 4.79861 16.5159 4.86119 16.5593 4.89489C16.787 5.07111 17.4137 5.64621 17.4137 6.63813L17.4117 16.2585L19.4045 16.7568Z" fill="#0259AA"/></svg>
-            <span class="dl__text">
-              <b>RuStore</b>
-              <span>Магазин приложений, версия 2.6.1</span>
-            </span>
-          </a>
-          <a class="dl__item" href="https://github.com/baslie/negolosom-releases/releases/latest/download/negolosom.apk">
-            <svg class="dl__icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-0.4 0.08-0.55-0.17-0.55-0.38 0-0.27 0.01-1.13 0.01-2.2 0-0.75-0.25-1.23-0.54-1.48 1.78-0.2 3.65-0.88 3.65-3.95 0-0.88-0.31-1.59-0.82-2.15 0.08-0.2 0.36-1.02-0.08-2.12 0 0-0.67-0.22-2.2 0.82-0.64-0.18-1.32-0.27-2-0.27-0.68 0-1.36 0.09-2 0.27-1.53-1.03-2.2-0.82-2.2-0.82-0.44 1.1-0.16 1.92-0.08 2.12-0.51 0.56-0.82 1.28-0.82 2.15 0 3.06 1.86 3.75 3.64 3.95-0.23 0.2-0.44 0.55-0.51 1.07-0.46 0.21-1.61 0.55-2.33-0.66-0.15-0.24-0.6-0.83-1.23-0.82-0.67 0.01-0.27 0.38 0.01 0.53 0.34 0.19 0.73 0.9 0.82 1.13 0.16 0.45 0.68 1.31 2.69 0.94 0 0.67 0.01 1.3 0.01 1.49 0 0.21-0.15 0.45-0.55 0.38a7.995 7.995 0 0 1-5.47-7.59c0-4.42 3.58-8 8-8z"/></svg>
-            <span class="dl__text">
-              <b>APK на GitHub</b>
-              <span>Если RuStore нет на телефоне, 30 МБ</span>
-            </span>
-          </a>
-        </div>
-      </details>
-    </nav>
-
-    <button class="burger" type="button" data-menu-open aria-expanded="false" aria-controls="menu">
-      <span class="visually-hidden">Открыть меню</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
-    </button>
-  </div>
-</header>
-<!-- #endregion @shared:header -->
-
-<!-- #region @shared:menu -->
-<div class="menu" id="menu" hidden role="dialog" aria-modal="true" aria-label="Меню сайта" data-menu>
-  <div class="menu__head">
-    <a class="brand brand--sm" href="/">
-      <img src="/assets/img/logo.svg" alt="" width="32" height="28" aria-hidden="true">
-      <span>Не пиши голосовое!</span>
-    </a>
-    <button class="menu__close" type="button" data-menu-close>
-      <span class="visually-hidden">Закрыть меню</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-    </button>
-  </div>
-
-  <div class="menu__body">
-    <nav class="menu__nav" aria-label="Разделы сайта">
-      <a class="menu__link" href="/#vozmozhnosti">
-        <span><span class="menu__title">Возможности</span><span class="menu__hint">#vozmozhnosti</span></span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-      </a>
-      <a class="menu__link" href="/#kak-rabotaet">
-        <span><span class="menu__title">Как это работает</span><span class="menu__hint">#kak-rabotaet</span></span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-      </a>
-      <a class="menu__link" href="/#ekrany">
-        <span><span class="menu__title">Экраны приложения</span><span class="menu__hint">#ekrany</span></span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-      </a>
-      <a class="menu__link" href="/obnovleniya/">
-        <span><span class="menu__title">Обновления</span><span class="menu__hint">/obnovleniya</span></span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-      </a>
-      <a class="menu__link" href="/voprosy/">
-        <span><span class="menu__title">Вопросы</span><span class="menu__hint">/voprosy</span></span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-      </a>
-    </nav>
-
-    <div class="menu__buttons">
-      <a class="btn btn--rustore btn--block" href="https://www.rustore.ru/catalog/app/com.baslie.negolosom" target="_blank" rel="noopener">
-        <svg class="btn__icon" viewBox="0 0 24 23" fill="none" aria-hidden="true"><path d="M14.8263 15.6119C13.8535 15.3689 13.1714 14.4987 13.1714 13.5007V1.74229C13.1714 0.608661 14.2425 -0.22275 15.3475 0.0532736L22.3448 1.80123C23.3176 2.04424 23.9997 2.91444 23.9997 3.91249V15.6709C23.9997 16.8045 22.9285 17.6359 21.8236 17.3598L14.8263 15.6119Z" fill="#FFFFFF"/><path d="M1.65491 21.0269C0.682102 20.7839 0 19.9137 0 18.9157V7.15729C0 6.02365 1.0712 5.1923 2.17614 5.46831L9.1734 7.21627C10.1463 7.45928 10.8284 8.32945 10.8284 9.32749V21.0859C10.8284 22.2195 9.75712 23.0509 8.65216 22.7749L1.65491 21.0269Z" fill="#FFFFFF"/><path d="M8.24033 18.3194C7.26756 18.0764 6.58545 17.2062 6.58545 16.2082V4.44982C6.58545 3.31619 7.65661 2.48477 8.76157 2.76079L15.7588 4.5088C16.7317 4.75172 17.4138 5.62198 17.4138 6.62003V18.3784C17.4138 19.512 16.3425 20.3434 15.2377 20.0674L8.24033 18.3194Z" fill="#FFFFFF"/><path d="M12.8191 19.4668C12.5127 19.3888 12.2945 19.1178 12.2838 18.8017L11.9794 9.82194C11.8913 8.63353 11.0091 7.68824 10.0872 7.40992C10.0355 7.39428 9.9802 7.41534 9.94961 7.45987C9.91842 7.5051 9.93045 7.56779 9.97388 7.60139C10.2016 7.77761 10.8281 8.3527 10.8281 9.34473L10.8263 18.9618L12.8191 19.4668Z" fill="#0077FF"/><path d="M19.4045 16.7568C19.0984 16.6802 18.8801 16.41 18.8693 16.0946L18.5648 7.11544C18.4769 5.92694 17.5946 4.98175 16.6727 4.70333C16.6209 4.68778 16.5657 4.70884 16.5351 4.75337C16.5039 4.79861 16.5159 4.86119 16.5593 4.89489C16.787 5.07111 17.4137 5.64621 17.4137 6.63813L17.4117 16.2585L19.4045 16.7568Z" fill="#0077FF"/></svg>
-        Скачать на RuStore
-      </a>
-      <a class="btn btn--block" href="https://github.com/baslie/negolosom-releases/releases/latest/download/negolosom.apk">
-        <svg class="btn__icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-0.4 0.08-0.55-0.17-0.55-0.38 0-0.27 0.01-1.13 0.01-2.2 0-0.75-0.25-1.23-0.54-1.48 1.78-0.2 3.65-0.88 3.65-3.95 0-0.88-0.31-1.59-0.82-2.15 0.08-0.2 0.36-1.02-0.08-2.12 0 0-0.67-0.22-2.2 0.82-0.64-0.18-1.32-0.27-2-0.27-0.68 0-1.36 0.09-2 0.27-1.53-1.03-2.2-0.82-2.2-0.82-0.44 1.1-0.16 1.92-0.08 2.12-0.51 0.56-0.82 1.28-0.82 2.15 0 3.06 1.86 3.75 3.64 3.95-0.23 0.2-0.44 0.55-0.51 1.07-0.46 0.21-1.61 0.55-2.33-0.66-0.15-0.24-0.6-0.83-1.23-0.82-0.67 0.01-0.27 0.38 0.01 0.53 0.34 0.19 0.73 0.9 0.82 1.13 0.16 0.45 0.68 1.31 2.69 0.94 0 0.67 0.01 1.3 0.01 1.49 0 0.21-0.15 0.45-0.55 0.38a7.995 7.995 0 0 1-5.47-7.59c0-4.42 3.58-8 8-8z"/></svg>
-        APK на GitHub
-      </a>
-    </div>
-
-    <div class="menu__contacts">
-      <a class="arrow-link" href="https://roman-purtow.ru/?utm_source=negolosom&amp;utm_medium=referral&amp;utm_content=menu" target="_blank" rel="noopener">
-        Написать автору — roman-purtow.ru
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-      </a>
-      <a class="vk-link" href="https://vk.com/club237879114" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#0077FF" d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.204.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.253-1.406 2.151-3.574 2.151-3.574.118-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.78 1.203 1.254.745.847 1.32 1.558 1.473 2.049.17.49-.085.744-.576.744z"/></svg>
-        Сообщество ВКонтакте
-      </a>
-    </div>
-  </div>
-</div>
-<!-- #endregion @shared:menu -->
-
-<main id="main" tabindex="-1">
-  <div class="page-body">
-    <div class="container">
-      <nav aria-label="Хлебные крошки">
-        <ol class="crumbs">
-          <li><a href="/">Главная</a></li>
-          <li><span aria-current="page">Политика конфиденциальности</span></li>
-        </ol>
-      </nav>
-
-      <div class="sechead page-head">
-        <h1 class="h1">Политика конфиденциальности</h1>
-        <p class="lead">Что происходит с вашими записями в приложении «Не пиши голосовое!» и какие данные собирает этот сайт. Без юридического тумана — только то, что есть на самом деле.</p>
-        <p class="fineprint">Обновлено 18 сентября 2026 года. Действует для версии приложения 2.6.1.</p>
-      </div>
-
-      <div class="qa-list" data-reveal-group>
-        <article class="qa">
-          <h2 class="qa__q">Коротко</h2>
-          <p class="qa__a">Голос распознаётся прямо на телефоне. Аудиозаписи и расшифровки не покидают устройство — ни во время работы, ни потом. Регистрации и аккаунта нет, синхронизации нет, облачного хранилища нет.</p>
-          <p class="qa__a">Наружу уходит только обезличенная статистика того, как приложением пользуются, и отчёты о сбоях. В них нет ни аудио, ни текста расшифровок. Подробности — ниже.</p>
-        </article>
-
-        <article class="qa" id="zapisi">
-          <h2 class="qa__q">Записи и расшифровки</h2>
-          <p class="qa__a">Аудиофайлы, тексты расшифровок и субтитры хранятся во внутренней папке приложения на вашем устройстве. Приложение не отправляет их ни на какой сервер и не имеет для этого кода: распознавание выполняет модель, скачанная на телефон, без обращения к сети.</p>
-          <p class="qa__a">Записи покидают устройство только тогда, когда вы сами этого захотите: нажали «Отправить», выбрали экспорт в файл или выгрузили всё ZIP-архивом. Куда они уйдут дальше — решаете вы, и на это уже действуют правила того приложения или сервиса, которое вы выбрали.</p>
-        </article>
-
-        <article class="qa" id="statistika">
-          <h2 class="qa__q">Какую статистику собирает приложение</h2>
-          <p class="qa__a">Приложение использует AppMetrica — сервис аналитики Яндекса. Он нужен, чтобы понимать, какими функциями пользуются, где люди застревают и на каких устройствах приложение падает.</p>
-          <p class="qa__a">Что отправляется:</p>
-          <ul class="bullets">
-            <li>факты действий: открыл экран, начал запись, завершил запись, запустил распознавание, скопировал текст, сменил тему или размер шрифта;</li>
-            <li>числовые характеристики этих действий: длительность записи, время распознавания, идентификатор выбранной модели, код языка результата;</li>
-            <li>сведения об устройстве и сборке: модель телефона, версия Android, версия приложения, разрядность процессора, объём памяти;</li>
-            <li>отчёты о сбоях: место в коде, где приложение упало, и сопутствующее техническое описание;</li>
-            <li>обезличенный идентификатор установки, который AppMetrica создаёт сама, чтобы отличать одну установку от другой.</li>
-          </ul>
-          <p class="qa__a">Что не отправляется никогда: аудиозаписи, тексты расшифровок, названия и содержимое ваших файлов, имена, номера, адреса, контакты, местоположение.</p>
-          <p class="qa__a">Отдельного переключателя «выключить статистику» в приложении сейчас нет. Если вы не хотите, чтобы она уходила, работающий способ один — запретить приложению доступ в сеть системными средствами или файрволом; на распознавание это не повлияет, когда модель уже скачана.</p>
-        </article>
-
-        <article class="qa" id="razresheniya">
-          <h2 class="qa__q">Разрешения и зачем они</h2>
-          <ul class="bullets">
-            <li><b>Микрофон</b> — записать голосовую заметку. Без него приложение бессмысленно.</li>
-            <li><b>Фоновая работа с микрофоном</b> — чтобы запись не прерывалась при выключенном экране. На Android 14 и новее без этого система отбирает микрофон у свёрнутого приложения.</li>
-            <li><b>Фоновая работа для обработки данных</b> — чтобы распознавание длинной записи не обрывалось, когда вы свернули приложение.</li>
-            <li><b>Уведомления</b> — показать прогресс записи и распознавания. Рекламных и маркетинговых уведомлений приложение не отправляет.</li>
-            <li><b>Интернет и состояние сети</b> — скачать модель распознавания при первом запуске и отправить статистику, описанную выше.</li>
-          </ul>
-          <p class="qa__a">Приложение не запрашивает доступ к контактам, геолокации, камере и не получает постоянного доступа к файлам: оно читает только тот файл, который вы выбрали сами, и пишет только туда, куда вы сами указали сохранить.</p>
-        </article>
-
-        <article class="qa" id="internet">
-          <h2 class="qa__q">Когда приложению нужен интернет</h2>
-          <p class="qa__a">Дважды: при первом запуске — скачать модель распознавания, и в момент, когда вы решите докачать вторую модель. Всё остальное время приложение работает без сети, включая само распознавание.</p>
-        </article>
-
-        <article class="qa" id="udalenie">
-          <h2 class="qa__q">Как удалить данные</h2>
-          <p class="qa__a">Удалите записи внутри приложения или удалите само приложение — вместе с ним уходит вся его папка: аудио, расшифровки, модели и настройки. Резервных копий на стороне разработчика не существует, восстанавливать нечего и незачем.</p>
-          <p class="qa__a">Обезличенную статистику, уже отправленную в AppMetrica, вернуть нельзя — она не связана с вами и не позволяет вас идентифицировать.</p>
-        </article>
-
-        <article class="qa" id="sayt">
-          <h2 class="qa__q">Данные на сайте negolosom.ru</h2>
-          <p class="qa__a">На сайте работает Яндекс.Метрика. Она собирает обычную веб-статистику: с какой страницы вы пришли, какие страницы открыли, сколько времени провели, тип устройства и браузера, приблизительный регион по IP-адресу.</p>
-          <p class="qa__a">У счётчика включён Вебвизор — он записывает движения мыши, клики и прокрутку внутри страниц, чтобы было видно, где посетители спотыкаются. Ввода текста на сайте нет: здесь нет ни форм, ни полей, ни авторизации, — поэтому записывать в них нечего.</p>
-          <p class="qa__a">Отказаться можно: включите в браузере блокировку счётчиков или воспользуйтесь <a href="https://yandex.ru/support/metrica/general/opt-out.html" target="_blank" rel="noopener">официальным блокировщиком Яндекс.Метрики</a>. Сайт продолжит работать полностью.</p>
-          <p class="qa__a">Свои файлы cookie сайт не ставит, рекламных сетей и внешних виджетов на нём нет. Шрифты, скрипты и картинки отдаются с самого negolosom.ru, поэтому при открытии страницы ваш браузер не обращается к сторонним CDN.</p>
-        </article>
-
-        <article class="qa" id="deti">
-          <h2 class="qa__q">Дети</h2>
-          <p class="qa__a">Приложение не предназначено специально для детей и не собирает данные, по которым можно определить возраст.</p>
-        </article>
-
-        <article class="qa" id="izmeneniya">
-          <h2 class="qa__q">Изменения</h2>
-          <p class="qa__a">Если что-то из описанного изменится — например, появится переключатель статистики или новая функция потребует сети, — эта страница будет обновлена, а дата вверху изменится. Существенные изменения отметим в <a href="/obnovleniya/">истории версий</a>.</p>
-        </article>
-
-        <article class="qa" id="kontakty">
-          <h2 class="qa__q">Контакты</h2>
-          <p class="qa__a">Приложение делает один человек — Роман Пуртов. Вопросы про данные, просьбы и претензии: <span class="nowrap">rytrycon@gmail.com</span> или через форму на <a href="https://roman-purtow.ru/?utm_source=negolosom&amp;utm_medium=referral&amp;utm_content=privacy" target="_blank" rel="noopener">roman-purtow.ru</a>.</p>
-        </article>
-      </div>
-    </div>
-  </div>
-</main>
-
-<!-- #region @shared:footer -->
-<footer class="site-footer">
-  <div class="container">
-    <div class="site-footer__cols">
-      <div class="site-footer__about">
-        <a class="brand" href="/">
-          <img src="/assets/img/logo.svg" alt="" width="36" height="32" aria-hidden="true">
-          <span>Не пиши голосовое!</span>
-        </a>
-        <p>Расшифровка голосовых прямо на телефоне. Без интернета, без облака, без аккаунта.</p>
-        <a class="vk-link" href="https://vk.com/club237879114" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#0077FF" d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.204.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.253-1.406 2.151-3.574 2.151-3.574.118-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.78 1.203 1.254.745.847 1.32 1.558 1.473 2.049.17.49-.085.744-.576.744z"/></svg>
-          Сообщество ВКонтакте
-        </a>
-      </div>
-
-      <nav class="site-footer__col" aria-label="Приложение">
-        <h2 class="site-footer__head">Приложение</h2>
-        <a href="/#vozmozhnosti">Возможности</a>
-        <a href="/#kak-rabotaet">Как это работает</a>
-        <a href="/#ekrany">Экраны приложения</a>
-        <a href="/obnovleniya/">Обновления</a>
-      </nav>
-
-      <nav class="site-footer__col" aria-label="Поддержка">
-        <h2 class="site-footer__head">Поддержка</h2>
-        <a href="/voprosy/">Частые вопросы</a>
-        <a href="https://roman-purtow.ru/?utm_source=negolosom&amp;utm_medium=referral&amp;utm_content=footer" target="_blank" rel="noopener">Написать автору</a>
-        <a href="https://roman-purtow.ru/?utm_source=negolosom&amp;utm_medium=referral&amp;utm_content=bug" target="_blank" rel="noopener">Сообщить об ошибке</a>
-        <a href="/politika-privatnosti/">Политика конфиденциальности</a>
-      </nav>
-
-      <nav class="site-footer__col" aria-label="Скачать">
-        <h2 class="site-footer__head">Скачать</h2>
-        <a href="https://www.rustore.ru/catalog/app/com.baslie.negolosom" target="_blank" rel="noopener">RuStore</a>
-        <a href="https://github.com/baslie/negolosom-releases/releases/latest/download/negolosom.apk">APK на GitHub</a>
-        <a href="/obnovleniya/">История версий</a>
-      </nav>
-    </div>
-
-    <div class="site-footer__bottom">
-      <span>© 2026 Роман Пуртов</span>
-      <span>negolosom.ru</span>
-    </div>
-  </div>
-</footer>
-<!-- #endregion @shared:footer -->
-
-<!-- #region @shared:fab -->
-<aside class="fab" data-fab aria-label="Связаться с автором">
-  <div class="fab__card" aria-hidden="true">
-    <b>Написать автору</b>
-    <span>roman-purtow.ru</span>
-  </div>
-  <div class="fab__cluster">
-    <span class="fab__ring" aria-hidden="true"></span>
-    <span class="fab__ring fab__ring--2" aria-hidden="true"></span>
-    <a class="fab__btn" href="https://roman-purtow.ru/?utm_source=negolosom&amp;utm_medium=referral&amp;utm_content=fab" target="_blank" rel="noopener" aria-label="Написать автору на roman-purtow.ru, откроется в новой вкладке">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-    </a>
-  </div>
-</aside>
-<!-- #endregion @shared:fab -->
-
+  <p>Страница переехала на новый адрес.</p>
+  <p><a href="/policy/">Политика конфиденциальности</a></p>
 </body>
 </html>

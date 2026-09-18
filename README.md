@@ -15,7 +15,7 @@
 index.html                       главная, девять секций
 obnovleniya/index.html           история версий, 12 выпусков
 voprosy/index.html               восемь вопросов с якорями
-politika-privatnosti/index.html  политика конфиденциальности
+policy/index.html  политика конфиденциальности
 404.html                         страница не найдена (GitHub Pages подхватывает сам)
 
 assets/
@@ -107,7 +107,7 @@ python tools/build-images.py
 - [ ] `sitemap.xml` — `lastmod` изменившихся страниц
 - [ ] `llms.txt` — номер версии и дата в абзаце после `>`
 - [ ] `llms-full.txt` — шапка и новый выпуск в разделе истории версий
-- [ ] `voprosy/index.html` и `politika-privatnosti/index.html` — если выпуск меняет ответы или
+- [ ] `voprosy/index.html` и `policy/index.html` — если выпуск меняет ответы или
       поведение с данными, поправить и текст, и `dateModified`
 
 После публикации — пинг поисковиков (Яндекс и Bing понимают IndexNow):
