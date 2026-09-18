@@ -10,3 +10,4 @@ assets/js/vendor/*.js -text
 *.webp  binary
 *.png   binary
 *.jpg   binary
+*.ico   binary
