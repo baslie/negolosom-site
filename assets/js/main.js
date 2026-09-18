@@ -64,6 +64,29 @@
   }
 
 
+  /* --- Что видно сразу, то не прячем -------------------------------------- */
+
+  /* Класс .js-anim из <head> ставит стартовую прозрачность всем элементам с
+     data-reveal. Для тех, что уже в первом экране, это означает: текст не
+     нарисован, пока не доедет GSAP, — а он грузится после события load. На
+     странице вопросов именно такой абзац оказывался самым крупным элементом
+     отрисовки, и Lighthouse считал её 3,9 с.
+
+     Поэтому сразу после разбора документа снимаем разметку появления со
+     всего, что попадает в первый экран: такой элемент виден с первого кадра
+     и в анимации потом не участвует. */
+  function unhideAboveFold() {
+    if (!document.documentElement.classList.contains('js-anim')) return;
+    var limit = window.innerHeight * 0.9;
+    $$('[data-reveal], [data-reveal-group]').forEach(function (el) {
+      if (el.getBoundingClientRect().top < limit) {
+        el.removeAttribute('data-reveal');
+        el.removeAttribute('data-reveal-group');
+      }
+    });
+  }
+
+
   /* --- Состояние шапки ---------------------------------------------------- */
 
   function initHeaderState() {
@@ -480,6 +503,7 @@
   }
 
   // Сначала — всё, что написано на голом DOM и должно работать немедленно.
+  unhideAboveFold();
   initHeaderState();
   initBurger();
   initDisclosures();
