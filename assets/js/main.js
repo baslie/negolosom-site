@@ -238,32 +238,6 @@
 
   /* --- Плавающая кнопка --------------------------------------------------- */
 
-  function initFab() {
-    var fab = $('[data-fab]');
-    if (!fab) return;
-
-    // Стартовое состояние живёт под .js-anim; без него кнопка видна сразу и
-    // ничего делать не нужно.
-    if (!document.documentElement.classList.contains('js-anim')) {
-      fab.classList.add('is-visible');
-      return;
-    }
-
-    var ticking = false;
-    var apply = function () {
-      fab.classList.toggle('is-visible', window.scrollY > 400);
-      ticking = false;
-    };
-
-    apply();
-    window.addEventListener('scroll', function () {
-      if (ticking) return;
-      ticking = true;
-      window.requestAnimationFrame(apply);
-    }, { passive: true });
-  }
-
-
   /* --- Карусель экранов ----------------------------------------------------
 
      Про колесо мыши. Вьюпорту карусели нельзя ставить data-lenis-prevent:
@@ -549,7 +523,6 @@
   initBurger();
   initDownloadMenu();
   initDisclosures();
-  initFab();
   initSkipLink();
 
   if (document.readyState === 'complete') whenIdle(loadVendors);

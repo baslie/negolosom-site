@@ -1625,21 +1625,6 @@ body.is-locked { overflow: hidden; }
   transform: translateY(14px);
 }
 
-/* Плавающая кнопка выезжает после 400 px прокрутки; класс ставит JS.
-   Без JS кнопка просто видна сразу. */
-.js-anim .fab {
-  opacity: 0;
-  transform: scale(.8);
-  pointer-events: none;
-}
-
-.js-anim .fab.is-visible {
-  opacity: 1;
-  transform: none;
-  pointer-events: auto;
-  transition: opacity var(--t-base) var(--ease), transform var(--t-base) var(--ease);
-}
-
 .fab__card {
   opacity: 0;
   translate: 8px 0;
@@ -1667,7 +1652,6 @@ body.is-locked { overflow: hidden; }
   .fab__ring { animation: none; }
   .js-anim [data-reveal],
   .js-anim [data-reveal-group] > * { opacity: 1; transform: none; }
-  .js-anim .fab { opacity: 1; transform: none; pointer-events: auto; }
   .fab__card { transition: none; }
   .arrow-link svg,
   .qlist__item svg { transition: none; }
