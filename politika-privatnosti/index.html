@@ -9,6 +9,7 @@
   <meta name="color-scheme" content="light">
   <link rel="canonical" href="https://negolosom.ru/politika-privatnosti/">
 
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 
@@ -21,6 +22,7 @@
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Приложение «Не пиши голосовое!»: логотип, заголовок и три экрана — список заметок, запись и настройки.">
   <meta property="og:locale" content="ru_RU">
 
   <meta name="twitter:card" content="summary_large_image">
@@ -48,6 +50,29 @@
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "Person",
+        "@id": "https://negolosom.ru/#author",
+        "name": "Роман Пуртов",
+        "url": "https://roman-purtow.ru"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://negolosom.ru/#website",
+        "url": "https://negolosom.ru/",
+        "name": "Не пиши голосовое!",
+        "inLanguage": "ru",
+        "publisher": { "@id": "https://negolosom.ru/#author" }
+      },
+      {
+        "@type": "MobileApplication",
+        "@id": "https://negolosom.ru/#app",
+        "name": "Не пиши голосовое!",
+        "url": "https://negolosom.ru/",
+        "operatingSystem": "Android 7.0+",
+        "applicationCategory": "ProductivityApplication",
+        "softwareVersion": "2.6.1"
+      },
+      {
         "@type": "BreadcrumbList",
         "@id": "https://negolosom.ru/politika-privatnosti/#crumbs",
         "itemListElement": [
@@ -63,6 +88,10 @@
         "inLanguage": "ru",
         "datePublished": "2026-09-18",
         "dateModified": "2026-09-18",
+        "description": "Что происходит с записями в приложении «Не пиши голосовое!» и какие данные собирает сайт.",
+        "isPartOf": { "@id": "https://negolosom.ru/#website" },
+        "author": { "@id": "https://negolosom.ru/#author" },
+        "publisher": { "@id": "https://negolosom.ru/#author" },
         "about": { "@id": "https://negolosom.ru/#app" },
         "breadcrumb": { "@id": "https://negolosom.ru/politika-privatnosti/#crumbs" }
       }

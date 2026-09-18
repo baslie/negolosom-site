@@ -9,6 +9,7 @@
   <meta name="color-scheme" content="light">
   <link rel="canonical" href="https://negolosom.ru/voprosy/">
 
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 
@@ -21,6 +22,7 @@
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Приложение «Не пиши голосовое!»: логотип, заголовок и три экрана — список заметок, запись и настройки.">
   <meta property="og:locale" content="ru_RU">
 
   <meta name="twitter:card" content="summary_large_image">
@@ -48,6 +50,29 @@
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "Person",
+        "@id": "https://negolosom.ru/#author",
+        "name": "Роман Пуртов",
+        "url": "https://roman-purtow.ru"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://negolosom.ru/#website",
+        "url": "https://negolosom.ru/",
+        "name": "Не пиши голосовое!",
+        "inLanguage": "ru",
+        "publisher": { "@id": "https://negolosom.ru/#author" }
+      },
+      {
+        "@type": "MobileApplication",
+        "@id": "https://negolosom.ru/#app",
+        "name": "Не пиши голосовое!",
+        "url": "https://negolosom.ru/",
+        "operatingSystem": "Android 7.0+",
+        "applicationCategory": "ProductivityApplication",
+        "softwareVersion": "2.6.1"
+      },
+      {
         "@type": "BreadcrumbList",
         "@id": "https://negolosom.ru/voprosy/#crumbs",
         "itemListElement": [
@@ -61,46 +86,60 @@
         "url": "https://negolosom.ru/voprosy/",
         "name": "Частые вопросы — «Не пиши голосовое!»",
         "inLanguage": "ru",
+        "description": "Восемь ответов о приложении «Не пиши голосовое!»: работает ли офлайн, куда уходит голос, какие языки, сколько места занимают модели.",
+        "isPartOf": { "@id": "https://negolosom.ru/#website" },
+        "datePublished": "2026-04-29",
+        "dateModified": "2026-09-18",
+        "author": { "@id": "https://negolosom.ru/#author" },
+        "publisher": { "@id": "https://negolosom.ru/#author" },
         "about": { "@id": "https://negolosom.ru/#app" },
         "breadcrumb": { "@id": "https://negolosom.ru/voprosy/#crumbs" },
         "mainEntity": [
           {
             "@type": "Question",
+            "url": "https://negolosom.ru/voprosy/#bez-interneta",
             "name": "Работает ли приложение без интернета?",
             "acceptedAnswer": { "@type": "Answer", "text": "Да. Распознавание идёт прямо на телефоне. Интернет нужен один раз — скачать модель при первом запуске. Дальше всё работает офлайн: в самолёте, в метро, на даче без связи." }
           },
           {
             "@type": "Question",
+            "url": "https://negolosom.ru/voprosy/#kuda-uhodit-golos",
             "name": "Куда уходит мой голос?",
             "acceptedAnswer": { "@type": "Answer", "text": "Никуда. Аудио и расшифровки хранятся только на вашем устройстве, в папке приложения. Ни облачного распознавания, ни аккаунтов, ни синхронизации. Удалили приложение — удалили все данные. Наружу уходит только анонимная статистика использования и отчёты об ошибках: какие экраны открывали, сколько длилась запись, какая модель считала. Ни аудио, ни текста расшифровок в ней нет." }
           },
           {
             "@type": "Question",
+            "url": "https://negolosom.ru/voprosy/#yazyki",
             "name": "На каких языках приложение распознаёт речь?",
             "acceptedAnswer": { "@type": "Answer", "text": "На шестнадцати. Русский — модель GigaAM v3 от Сбера, обученная специально на русской речи: по публичным бенчмаркам она в 2,5 раза точнее Whisper-large-v3. Остальные пятнадцать языков — модель Whisper small: английский, немецкий, французский, испанский, итальянский, португальский, польский, турецкий, украинский, болгарский, казахский, китайский, японский, корейский и арабский." }
           },
           {
             "@type": "Question",
+            "url": "https://negolosom.ru/voprosy/#mesto-modeli",
             "name": "Сколько места занимают модели и надо ли качать обе?",
             "acceptedAnswer": { "@type": "Answer", "text": "GigaAM v3 весит 214 МБ, Whisper small — 358 МБ. Обе не обязательны: если говорите только по-русски, хватит GigaAM. Выбрать модель можно при первом запуске, а докачать вторую — в любой момент в настройках." }
           },
           {
             "@type": "Question",
+            "url": "https://negolosom.ru/voprosy/#drugoy-yazyk",
             "name": "Запись оказалась не на том языке. Перезаписывать?",
             "acceptedAnswer": { "@type": "Answer", "text": "Нет. Расшифровку можно переделать другой моделью прямо из карточки записи — само аудио никуда не денется." }
           },
           {
             "@type": "Question",
+            "url": "https://negolosom.ru/voprosy/#chuzhoe-audio",
             "name": "Можно расшифровать чужое голосовое или готовый файл?",
             "acceptedAnswer": { "@type": "Answer", "text": "Да. Отправьте аудио в приложение через «Поделиться» из мессенджера или выберите файл с телефона кнопкой «+». Расшифровка пойдёт так же, как у своей записи." }
           },
           {
             "@type": "Question",
+            "url": "https://negolosom.ru/voprosy/#kak-dostat-tekst",
             "name": "Как достать текст из приложения?",
             "acceptedAnswer": { "@type": "Answer", "text": "«Копировать» кладёт расшифровку в буфер, «Отправить» уводит её в любое приложение. В меню записи есть экспорт в .txt, субтитры .srt и выгрузка исходного аудио, а в настройках — выгрузка всех записей одним ZIP-архивом." }
           },
           {
             "@type": "Question",
+            "url": "https://negolosom.ru/voprosy/#platno-reklama",
             "name": "Приложение платное? Есть ли реклама?",
             "acceptedAnswer": { "@type": "Answer", "text": "Нет и нет. Бесплатно, без рекламы, без встроенных покупок и без регистрации." }
           }

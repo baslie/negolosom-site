@@ -4,11 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Не пиши голосовое! — голосовые заметки в текст на Android, офлайн</title>
-  <meta name="description" content="Приложение для Android: голосовые заметки с локальным распознаванием речи на русском. Без облака, без аккаунтов, без интернета.">
+  <meta name="description" content="Приложение для Android: голосовые заметки с локальным распознаванием речи на русском. Без облака, без аккаунтов, без подписки.">
   <meta name="theme-color" content="#EEEBE4">
   <meta name="color-scheme" content="light">
   <link rel="canonical" href="https://negolosom.ru/">
 
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 
@@ -56,7 +57,19 @@
         "@id": "https://negolosom.ru/#author",
         "name": "Роман Пуртов",
         "url": "https://roman-purtow.ru",
-        "email": "baslie@yandex.ru"
+        "jobTitle": "Разработчик приложения",
+        "description": "Делает приложение «Не пиши голосовое!» один: код, сайт и поддержка.",
+        "knowsAbout": [
+          "Распознавание речи на устройстве",
+          "Разработка приложений для Android",
+          "Kotlin",
+          "Модель GigaAM v3",
+          "Модель Whisper"
+        ],
+        "sameAs": [
+          "https://roman-purtow.ru",
+          "https://github.com/baslie"
+        ]
       },
       {
         "@type": "WebSite",
@@ -74,31 +87,62 @@
         "url": "https://negolosom.ru/",
         "operatingSystem": "Android 7.0+",
         "applicationCategory": "ProductivityApplication",
+        "applicationSubCategory": "Распознавание речи",
+        "processorRequirements": "arm64 (ARM64-v8a)",
+        "storageRequirements": "30 МБ приложение и 214 МБ модель GigaAM v3",
         "inLanguage": "ru",
         "softwareVersion": "2.6.1",
-        "datePublished": "2026-09-18",
+        "datePublished": "2026-04-29",
+        "dateModified": "2026-09-18",
         "fileSize": "30 MB",
+        "isAccessibleForFree": true,
+        "permissions": [
+          "Микрофон — запись голосовой заметки",
+          "Фоновая работа с микрофоном — запись не прерывается при выключенном экране",
+          "Фоновая обработка данных — распознавание длинной записи не обрывается",
+          "Уведомления — прогресс записи и распознавания",
+          "Интернет и состояние сети — загрузка модели и обезличенная статистика"
+        ],
         "downloadUrl": "https://www.rustore.ru/catalog/app/com.baslie.negolosom",
         "installUrl": "https://www.rustore.ru/catalog/app/com.baslie.negolosom",
         "releaseNotes": "https://negolosom.ru/obnovleniya/",
-        "softwareHelp": { "@id": "https://negolosom.ru/voprosy/#faq" },
+        "softwareHelp": {
+          "@type": "WebPage",
+          "@id": "https://negolosom.ru/voprosy/#faq",
+          "url": "https://negolosom.ru/voprosy/",
+          "name": "Частые вопросы о приложении «Не пиши голосовое!»"
+        },
         "image": "https://negolosom.ru/assets/img/og-cover.jpg",
+        "sameAs": [
+          "https://www.rustore.ru/catalog/app/com.baslie.negolosom",
+          "https://vk.com/club237879114"
+        ],
         "screenshot": [
           "https://negolosom.ru/assets/img/screens/list-488.webp",
+          "https://negolosom.ru/assets/img/screens/onboarding-488.webp",
+          "https://negolosom.ru/assets/img/screens/list-dark-488.webp",
+          "https://negolosom.ru/assets/img/screens/empty-488.webp",
           "https://negolosom.ru/assets/img/screens/recording-488.webp",
           "https://negolosom.ru/assets/img/screens/card-488.webp",
+          "https://negolosom.ru/assets/img/screens/export-488.webp",
           "https://negolosom.ru/assets/img/screens/settings-488.webp",
-          "https://negolosom.ru/assets/img/screens/list-dark-488.webp"
+          "https://negolosom.ru/assets/img/screens/transcribing-488.webp"
         ],
         "featureList": [
           "Распознавание речи прямо на устройстве, без интернета",
           "Модель GigaAM v3 от Сбера для русского языка",
-          "Шестнадцать языков через модель Whisper small",
+          "Ещё пятнадцать языков через модель Whisper small",
           "Импорт чужих голосовых через «Поделиться»",
           "Экспорт в .txt, субтитры .srt и ZIP-архив всех записей",
           "Синхронизация текста с аудио"
         ],
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "RUB" },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "RUB",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.rustore.ru/catalog/app/com.baslie.negolosom"
+        },
         "author": { "@id": "https://negolosom.ru/#author" },
         "publisher": { "@id": "https://negolosom.ru/#author" }
       },
@@ -109,8 +153,21 @@
         "name": "Не пиши голосовое! — голосовые заметки в текст на Android, офлайн",
         "isPartOf": { "@id": "https://negolosom.ru/#website" },
         "about": { "@id": "https://negolosom.ru/#app" },
+        "author": { "@id": "https://negolosom.ru/#author" },
+        "publisher": { "@id": "https://negolosom.ru/#author" },
         "inLanguage": "ru",
-        "primaryImageOfPage": "https://negolosom.ru/assets/img/og-cover.jpg"
+        "datePublished": "2026-04-29",
+        "dateModified": "2026-09-18",
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://negolosom.ru/assets/img/og-cover.jpg",
+          "width": 1200,
+          "height": 630
+        },
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": [".hero__title", ".hero__sub"]
+        }
       }
     ]
   }
@@ -563,27 +620,39 @@
     </div>
 
     <div data-reveal-group>
-      <nav class="qlist" aria-label="Частые вопросы">
-        <a class="qlist__item" href="/voprosy/#bez-interneta">
-          <span class="qlist__text">Работает ли приложение без интернета?</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-        </a>
-        <a class="qlist__item" href="/voprosy/#kuda-uhodit-golos">
-          <span class="qlist__text">Куда уходит мой голос?</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-        </a>
-        <a class="qlist__item" href="/voprosy/#yazyki">
-          <span class="qlist__text">На каких языках приложение распознаёт речь?</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-        </a>
-        <a class="qlist__item" href="/voprosy/#mesto-modeli">
-          <span class="qlist__text">Сколько места занимают модели и надо ли качать обе?</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-        </a>
-      </nav>
+      <ul class="qlist">
+        <li class="qlist__row">
+          <a class="qlist__item" href="/voprosy/#bez-interneta">
+            <span class="qlist__text">Работает ли приложение без интернета?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </a>
+          <p class="qlist__answer">Да. Распознавание идёт прямо на телефоне — интернет нужен один раз, чтобы скачать модель при первом запуске.</p>
+        </li>
+        <li class="qlist__row">
+          <a class="qlist__item" href="/voprosy/#kuda-uhodit-golos">
+            <span class="qlist__text">Куда уходит мой голос?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </a>
+          <p class="qlist__answer">Никуда. Аудио и расшифровки остаются на устройстве: ни облачного распознавания, ни аккаунтов, ни синхронизации.</p>
+        </li>
+        <li class="qlist__row">
+          <a class="qlist__item" href="/voprosy/#yazyki">
+            <span class="qlist__text">На каких языках приложение распознаёт речь?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </a>
+          <p class="qlist__answer">На шестнадцати. Русский считает модель GigaAM v3 от Сбера, остальные пятнадцать — Whisper small.</p>
+        </li>
+        <li class="qlist__row">
+          <a class="qlist__item" href="/voprosy/#mesto-modeli">
+            <span class="qlist__text">Сколько места занимают модели и надо ли качать обе?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </a>
+          <p class="qlist__answer">GigaAM v3 весит 214 МБ, Whisper small — 358 МБ. Обе не обязательны: для русского хватит GigaAM.</p>
+        </li>
+      </ul>
       <p class="qlist__more">
         <a class="arrow-link" href="/voprosy/">
-          Все вопросы и ответы — их восемь
+          Все вопросы и ответы
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
       </p>

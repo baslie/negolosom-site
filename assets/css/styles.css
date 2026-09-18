@@ -1182,16 +1182,32 @@ html.lenis body { height: auto; }
 
 .faq-teaser .sechead { max-width: none; }
 
-.qlist { display: grid; }
+.qlist {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.qlist__row {
+  padding: 18px 0;
+  border-top: 1px solid var(--border);
+}
 
 .qlist__item {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 18px 0;
-  border-top: 1px solid var(--border);
   transition: color var(--t-fast) var(--ease);
+}
+
+.qlist__answer {
+  margin: 6px 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--text-2);
+  text-wrap: pretty;
 }
 
 .qlist__item:hover { color: var(--brand-ink); }
