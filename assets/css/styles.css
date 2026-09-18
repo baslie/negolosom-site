@@ -1357,6 +1357,20 @@ html.lenis body { height: auto; }
 
 /* 18  СТРАНИЦА ОБНОВЛЕНИЙ ================================================= */
 
+/* Заголовочный блок внутренней страницы: шире колонки текста не растёт,
+   иначе длинный лид читается как газетная полоса. */
+.page-head {
+  margin-top: 24px;
+  max-width: 820px;
+}
+
+.release-list { margin-top: clamp(2rem, 1.55rem + .75vw, 3rem); }
+.release-note { margin-top: clamp(2.5rem, 2rem + 1vw, 3.5rem); }
+.qa-list {
+  margin-top: clamp(2rem, 1.55rem + .75vw, 2.75rem);
+  max-width: 820px;
+}
+
 .release {
   display: grid;
   gap: 18px;
