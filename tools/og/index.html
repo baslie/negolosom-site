@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Заготовка обложки 1200x630</title>
+<!--
+  Служебная страница: из неё рендерится /assets/img/og-cover.jpg.
+  Подключает боевой styles.css, поэтому обложка не разъезжается с сайтом.
+
+  Как пересобрать:
+    1. python -m http.server 8321
+    2. открыть http://127.0.0.1:8321/tools/og/ в окне ровно 1200x630
+    3. снять скриншот вьюпорта в tools/og/og-cover.png
+    4. python tools/build-og.py
+-->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<style>
+  html, body { margin: 0; padding: 0; overflow: hidden; }
+
+  .og {
+    position: relative;
+    width: 1200px;
+    height: 630px;
+    display: grid;
+    grid-template-columns: 1fr 500px;
+    align-items: center;
+    gap: 40px;
+    padding: 0 64px;
+    background: var(--bg);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .og__wave {
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    right: 0;
+    bottom: -120px;
+    width: 100%;
+    height: 420px;
+    color: var(--brand);
+  }
+
+  .og__copy { display: grid; gap: 18px; }
+  .og__logo { width: 104px; height: auto; }
+
+  .og__title {
+    font-size: 66px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -.02em;
+    color: var(--brand);
+  }
+
+  .og__sub {
+    font-size: 25px;
+    line-height: 1.3;
+    color: var(--text-2);
+    max-width: 21ch;
+  }
+
+  .og__url {
+    margin-top: 6px;
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--text-3);
+    letter-spacing: .02em;
+  }
+
+  .og__shots {
+    display: flex;
+    gap: 22px;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .og__shots img {
+    width: 148px;
+    border-radius: 18px;
+    border: 1px solid var(--border-strong);
+    box-shadow: 0 14px 34px rgba(30, 30, 30, .18);
+  }
+
+  .og__shots img:nth-child(1) { transform: translateY(-26px) rotate(-3deg); }
+  .og__shots img:nth-child(3) { transform: translateY(26px) rotate(3deg); }
+</style>
+</head>
+<body>
+<div class="og">
+  <svg class="og__wave" viewBox="0 0 2143 569" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M681.185 0C366.519 0 0 142.815 0 142.815V535.704C0 535.704 447.87 175.111 705.185 175.111C962.5 175.111 1119.02 332 1396.86 492.414C1674.71 652.828 2142.52 511.407 2142.52 511.407V0C2142.52 0 1679.7 175.111 1402.37 175.111C1125.04 175.111 995.852 0 681.185 0Z" fill="currentColor"/>
+  </svg>
+
+  <div class="og__copy">
+    <img class="og__logo" src="/assets/img/logo.svg" alt="">
+    <div class="og__title">Не пиши<br>голосовое!</div>
+    <div class="og__sub">Голосовые заметки в текст. Офлайн, на русском.</div>
+    <div class="og__url">negolosom.ru</div>
+  </div>
+
+  <div class="og__shots">
+    <img src="/assets/img/screens/list-dark-488.webp" alt="">
+    <img src="/assets/img/screens/recording-488.webp" alt="">
+    <img src="/assets/img/screens/settings-488.webp" alt="">
+  </div>
+</div>
+</body>
+</html>

@@ -76,6 +76,11 @@ def main() -> None:
 
         for name in BLOCKS:
             body = parts[name]
+            # На главной якоря короткие (#ekrany) — их перехватывает Lenis и
+            # доводит плавно. На остальных страницах такой ссылке некуда
+            # вести, поэтому делаем её абсолютной.
+            body = body.replace('href="#', 'href="/#')
+
             if name == "header":
                 body = body.replace(' class="site-header site-header--home"',
                                     ' class="site-header"')

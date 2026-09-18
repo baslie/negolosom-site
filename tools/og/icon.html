@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Заготовка apple-touch-icon 180x180</title>
+<!-- Из этой страницы рендерится /assets/img/apple-touch-icon.png.
+     Окно ровно 180x180, скриншот вьюпорта. iOS сама скруглит углы. -->
+<style>
+  html, body { margin: 0; padding: 0; overflow: hidden; }
+  .icon {
+    width: 180px;
+    height: 180px;
+    display: grid;
+    place-items: center;
+    background: #eeebe4;
+  }
+  .icon img { width: 142px; height: auto; }
+</style>
+</head>
+<body>
+<div class="icon"><img src="/assets/img/logo.svg" alt=""></div>
+</body>
+</html>

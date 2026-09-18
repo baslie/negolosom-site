@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://negolosom.ru/sitemap.xml
+
+# Яндексовая директива: склеивает адреса с UTM-метками с чистыми,
+# чтобы кнопки и ссылки с метками не плодили дубли в индексе.
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term
