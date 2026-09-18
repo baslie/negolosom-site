@@ -5,61 +5,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Не пиши голосовое! — голосовые заметки в текст на Android, офлайн</title>
   <meta name="description" content="Приложение для Android: голосовые заметки с локальным распознаванием речи на русском. Без облака, без аккаунтов, без интернета.">
-  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
-
+  <meta name="theme-color" content="#EEEBE4">
+  <meta name="color-scheme" content="light">
   <link rel="canonical" href="https://negolosom.ru/">
+
+  <link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://negolosom.ru/">
   <meta property="og:site_name" content="Не пиши голосовое!">
   <meta property="og:title" content="Не пиши голосовое! — голосовые заметки в текст на Android, офлайн">
-  <meta property="og:description" content="Приложение для Android: голосовые заметки с локальным распознаванием речи на русском. Без облака, без интернета.">
-  <meta property="og:image" content="https://negolosom.ru/screens/screens.jpg">
+  <meta property="og:description" content="Переводит голос в текст прямо на телефоне. Офлайн, на русском, без облака и аккаунтов.">
+  <meta property="og:image" content="https://negolosom.ru/assets/img/og-cover.jpg">
   <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:width" content="1920">
-  <meta property="og:image:height" content="1138">
-  <meta property="og:image:alt" content="Три экрана приложения «Не пиши голосовое!»: запись заметки, настройки со светлой темой, настройки с тёмной темой.">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Приложение «Не пиши голосовое!»: логотип, заголовок и три экрана — список заметок, запись и настройки.">
   <meta property="og:locale" content="ru_RU">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Не пиши голосовое! — голосовые заметки в текст на Android, офлайн">
-  <meta name="twitter:description" content="Приложение для Android: голосовые заметки с локальным распознаванием речи на русском. Без облака, без интернета.">
-  <meta name="twitter:image" content="https://negolosom.ru/screens/screens.jpg">
-  <meta name="twitter:image:alt" content="Три экрана приложения «Не пиши голосовое!»: запись заметки, настройки со светлой темой, настройки с тёмной темой.">
+  <meta name="twitter:description" content="Переводит голос в текст прямо на телефоне. Офлайн, на русском, без облака и аккаунтов.">
+  <meta name="twitter:image" content="https://negolosom.ru/assets/img/og-cover.jpg">
+
+  <link rel="preload" href="/assets/fonts/source-sans-3-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/styles.css?v=2026-09-18">
+
+  <!-- Стартовые состояния появления включаются только здесь. Если скрипты не
+       доедут, main.js или страховочный таймер снимут класс, и контент будет
+       виден. При выключенном JS класс не появится вовсе. -->
+  <script>
+    (function (d) {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      d.documentElement.classList.add('js-anim');
+      setTimeout(function () {
+        if (!window.__animReady) d.documentElement.classList.remove('js-anim');
+      }, 2500);
+    })(document);
+  </script>
+
+  <script defer src="/assets/js/vendor/gsap-3.15.0.min.js"></script>
+  <script defer src="/assets/js/vendor/ScrollTrigger-3.15.0.min.js"></script>
+  <script defer src="/assets/js/vendor/lenis-1.3.26.min.js"></script>
+  <script defer src="/assets/js/vendor/embla-carousel-8.6.0.umd.js"></script>
+  <script defer src="/assets/js/vendor/embla-carousel-auto-scroll-8.6.0.umd.js"></script>
+  <script defer src="/assets/js/vendor/embla-carousel-wheel-gestures-8.1.0.umd.js"></script>
+  <script defer src="/assets/js/main.js?v=2026-09-18"></script>
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "MobileApplication",
-        "@id": "https://negolosom.ru/#app",
-        "name": "Не пиши голосовое!",
-        "description": "Голосовые заметки с локальным распознаванием речи на русском. Работает офлайн, без облака и аккаунтов. Модель GigaAM v3 от Сбера.",
-        "url": "https://negolosom.ru/",
-        "operatingSystem": "Android",
-        "applicationCategory": "ProductivityApplication",
-        "inLanguage": "ru",
-        "downloadUrl": "https://www.rustore.ru/catalog/app/com.baslie.negolosom",
-        "installUrl": "https://www.rustore.ru/catalog/app/com.baslie.negolosom",
-        "image": "https://negolosom.ru/screens/screens.jpg",
-        "screenshot": "https://negolosom.ru/screens/screens.jpg",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "RUB"
-        },
-        "author": {
-          "@type": "Person",
-          "name": "Roman Purtov",
-          "url": "https://roman-purtov.ru",
-          "email": "baslie@yandex.ru"
-        },
-        "publisher": {
-          "@type": "Person",
-          "name": "baslie",
-          "email": "baslie@yandex.ru"
-        }
+        "@type": "Person",
+        "@id": "https://negolosom.ru/#author",
+        "name": "Роман Пуртов",
+        "url": "https://roman-purtow.ru",
+        "email": "baslie@yandex.ru"
       },
       {
         "@type": "WebSite",
@@ -67,20 +70,57 @@
         "url": "https://negolosom.ru/",
         "name": "Не пиши голосовое!",
         "inLanguage": "ru",
-        "publisher": {
-          "@type": "Person",
-          "name": "baslie",
-          "email": "baslie@yandex.ru"
-        }
+        "publisher": { "@id": "https://negolosom.ru/#author" }
+      },
+      {
+        "@type": "MobileApplication",
+        "@id": "https://negolosom.ru/#app",
+        "name": "Не пиши голосовое!",
+        "description": "Голосовые заметки с локальным распознаванием речи на русском. Работает офлайн, без облака и аккаунтов. Модель GigaAM v3 от Сбера.",
+        "url": "https://negolosom.ru/",
+        "operatingSystem": "Android 7.0+",
+        "applicationCategory": "ProductivityApplication",
+        "inLanguage": "ru",
+        "softwareVersion": "2.6.1",
+        "datePublished": "2026-09-18",
+        "fileSize": "30 MB",
+        "downloadUrl": "https://www.rustore.ru/catalog/app/com.baslie.negolosom",
+        "installUrl": "https://www.rustore.ru/catalog/app/com.baslie.negolosom",
+        "releaseNotes": "https://negolosom.ru/obnovleniya/",
+        "softwareHelp": { "@id": "https://negolosom.ru/voprosy/#faq" },
+        "image": "https://negolosom.ru/assets/img/og-cover.jpg",
+        "screenshot": [
+          "https://negolosom.ru/assets/img/screens/list-488.webp",
+          "https://negolosom.ru/assets/img/screens/recording-488.webp",
+          "https://negolosom.ru/assets/img/screens/card-488.webp",
+          "https://negolosom.ru/assets/img/screens/settings-488.webp",
+          "https://negolosom.ru/assets/img/screens/list-dark-488.webp"
+        ],
+        "featureList": [
+          "Распознавание речи прямо на устройстве, без интернета",
+          "Модель GigaAM v3 от Сбера для русского языка",
+          "Шестнадцать языков через модель Whisper small",
+          "Импорт чужих голосовых через «Поделиться»",
+          "Экспорт в .txt, субтитры .srt и ZIP-архив всех записей",
+          "Синхронизация текста с аудио"
+        ],
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "RUB" },
+        "author": { "@id": "https://negolosom.ru/#author" },
+        "publisher": { "@id": "https://negolosom.ru/#author" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://negolosom.ru/#webpage",
+        "url": "https://negolosom.ru/",
+        "name": "Не пиши голосовое! — голосовые заметки в текст на Android, офлайн",
+        "isPartOf": { "@id": "https://negolosom.ru/#website" },
+        "about": { "@id": "https://negolosom.ru/#app" },
+        "inLanguage": "ru",
+        "primaryImageOfPage": "https://negolosom.ru/assets/img/og-cover.jpg"
       }
     ]
   }
   </script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap">
-  <link rel="stylesheet" href="styles.css">
 
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
@@ -97,83 +137,530 @@
   <!-- /Yandex.Metrika counter -->
 </head>
 <body>
-  <main class="page">
-    <section class="hero">
-      <img class="hero__logo" src="assets/logo.svg" alt="Логотип приложения Не пиши голосовое!" width="200" height="176">
-      <h1 class="hero__title">Не пиши голосовое!</h1>
-      <p class="hero__sub">Переводит голос в текст прямо на телефоне. Офлайн, на русском.</p>
-      <div class="hero__cta">
-        <a class="btn btn--rustore" href="https://www.rustore.ru/catalog/app/com.baslie.negolosom" target="_blank" rel="noopener">
-          <svg class="btn__icon" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M14.8263 15.6119C13.8535 15.3689 13.1714 14.4987 13.1714 13.5007V1.74229C13.1714 0.608661 14.2425 -0.22275 15.3475 0.0532736L22.3448 1.80123C23.3176 2.04424 23.9997 2.91444 23.9997 3.91249V15.6709C23.9997 16.8045 22.9285 17.6359 21.8236 17.3598L14.8263 15.6119Z" fill="#FFFFFF"/>
-            <path d="M1.65491 21.0269C0.682102 20.7839 0 19.9137 0 18.9157V7.15729C0 6.02365 1.0712 5.1923 2.17614 5.46831L9.1734 7.21627C10.1463 7.45928 10.8284 8.32945 10.8284 9.32749V21.0859C10.8284 22.2195 9.75712 23.0509 8.65216 22.7749L1.65491 21.0269Z" fill="#FFFFFF"/>
-            <path d="M8.24033 18.3194C7.26756 18.0764 6.58545 17.2062 6.58545 16.2082V4.44982C6.58545 3.31619 7.65661 2.48477 8.76157 2.76079L15.7588 4.5088C16.7317 4.75172 17.4138 5.62198 17.4138 6.62003V18.3784C17.4138 19.512 16.3425 20.3434 15.2377 20.0674L8.24033 18.3194Z" fill="#FFFFFF"/>
-            <path d="M12.8191 19.4668C12.5127 19.3888 12.2945 19.1178 12.2838 18.8017L11.9794 9.82194C11.8913 8.63353 11.0091 7.68824 10.0872 7.40992C10.0355 7.39428 9.9802 7.41534 9.94961 7.45987C9.91842 7.5051 9.93045 7.56779 9.97388 7.60139C10.2016 7.77761 10.8281 8.3527 10.8281 9.34473L10.8263 18.9618L12.8191 19.4668Z" fill="#0077FF"/>
-            <path d="M19.4045 16.7568C19.0984 16.6802 18.8801 16.41 18.8693 16.0946L18.5648 7.11544C18.4769 5.92694 17.5946 4.98175 16.6727 4.70333C16.6209 4.68778 16.5657 4.70884 16.5351 4.75337C16.5039 4.79861 16.5159 4.86119 16.5593 4.89489C16.787 5.07111 17.4137 5.64621 17.4137 6.63813L17.4117 16.2585L19.4045 16.7568Z" fill="#0077FF"/>
-          </svg>
-          Скачать на RuStore
-        </a>
-        <a class="btn btn--contact" href="https://roman-purtow.ru/?utm_source=negolosom&amp;utm_medium=referral&amp;utm_content=button" target="_blank" rel="noopener">
-          <svg class="btn__icon" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect width="120" height="120" rx="35" fill="#ffffff"/>
-            <path d="M35.0724 93.5249C34.914 89.9351 34.8348 85.9759 34.8348 81.6471C34.8348 77.4766 34.914 73.0422 35.0724 68.3439C35.2308 63.6456 35.4683 58.8944 35.7851 54.0905C36.1018 49.2338 36.5241 44.509 37.052 39.9163C36.2074 40.1275 35.3891 40.3386 34.5973 40.5498C33.8582 40.7081 33.1719 40.8929 32.5385 41.1041L28.5 28.5136C41.2753 25.5045 51.9125 24 60.4118 24C77.6742 24 86.3054 30.5724 86.3054 43.7172C86.3054 49.8937 84.2466 54.8032 80.129 58.4457C76.0113 62.0354 69.9668 64.3054 61.9955 65.2557C66.7994 69.3205 71.6297 72.6727 76.4864 75.3122C81.3959 77.8989 86.3582 80.0897 91.3733 81.8846L82.6629 93.5249C79.865 92.5219 76.9351 91.1229 73.8733 89.3281C70.8115 87.5332 67.776 85.5535 64.767 83.3891C61.7579 81.2247 58.8808 79.0339 56.1357 76.8167C53.4434 74.5996 51.0415 72.5407 48.9299 70.6403C48.8771 74.2828 48.8243 77.9781 48.7715 81.7262C48.7715 85.4216 48.7715 89.2489 48.7715 93.2081L48.2964 93.6833C46.2903 93.6833 44.1259 93.6833 41.8032 93.6833C39.5332 93.736 37.4744 93.8416 35.6267 94L35.0724 93.5249ZM59.6991 36.5905C58.221 36.5905 56.69 36.6697 55.1063 36.8281C53.5226 36.9336 51.9389 37.092 50.3552 37.3032C50.144 40.2594 49.9593 43.1893 49.8009 46.0928C49.6425 48.9434 49.5106 51.7941 49.405 54.6448C51.7278 54.592 54.2353 54.46 56.9276 54.2489C59.6727 53.9849 62.2594 53.5098 64.6878 52.8235C67.1161 52.0845 69.0958 51.0287 70.6267 49.6561C72.2104 48.2836 73.0023 46.4623 73.0023 44.1923C73.0023 41.5528 71.9201 39.6259 69.7557 38.4118C67.5913 37.1976 64.2391 36.5905 59.6991 36.5905Z" fill="#F6522E"/>
-          </svg>
-          Написать автору
-        </a>
-      </div>
-      <p class="hero__os">Приложение для Android. Версия для iOS — позже.</p>
-    </section>
+<a class="skip-link" href="#main">К основному содержимому</a>
 
-    <section class="screens">
-      <svg class="screens__wave" viewBox="0 0 2143 569" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-        <path d="M681.185 0C366.519 0 0 142.815 0 142.815V535.704C0 535.704 447.87 175.111 705.185 175.111C962.5 175.111 1119.02 332 1396.86 492.414C1674.71 652.828 2142.52 511.407 2142.52 511.407V0C2142.52 0 1679.7 175.111 1402.37 175.111C1125.04 175.111 995.852 0 681.185 0Z" fill="#2F8B5C"/>
-      </svg>
-      <div class="screens__grid">
-        <img class="screens__image" src="assets/1.png" alt="Экран приложения: активная запись голосового и карточка заметки с готовой расшифровкой." loading="lazy">
-        <img class="screens__image" src="assets/2.png" alt="Экран настроек в светлой теме: выбор темы, модель GigaAM v3 готова, оффлайн-режим включён." loading="lazy">
-        <img class="screens__image" src="assets/3.png" alt="Экран настроек в тёмной теме: те же опции — тема, модель, хранилище, оффлайн-режим." loading="lazy">
-      </div>
-    </section>
+<!-- #region @shared:header — правишь здесь, проходи по всем страницам -->
+<header class="site-header site-header--home" data-header>
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Не пиши голосовое! — на главную">
+      <img src="/assets/img/logo.svg" alt="" width="36" height="32" aria-hidden="true">
+      <span>Не пиши голосовое!</span>
+    </a>
 
-    <section class="features">
-      <div class="features__grid">
-        <article class="card">
-          <span class="card__tag">Быстро</span>
-          <h3 class="card__title">Один тап</h3>
-          <p class="card__body">Зажали кнопку, наговорили, получили расшифровку.</p>
-        </article>
-        <article class="card">
-          <span class="card__tag">Приватно</span>
-          <h3 class="card__title">Всё на телефоне</h3>
-          <p class="card__body">Ни одного байта наружу. Работает в самолёте и метро.</p>
-        </article>
-        <article class="card">
-          <span class="card__tag">Точно</span>
-          <h3 class="card__title">
-            <span class="card__title-inner" tabindex="0" aria-describedby="gigaam-info">
-              GigaAM v3
-              <span class="card__info" aria-hidden="true">i</span>
-              <span id="gigaam-info" class="card__tooltip" role="tooltip">
-                WER 8,3% (~92% точности) в среднем по 10 публичным бенчмаркам. В 2,5× точнее Whisper-large-v3. Релиз: ноябрь 2025.
-              </span>
-            </span>
-          </h3>
-          <p class="card__body">Модель от Сбера, заточенная под русскую речь.</p>
-        </article>
-      </div>
-    </section>
+    <nav class="nav" aria-label="Основная">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="#vozmozhnosti">Возможности</a></li>
+        <li><a class="nav__link" href="/obnovleniya/">Обновления</a></li>
+        <li><a class="nav__link" href="/voprosy/">Вопросы</a></li>
+      </ul>
+      <a class="btn btn--sm btn--rustore site-header__cta" href="https://www.rustore.ru/catalog/app/com.baslie.negolosom" target="_blank" rel="noopener">Скачать</a>
+    </nav>
 
-    <footer class="footer">
-      <a class="footer__vk" href="https://vk.com/club237879114" target="_blank" rel="noopener" aria-label="Группа ВКонтакте">
-        <svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path fill="#0077FF" d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.204.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.253-1.406 2.151-3.574 2.151-3.574.118-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.78 1.203 1.254.745.847 1.32 1.558 1.473 2.049.17.49-.085.744-.576.744z"/>
-        </svg>
+    <button class="burger" type="button" data-menu-open aria-expanded="false" aria-controls="menu">
+      <span class="visually-hidden">Открыть меню</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+    </button>
+  </div>
+</header>
+<!-- #endregion @shared:header -->
+
+<!-- #region @shared:menu -->
+<div class="menu" id="menu" hidden role="dialog" aria-modal="true" aria-label="Меню сайта" data-menu>
+  <div class="menu__head">
+    <a class="brand brand--sm" href="/">
+      <img src="/assets/img/logo.svg" alt="" width="32" height="28" aria-hidden="true">
+      <span>Не пиши голосовое!</span>
+    </a>
+    <button class="menu__close" type="button" data-menu-close>
+      <span class="visually-hidden">Закрыть меню</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+  </div>
+
+  <div class="menu__body">
+    <nav class="menu__nav" aria-label="Разделы сайта">
+      <a class="menu__link" href="/#vozmozhnosti">
+        <span><span class="menu__title">Возможности</span><span class="menu__hint">#vozmozhnosti</span></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
       </a>
-      <span class="footer__dot">·</span>
-      <a href="https://roman-purtow.ru/?utm_source=negolosom&amp;utm_medium=referral&amp;utm_content=footer" target="_blank" rel="noopener">roman-purtow.ru</a>
-      <span class="footer__dot">·</span>
-      <span>© 2026 baslie</span>
-    </footer>
-  </main>
+      <a class="menu__link" href="/#kak-rabotaet">
+        <span><span class="menu__title">Как это работает</span><span class="menu__hint">#kak-rabotaet</span></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+      </a>
+      <a class="menu__link" href="/#ekrany">
+        <span><span class="menu__title">Экраны приложения</span><span class="menu__hint">#ekrany</span></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+      </a>
+      <a class="menu__link" href="/obnovleniya/">
+        <span><span class="menu__title">Обновления</span><span class="menu__hint">/obnovleniya</span></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+      </a>
+      <a class="menu__link" href="/voprosy/">
+        <span><span class="menu__title">Вопросы</span><span class="menu__hint">/voprosy</span></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+      </a>
+    </nav>
+
+    <div class="menu__buttons">
+      <a class="btn btn--rustore btn--block" href="https://www.rustore.ru/catalog/app/com.baslie.negolosom" target="_blank" rel="noopener">
+        <svg class="btn__icon" viewBox="0 0 24 23" fill="none" aria-hidden="true"><path d="M14.8263 15.6119C13.8535 15.3689 13.1714 14.4987 13.1714 13.5007V1.74229C13.1714 0.608661 14.2425 -0.22275 15.3475 0.0532736L22.3448 1.80123C23.3176 2.04424 23.9997 2.91444 23.9997 3.91249V15.6709C23.9997 16.8045 22.9285 17.6359 21.8236 17.3598L14.8263 15.6119Z" fill="#FFFFFF"/><path d="M1.65491 21.0269C0.682102 20.7839 0 19.9137 0 18.9157V7.15729C0 6.02365 1.0712 5.1923 2.17614 5.46831L9.1734 7.21627C10.1463 7.45928 10.8284 8.32945 10.8284 9.32749V21.0859C10.8284 22.2195 9.75712 23.0509 8.65216 22.7749L1.65491 21.0269Z" fill="#FFFFFF"/><path d="M8.24033 18.3194C7.26756 18.0764 6.58545 17.2062 6.58545 16.2082V4.44982C6.58545 3.31619 7.65661 2.48477 8.76157 2.76079L15.7588 4.5088C16.7317 4.75172 17.4138 5.62198 17.4138 6.62003V18.3784C17.4138 19.512 16.3425 20.3434 15.2377 20.0674L8.24033 18.3194Z" fill="#FFFFFF"/><path d="M12.8191 19.4668C12.5127 19.3888 12.2945 19.1178 12.2838 18.8017L11.9794 9.82194C11.8913 8.63353 11.0091 7.68824 10.0872 7.40992C10.0355 7.39428 9.9802 7.41534 9.94961 7.45987C9.91842 7.5051 9.93045 7.56779 9.97388 7.60139C10.2016 7.77761 10.8281 8.3527 10.8281 9.34473L10.8263 18.9618L12.8191 19.4668Z" fill="#0077FF"/><path d="M19.4045 16.7568C19.0984 16.6802 18.8801 16.41 18.8693 16.0946L18.5648 7.11544C18.4769 5.92694 17.5946 4.98175 16.6727 4.70333C16.6209 4.68778 16.5657 4.70884 16.5351 4.75337C16.5039 4.79861 16.5159 4.86119 16.5593 4.89489C16.787 5.07111 17.4137 5.64621 17.4137 6.63813L17.4117 16.2585L19.4045 16.7568Z" fill="#0077FF"/></svg>
+        Скачать на RuStore
+      </a>
+      <a class="btn btn--block" href="https://github.com/baslie/negolosom-releases/releases/latest/download/negolosom.apk">
+        <svg class="btn__icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-0.4 0.08-0.55-0.17-0.55-0.38 0-0.27 0.01-1.13 0.01-2.2 0-0.75-0.25-1.23-0.54-1.48 1.78-0.2 3.65-0.88 3.65-3.95 0-0.88-0.31-1.59-0.82-2.15 0.08-0.2 0.36-1.02-0.08-2.12 0 0-0.67-0.22-2.2 0.82-0.64-0.18-1.32-0.27-2-0.27-0.68 0-1.36 0.09-2 0.27-1.53-1.03-2.2-0.82-2.2-0.82-0.44 1.1-0.16 1.92-0.08 2.12-0.51 0.56-0.82 1.28-0.82 2.15 0 3.06 1.86 3.75 3.64 3.95-0.23 0.2-0.44 0.55-0.51 1.07-0.46 0.21-1.61 0.55-2.33-0.66-0.15-0.24-0.6-0.83-1.23-0.82-0.67 0.01-0.27 0.38 0.01 0.53 0.34 0.19 0.73 0.9 0.82 1.13 0.16 0.45 0.68 1.31 2.69 0.94 0 0.67 0.01 1.3 0.01 1.49 0 0.21-0.15 0.45-0.55 0.38a7.995 7.995 0 0 1-5.47-7.59c0-4.42 3.58-8 8-8z"/></svg>
+        APK на GitHub
+      </a>
+    </div>
+
+    <div class="menu__contacts">
+      <a class="arrow-link" href="https://roman-purtow.ru/?utm_source=negolosom&amp;utm_medium=referral&amp;utm_content=menu" target="_blank" rel="noopener">
+        Написать автору — roman-purtow.ru
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+      </a>
+      <a class="vk-link" href="https://vk.com/club237879114" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#0077FF" d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.204.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.253-1.406 2.151-3.574 2.151-3.574.118-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.78 1.203 1.254.745.847 1.32 1.558 1.473 2.049.17.49-.085.744-.576.744z"/></svg>
+        Сообщество ВКонтакте
+      </a>
+    </div>
+  </div>
+</div>
+<!-- #endregion @shared:menu -->
+
+<main id="main" tabindex="-1">
+
+  <!-- ===== Первый экран ===== -->
+  <section class="container hero">
+    <img class="hero__logo" src="/assets/img/logo.svg" alt="Логотип приложения «Не пиши голосовое!» — зелёная птица" width="200" height="176" fetchpriority="high">
+    <h1 class="display hero__title">Не пиши голосовое!</h1>
+    <p class="hero__sub">Переводит голос в текст прямо на телефоне. Офлайн, на русском.</p>
+    <div class="hero__cta">
+      <a class="btn btn--rustore" href="https://www.rustore.ru/catalog/app/com.baslie.negolosom" target="_blank" rel="noopener">
+        <svg class="btn__icon" viewBox="0 0 24 23" fill="none" aria-hidden="true"><path d="M14.8263 15.6119C13.8535 15.3689 13.1714 14.4987 13.1714 13.5007V1.74229C13.1714 0.608661 14.2425 -0.22275 15.3475 0.0532736L22.3448 1.80123C23.3176 2.04424 23.9997 2.91444 23.9997 3.91249V15.6709C23.9997 16.8045 22.9285 17.6359 21.8236 17.3598L14.8263 15.6119Z" fill="#FFFFFF"/><path d="M1.65491 21.0269C0.682102 20.7839 0 19.9137 0 18.9157V7.15729C0 6.02365 1.0712 5.1923 2.17614 5.46831L9.1734 7.21627C10.1463 7.45928 10.8284 8.32945 10.8284 9.32749V21.0859C10.8284 22.2195 9.75712 23.0509 8.65216 22.7749L1.65491 21.0269Z" fill="#FFFFFF"/><path d="M8.24033 18.3194C7.26756 18.0764 6.58545 17.2062 6.58545 16.2082V4.44982C6.58545 3.31619 7.65661 2.48477 8.76157 2.76079L15.7588 4.5088C16.7317 4.75172 17.4138 5.62198 17.4138 6.62003V18.3784C17.4138 19.512 16.3425 20.3434 15.2377 20.0674L8.24033 18.3194Z" fill="#FFFFFF"/><path d="M12.8191 19.4668C12.5127 19.3888 12.2945 19.1178 12.2838 18.8017L11.9794 9.82194C11.8913 8.63353 11.0091 7.68824 10.0872 7.40992C10.0355 7.39428 9.9802 7.41534 9.94961 7.45987C9.91842 7.5051 9.93045 7.56779 9.97388 7.60139C10.2016 7.77761 10.8281 8.3527 10.8281 9.34473L10.8263 18.9618L12.8191 19.4668Z" fill="#0077FF"/><path d="M19.4045 16.7568C19.0984 16.6802 18.8801 16.41 18.8693 16.0946L18.5648 7.11544C18.4769 5.92694 17.5946 4.98175 16.6727 4.70333C16.6209 4.68778 16.5657 4.70884 16.5351 4.75337C16.5039 4.79861 16.5159 4.86119 16.5593 4.89489C16.787 5.07111 17.4137 5.64621 17.4137 6.63813L17.4117 16.2585L19.4045 16.7568Z" fill="#0077FF"/></svg>
+        Скачать на RuStore
+      </a>
+      <a class="btn" href="https://github.com/baslie/negolosom-releases/releases/latest/download/negolosom.apk">
+        <svg class="btn__icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-0.4 0.08-0.55-0.17-0.55-0.38 0-0.27 0.01-1.13 0.01-2.2 0-0.75-0.25-1.23-0.54-1.48 1.78-0.2 3.65-0.88 3.65-3.95 0-0.88-0.31-1.59-0.82-2.15 0.08-0.2 0.36-1.02-0.08-2.12 0 0-0.67-0.22-2.2 0.82-0.64-0.18-1.32-0.27-2-0.27-0.68 0-1.36 0.09-2 0.27-1.53-1.03-2.2-0.82-2.2-0.82-0.44 1.1-0.16 1.92-0.08 2.12-0.51 0.56-0.82 1.28-0.82 2.15 0 3.06 1.86 3.75 3.64 3.95-0.23 0.2-0.44 0.55-0.51 1.07-0.46 0.21-1.61 0.55-2.33-0.66-0.15-0.24-0.6-0.83-1.23-0.82-0.67 0.01-0.27 0.38 0.01 0.53 0.34 0.19 0.73 0.9 0.82 1.13 0.16 0.45 0.68 1.31 2.69 0.94 0 0.67 0.01 1.3 0.01 1.49 0 0.21-0.15 0.45-0.55 0.38a7.995 7.995 0 0 1-5.47-7.59c0-4.42 3.58-8 8-8z"/></svg>
+        APK на GitHub
+      </a>
+    </div>
+    <p class="hero__os">Приложение для Android. Версия для iOS — позже.</p>
+  </section>
+
+  <!-- ===== Экраны приложения ===== -->
+  <section class="section section--bleed screens" id="ekrany" aria-labelledby="ekrany-title">
+    <svg class="screens__wave" viewBox="0 0 2143 569" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <path d="M681.185 0C366.519 0 0 142.815 0 142.815V535.704C0 535.704 447.87 175.111 705.185 175.111C962.5 175.111 1119.02 332 1396.86 492.414C1674.71 652.828 2142.52 511.407 2142.52 511.407V0C2142.52 0 1679.7 175.111 1402.37 175.111C1125.04 175.111 995.852 0 681.185 0Z" fill="currentColor"/>
+    </svg>
+
+    <div class="container">
+      <div class="sechead sechead--center" data-reveal-group>
+        <p class="eyebrow">Экраны</p>
+        <h2 class="h2" id="ekrany-title">Вот как это выглядит</h2>
+        <p class="lead">Версия 2.6.1</p>
+      </div>
+    </div>
+
+    <div class="screens__stage">
+      <div class="carousel" data-carousel aria-roledescription="карусель" aria-label="Экраны приложения">
+        <div class="carousel__viewport" data-carousel-viewport data-lenis-prevent tabindex="0">
+          <ul class="carousel__track" data-carousel-track>
+            <li class="carousel__slide">
+              <figure class="shot">
+                <picture>
+                  <source type="image/avif" sizes="244px" srcset="/assets/img/screens/list-244.avif 244w, /assets/img/screens/list-488.avif 488w">
+                  <source type="image/webp" sizes="244px" srcset="/assets/img/screens/list-244.webp 244w, /assets/img/screens/list-488.webp 488w">
+                  <img src="/assets/img/screens/list-244.webp" width="244" height="542" loading="eager" decoding="async" alt="Список заметок: карточки с аудиодорожкой, датой, началом расшифровки и кнопками «Копировать» и «Отправить».">
+                </picture>
+              </figure>
+              <div class="shot__cap">
+                <b class="shot__title">Список заметок</b>
+                <span class="shot__desc">Дорожка, дата, расшифровка и две кнопки.</span>
+              </div>
+            </li>
+            <li class="carousel__slide">
+              <figure class="shot">
+                <picture>
+                  <source type="image/avif" sizes="244px" srcset="/assets/img/screens/onboarding-244.avif 244w, /assets/img/screens/onboarding-488.avif 488w">
+                  <source type="image/webp" sizes="244px" srcset="/assets/img/screens/onboarding-244.webp 244w, /assets/img/screens/onboarding-488.webp 488w">
+                  <img src="/assets/img/screens/onboarding-244.webp" width="244" height="542" loading="eager" decoding="async" alt="Экран первого запуска: приложение рассказывает, что умеет и почему работает без интернета.">
+                </picture>
+              </figure>
+              <div class="shot__cap">
+                <b class="shot__title">Знакомство</b>
+                <span class="shot__desc">Первый запуск: что умеет и почему без интернета.</span>
+              </div>
+            </li>
+            <li class="carousel__slide">
+              <figure class="shot">
+                <picture>
+                  <source type="image/avif" sizes="244px" srcset="/assets/img/screens/list-dark-244.avif 244w, /assets/img/screens/list-dark-488.avif 488w">
+                  <source type="image/webp" sizes="244px" srcset="/assets/img/screens/list-dark-244.webp 244w, /assets/img/screens/list-dark-488.webp 488w">
+                  <img src="/assets/img/screens/list-dark-244.webp" width="244" height="542" loading="lazy" decoding="async" alt="Тот же список заметок в тёмной теме: светлый текст на тёмном фоне.">
+                </picture>
+              </figure>
+              <div class="shot__cap">
+                <b class="shot__title">Тёмная тема</b>
+                <span class="shot__desc">Ночью приложение темнеет. Тему можно закрепить или отдать системе.</span>
+              </div>
+            </li>
+            <li class="carousel__slide">
+              <figure class="shot">
+                <picture>
+                  <source type="image/avif" sizes="244px" srcset="/assets/img/screens/empty-244.avif 244w, /assets/img/screens/empty-488.avif 488w">
+                  <source type="image/webp" sizes="244px" srcset="/assets/img/screens/empty-244.webp 244w, /assets/img/screens/empty-488.webp 488w">
+                  <img src="/assets/img/screens/empty-244.webp" width="244" height="542" loading="lazy" decoding="async" alt="Пустой экран приложения с одной большой красной кнопкой записи внизу.">
+                </picture>
+              </figure>
+              <div class="shot__cap">
+                <b class="shot__title">Пустой экран</b>
+                <span class="shot__desc">Одна красная кнопка. Зажали — говорите.</span>
+              </div>
+            </li>
+            <li class="carousel__slide">
+              <figure class="shot">
+                <picture>
+                  <source type="image/avif" sizes="244px" srcset="/assets/img/screens/recording-244.avif 244w, /assets/img/screens/recording-488.avif 488w">
+                  <source type="image/webp" sizes="244px" srcset="/assets/img/screens/recording-244.webp 244w, /assets/img/screens/recording-488.webp 488w">
+                  <img src="/assets/img/screens/recording-244.webp" width="244" height="542" loading="lazy" decoding="async" alt="Идёт запись: живая аудиодорожка, таймер и кнопка паузы.">
+                </picture>
+              </figure>
+              <div class="shot__cap">
+                <b class="shot__title">Идёт запись</b>
+                <span class="shot__desc">Живая дорожка, таймер и пауза под рукой.</span>
+              </div>
+            </li>
+            <li class="carousel__slide">
+              <figure class="shot">
+                <picture>
+                  <source type="image/avif" sizes="244px" srcset="/assets/img/screens/card-244.avif 244w, /assets/img/screens/card-488.avif 488w">
+                  <source type="image/webp" sizes="244px" srcset="/assets/img/screens/card-244.webp 244w, /assets/img/screens/card-488.webp 488w">
+                  <img src="/assets/img/screens/card-244.webp" width="244" height="542" loading="lazy" decoding="async" alt="Карточка записи с полностью раскрытой расшифровкой и плеером сверху.">
+                </picture>
+              </figure>
+              <div class="shot__cap">
+                <b class="shot__title">Расшифровка целиком</b>
+                <span class="shot__desc">Тапнули по карточке — текст раскрылся весь, без обрезки.</span>
+              </div>
+            </li>
+            <li class="carousel__slide">
+              <figure class="shot">
+                <picture>
+                  <source type="image/avif" sizes="244px" srcset="/assets/img/screens/export-244.avif 244w, /assets/img/screens/export-488.avif 488w">
+                  <source type="image/webp" sizes="244px" srcset="/assets/img/screens/export-244.webp 244w, /assets/img/screens/export-488.webp 488w">
+                  <img src="/assets/img/screens/export-244.webp" width="244" height="542" loading="lazy" decoding="async" alt="Меню экспорта с галочками: текст, субтитры и исходное аудио.">
+                </picture>
+              </figure>
+              <div class="shot__cap">
+                <b class="shot__title">Экспорт</b>
+                <span class="shot__desc">Текст, субтитры и аудио уезжают одним ZIP-архивом.</span>
+              </div>
+            </li>
+            <li class="carousel__slide">
+              <figure class="shot">
+                <picture>
+                  <source type="image/avif" sizes="244px" srcset="/assets/img/screens/settings-244.avif 244w, /assets/img/screens/settings-488.avif 488w">
+                  <source type="image/webp" sizes="244px" srcset="/assets/img/screens/settings-244.webp 244w, /assets/img/screens/settings-488.webp 488w">
+                  <img src="/assets/img/screens/settings-244.webp" width="244" height="542" loading="lazy" decoding="async" alt="Настройки: выбор темы, размер текста, язык и модель распознавания.">
+                </picture>
+              </figure>
+              <div class="shot__cap">
+                <b class="shot__title">Настройки</b>
+                <span class="shot__desc">Размер текста, язык и выбор модели.</span>
+              </div>
+            </li>
+            <li class="carousel__slide">
+              <figure class="shot">
+                <picture>
+                  <source type="image/avif" sizes="244px" srcset="/assets/img/screens/transcribing-244.avif 244w, /assets/img/screens/transcribing-488.avif 488w">
+                  <source type="image/webp" sizes="244px" srcset="/assets/img/screens/transcribing-244.webp 244w, /assets/img/screens/transcribing-488.webp 488w">
+                  <img src="/assets/img/screens/transcribing-244.webp" width="244" height="542" loading="lazy" decoding="async" alt="Идёт распознавание: прогресс в процентах, остаток времени и название модели.">
+                </picture>
+              </figure>
+              <div class="shot__cap">
+                <b class="shot__title">Распознавание идёт</b>
+                <span class="shot__desc">Видно прогресс, остаток времени и какой движок считает.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container carousel__bar">
+      <p class="carousel__hint">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 8 4 4-4 4"/><path d="M2 12h20"/><path d="m6 8-4 4 4 4"/></svg>
+        Листайте свайпом или перетаскиванием
+      </p>
+      <div class="carousel__controls" data-carousel-controls hidden></div>
+    </div>
+  </section>
+
+  <!-- ===== Как это работает ===== -->
+  <section class="container section" id="kak-rabotaet" aria-labelledby="kak-rabotaet-title">
+    <div class="sechead" data-reveal-group>
+      <p class="eyebrow">Как это работает</p>
+      <h2 class="h2" id="kak-rabotaet-title">Три шага и ни одного аккаунта</h2>
+      <p class="lead">Ни регистрации, ни облака, ни подписки. Приложение ставится и сразу работает.</p>
+    </div>
+
+    <ol class="steps" data-reveal-group>
+      <li class="step">
+        <span class="step__num">01</span>
+        <h3 class="step__title">Зажали кнопку</h3>
+        <p class="step__body">Одна красная кнопка на весь экран: держите — говорите. Голосовое из мессенджера тоже подойдёт — отправьте его в приложение через «Поделиться».</p>
+      </li>
+      <li class="step">
+        <span class="step__num">02</span>
+        <h3 class="step__title">Телефон распознал</h3>
+        <p class="step__body">Модель GigaAM v3 от Сбера считает речь прямо на устройстве. Интернет нужен один раз — скачать модель. Дальше офлайн: в метро, в самолёте, на даче.</p>
+      </li>
+      <li class="step">
+        <span class="step__num">03</span>
+        <h3 class="step__title">Забрали текст</h3>
+        <p class="step__body">«Копировать» или «Отправить». Расшифровка уходит текстом или файлом, субтитры — в .srt, все записи разом — ZIP-архивом.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ===== Возможности ===== -->
+  <section class="container section" id="vozmozhnosti" aria-labelledby="vozmozhnosti-title">
+    <div class="sechead" data-reveal-group>
+      <p class="eyebrow">Возможности</p>
+      <h2 class="h2" id="vozmozhnosti-title">Что умеет приложение</h2>
+      <p class="lead">Голосовые, надиктовки, лекции и интервью — всё превращается в текст, который можно скопировать, отправить или сохранить файлом.</p>
+    </div>
+
+    <div class="features" data-reveal-group>
+      <article class="card">
+        <span class="tag">Быстро</span>
+        <div class="card__titlerow"><h3 class="card__title">Один тап</h3></div>
+        <p class="card__body">Зажали кнопку, наговорили, получили расшифровку.</p>
+      </article>
+
+      <article class="card">
+        <span class="tag">Приватно</span>
+        <div class="card__titlerow">
+          <h3 class="card__title">Всё на телефоне</h3>
+          <button class="info" type="button" aria-expanded="false" aria-controls="tip-privacy" data-disclosure>
+            <span class="visually-hidden">Подробнее о том, что уходит с телефона</span>
+            <span aria-hidden="true">i</span>
+            <span class="tip" id="tip-privacy" role="note" hidden>Аудио и расшифровки никогда не покидают устройство. Наружу уходит только анонимная статистика использования и отчёты об ошибках — без содержимого записей.</span>
+          </button>
+        </div>
+        <p class="card__body">Записи не покидают телефон. Работает в самолёте и метро.</p>
+      </article>
+
+      <article class="card">
+        <span class="tag">Точно</span>
+        <div class="card__titlerow">
+          <h3 class="card__title">GigaAM v3</h3>
+          <button class="info" type="button" aria-expanded="false" aria-controls="tip-gigaam" data-disclosure>
+            <span class="visually-hidden">Подробнее про модель GigaAM v3</span>
+            <span aria-hidden="true">i</span>
+            <span class="tip" id="tip-gigaam" role="note" hidden>WER 8,3 % (~92 % точности) в среднем по 10 публичным бенчмаркам. В 2,5 раза точнее Whisper-large-v3. Релиз: ноябрь 2025.</span>
+          </button>
+        </div>
+        <p class="card__body">Модель от Сбера, заточенная под русскую речь.</p>
+      </article>
+
+      <article class="card">
+        <span class="tag">16 языков</span>
+        <div class="card__titlerow">
+          <h3 class="card__title">Не только русский</h3>
+          <button class="info" type="button" aria-expanded="false" aria-controls="tip-langs" data-disclosure>
+            <span class="visually-hidden">Список всех языков</span>
+            <span aria-hidden="true">i</span>
+            <span class="tip" id="tip-langs" role="note" hidden>Шестнадцать языков. Русский — GigaAM v3, остальные — Whisper small: английский, немецкий, французский, испанский, итальянский, португальский, польский, турецкий, украинский, болгарский, казахский, китайский, японский, корейский, арабский.</span>
+          </button>
+        </div>
+        <p class="card__body">Whisper small добавляет английский, немецкий, испанский и ещё двенадцать языков.</p>
+      </article>
+
+      <article class="card">
+        <span class="tag">Импорт</span>
+        <div class="card__titlerow"><h3 class="card__title">Чужие голосовые</h3></div>
+        <p class="card__body">Перешлите аудио из мессенджера через «Поделиться» — приложение расшифрует его так же.</p>
+      </article>
+
+      <article class="card">
+        <span class="tag">Экспорт</span>
+        <div class="card__titlerow"><h3 class="card__title">Текст, файл, субтитры</h3></div>
+        <p class="card__body">Расшифровка уходит в .txt, субтитры — в .srt, все записи разом — ZIP-архивом.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== Что нового ===== -->
+  <section class="container section" aria-labelledby="novoe-title">
+    <div class="sechead" data-reveal-group>
+      <p class="eyebrow">Обновления</p>
+      <h2 class="h2" id="novoe-title">Что нового</h2>
+      <p class="lead">Приложение обновляется каждые пару недель. Здесь — две последние версии, ниже — ссылка на всю историю с апреля 2026 года.</p>
+    </div>
+
+    <div class="releases" data-reveal-group>
+      <article class="card release-card">
+        <div class="release-card__head">
+          <div class="release-card__vrow">
+            <h3 class="release-card__version">Версия 2.6.1</h3>
+            <span class="tag tag--plain">Актуальная версия</span>
+          </div>
+          <time class="release-card__date" datetime="2026-09-18">18 сентября 2026</time>
+        </div>
+        <ul class="bullets">
+          <li>Плеер больше не уезжает: при чтении и правке длинной расшифровки он остаётся на месте, а текст листается отдельно.</li>
+          <li>В режиме синхронизации текст сам доезжает до звучащего слова.</li>
+        </ul>
+      </article>
+
+      <article class="card release-card">
+        <div class="release-card__head">
+          <div class="release-card__vrow">
+            <h3 class="release-card__version">Версия 2.6.0</h3>
+          </div>
+          <time class="release-card__date" datetime="2026-09-16">16 сентября 2026</time>
+        </div>
+        <ul class="bullets">
+          <li>Синхронизация текста с аудио: коснитесь слова — звук пойдёт с него, слово подсветится.</li>
+          <li>Экспорт субтитров .srt — галочка в меню экспорта.</li>
+          <li>И то и другое работает у новых записей. Для старых — «Распознать заново».</li>
+          <li>Размер текста: шаги 130 % и 145 % больше не совпадают при крупном системном шрифте.</li>
+        </ul>
+      </article>
+    </div>
+
+    <p class="releases-more" data-reveal>
+      <a class="arrow-link" href="/obnovleniya/">
+        Вся история версий — 12 выпусков с апреля 2026 года
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </p>
+  </section>
+
+  <!-- ===== Частые вопросы ===== -->
+  <section class="container section faq-teaser" aria-labelledby="voprosy-title">
+    <div class="sechead" data-reveal-group>
+      <p class="eyebrow">Вопросы</p>
+      <h2 class="h2" id="voprosy-title">Частые вопросы</h2>
+      <p class="lead">Всё, что обычно спрашивают до установки. Если ответа нет — напишите автору, он отвечает сам.</p>
+    </div>
+
+    <div data-reveal-group>
+      <nav class="qlist" aria-label="Частые вопросы">
+        <a class="qlist__item" href="/voprosy/#bez-interneta">
+          <span class="qlist__text">Работает ли приложение без интернета?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+        <a class="qlist__item" href="/voprosy/#kuda-uhodit-golos">
+          <span class="qlist__text">Куда уходит мой голос?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+        <a class="qlist__item" href="/voprosy/#yazyki">
+          <span class="qlist__text">На каких языках приложение распознаёт речь?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+        <a class="qlist__item" href="/voprosy/#mesto-modeli">
+          <span class="qlist__text">Сколько места занимают модели и надо ли качать обе?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+      </nav>
+      <p class="qlist__more">
+        <a class="arrow-link" href="/voprosy/">
+          Все вопросы и ответы — их восемь
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- #region @shared:download -->
+  <section class="container section" aria-labelledby="skachat-title">
+    <div class="download" data-reveal>
+      <div class="download__copy">
+        <h2 class="download__title" id="skachat-title">Наговорите первую заметку</h2>
+        <p class="download__body">Бесплатно, без рекламы и без регистрации. Приложение лежит в RuStore, а если его нет на телефоне — рядом лежит APK.</p>
+        <p class="download__specs">Android 7.0 и новее · только arm64 · 30 МБ + модель 214 МБ</p>
+      </div>
+      <div class="download__actions">
+        <a class="btn btn--rustore btn--block" href="https://www.rustore.ru/catalog/app/com.baslie.negolosom" target="_blank" rel="noopener">
+          <svg class="btn__icon" viewBox="0 0 24 23" fill="none" aria-hidden="true"><path d="M14.8263 15.6119C13.8535 15.3689 13.1714 14.4987 13.1714 13.5007V1.74229C13.1714 0.608661 14.2425 -0.22275 15.3475 0.0532736L22.3448 1.80123C23.3176 2.04424 23.9997 2.91444 23.9997 3.91249V15.6709C23.9997 16.8045 22.9285 17.6359 21.8236 17.3598L14.8263 15.6119Z" fill="#FFFFFF"/><path d="M1.65491 21.0269C0.682102 20.7839 0 19.9137 0 18.9157V7.15729C0 6.02365 1.0712 5.1923 2.17614 5.46831L9.1734 7.21627C10.1463 7.45928 10.8284 8.32945 10.8284 9.32749V21.0859C10.8284 22.2195 9.75712 23.0509 8.65216 22.7749L1.65491 21.0269Z" fill="#FFFFFF"/><path d="M8.24033 18.3194C7.26756 18.0764 6.58545 17.2062 6.58545 16.2082V4.44982C6.58545 3.31619 7.65661 2.48477 8.76157 2.76079L15.7588 4.5088C16.7317 4.75172 17.4138 5.62198 17.4138 6.62003V18.3784C17.4138 19.512 16.3425 20.3434 15.2377 20.0674L8.24033 18.3194Z" fill="#FFFFFF"/><path d="M12.8191 19.4668C12.5127 19.3888 12.2945 19.1178 12.2838 18.8017L11.9794 9.82194C11.8913 8.63353 11.0091 7.68824 10.0872 7.40992C10.0355 7.39428 9.9802 7.41534 9.94961 7.45987C9.91842 7.5051 9.93045 7.56779 9.97388 7.60139C10.2016 7.77761 10.8281 8.3527 10.8281 9.34473L10.8263 18.9618L12.8191 19.4668Z" fill="#0077FF"/><path d="M19.4045 16.7568C19.0984 16.6802 18.8801 16.41 18.8693 16.0946L18.5648 7.11544C18.4769 5.92694 17.5946 4.98175 16.6727 4.70333C16.6209 4.68778 16.5657 4.70884 16.5351 4.75337C16.5039 4.79861 16.5159 4.86119 16.5593 4.89489C16.787 5.07111 17.4137 5.64621 17.4137 6.63813L17.4117 16.2585L19.4045 16.7568Z" fill="#0077FF"/></svg>
+          Скачать в RuStore
+        </a>
+        <a class="btn btn--light btn--block" href="https://github.com/baslie/negolosom-releases/releases/latest/download/negolosom.apk">
+          <svg class="btn__icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-0.4 0.08-0.55-0.17-0.55-0.38 0-0.27 0.01-1.13 0.01-2.2 0-0.75-0.25-1.23-0.54-1.48 1.78-0.2 3.65-0.88 3.65-3.95 0-0.88-0.31-1.59-0.82-2.15 0.08-0.2 0.36-1.02-0.08-2.12 0 0-0.67-0.22-2.2 0.82-0.64-0.18-1.32-0.27-2-0.27-0.68 0-1.36 0.09-2 0.27-1.53-1.03-2.2-0.82-2.2-0.82-0.44 1.1-0.16 1.92-0.08 2.12-0.51 0.56-0.82 1.28-0.82 2.15 0 3.06 1.86 3.75 3.64 3.95-0.23 0.2-0.44 0.55-0.51 1.07-0.46 0.21-1.61 0.55-2.33-0.66-0.15-0.24-0.6-0.83-1.23-0.82-0.67 0.01-0.27 0.38 0.01 0.53 0.34 0.19 0.73 0.9 0.82 1.13 0.16 0.45 0.68 1.31 2.69 0.94 0 0.67 0.01 1.3 0.01 1.49 0 0.21-0.15 0.45-0.55 0.38a7.995 7.995 0 0 1-5.47-7.59c0-4.42 3.58-8 8-8z"/></svg>
+          APK на GitHub
+        </a>
+        <p class="download__version">Версия 2.6.1 от 18 сентября 2026</p>
+      </div>
+    </div>
+  </section>
+  <!-- #endregion @shared:download -->
+
+</main>
+
+<!-- #region @shared:footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__cols">
+      <div class="site-footer__about">
+        <a class="brand" href="/">
+          <img src="/assets/img/logo.svg" alt="" width="36" height="32" aria-hidden="true">
+          <span>Не пиши голосовое!</span>
+        </a>
+        <p>Расшифровка голосовых прямо на телефоне. Без интернета, без облака, без аккаунта.</p>
+        <a class="vk-link" href="https://vk.com/club237879114" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#0077FF" d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.204.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.253-1.406 2.151-3.574 2.151-3.574.118-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.78 1.203 1.254.745.847 1.32 1.558 1.473 2.049.17.49-.085.744-.576.744z"/></svg>
+          Сообщество ВКонтакте
+        </a>
+      </div>
+
+      <nav class="site-footer__col" aria-label="Приложение">
+        <h2 class="site-footer__head">Приложение</h2>
+        <a href="/#vozmozhnosti">Возможности</a>
+        <a href="/#kak-rabotaet">Как это работает</a>
+        <a href="/#ekrany">Экраны приложения</a>
+        <a href="/obnovleniya/">Обновления</a>
+      </nav>
+
+      <nav class="site-footer__col" aria-label="Поддержка">
+        <h2 class="site-footer__head">Поддержка</h2>
+        <a href="/voprosy/">Частые вопросы</a>
+        <a href="https://roman-purtow.ru/?utm_source=negolosom&amp;utm_medium=referral&amp;utm_content=footer" target="_blank" rel="noopener">Написать автору</a>
+        <a href="https://roman-purtow.ru/?utm_source=negolosom&amp;utm_medium=referral&amp;utm_content=bug" target="_blank" rel="noopener">Сообщить об ошибке</a>
+        <a href="/politika-privatnosti/">Политика приватности</a>
+      </nav>
+
+      <nav class="site-footer__col" aria-label="Скачать">
+        <h2 class="site-footer__head">Скачать</h2>
+        <a href="https://www.rustore.ru/catalog/app/com.baslie.negolosom" target="_blank" rel="noopener">RuStore</a>
+        <a href="https://github.com/baslie/negolosom-releases/releases/latest/download/negolosom.apk">APK на GitHub</a>
+        <a href="/obnovleniya/">История версий</a>
+      </nav>
+    </div>
+
+    <div class="site-footer__bottom">
+      <span>© 2026 Роман Пуртов</span>
+      <span>negolosom.ru</span>
+    </div>
+  </div>
+</footer>
+<!-- #endregion @shared:footer -->
+
+<!-- #region @shared:fab -->
+<div class="fab" data-fab>
+  <div class="fab__card" aria-hidden="true">
+    <b>Написать автору</b>
+    <span>roman-purtow.ru</span>
+  </div>
+  <div class="fab__cluster">
+    <span class="fab__ring" aria-hidden="true"></span>
+    <span class="fab__ring fab__ring--2" aria-hidden="true"></span>
+    <a class="fab__btn" href="https://roman-purtow.ru/?utm_source=negolosom&amp;utm_medium=referral&amp;utm_content=fab" target="_blank" rel="noopener" aria-label="Написать автору на roman-purtow.ru, откроется в новой вкладке">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+    </a>
+  </div>
+</div>
+<!-- #endregion @shared:fab -->
+
 </body>
 </html>
