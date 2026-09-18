@@ -1,0 +1,12 @@
+# Единый LF во всём репозитории: сайт отдаётся как есть, а хеши вендорных
+# файлов в assets/js/vendor/VENDOR.md должны сходиться на любой машине.
+* text=auto eol=lf
+
+# Вендорные сборки не трогать вообще — иначе SHA-256 разъедется.
+assets/js/vendor/*.js -text
+
+*.woff2 binary
+*.avif  binary
+*.webp  binary
+*.png   binary
+*.jpg   binary
