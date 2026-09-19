@@ -79,7 +79,7 @@ python tools/sync-shared.py
 ### Картинки экранов
 
 Исходники живут вне этого репозитория —
-`C:\Users\Roman\Desktop\negolosom\design\site-assets\screen-*.png` (десять PNG 1080×2400,
+`~/Desktop/negolosom/design/site-assets/screen-*.png` (десять PNG 1080×2400,
 экспорт из макета `website.pen`). После замены исходников:
 
 ```bash
@@ -113,7 +113,7 @@ python tools/build-images.py
 После публикации — пинг поисковиков (Яндекс и Bing понимают IndexNow):
 
 ```
-uv run --directory C:/Users/Roman/Desktop/seo-geo-tools seo-geo indexnow submit   --project negolosom https://negolosom.ru/ https://negolosom.ru/obnovleniya/
+uv run --directory ~/Desktop/seo-geo-tools seo-geo indexnow submit   --project negolosom https://negolosom.ru/ https://negolosom.ru/obnovleniya/
 ```
 
 ### Иконка сайта
@@ -143,7 +143,7 @@ scroll-snap, меню и подсказки написаны на голом DOM
 
 | Что | Где |
 |---|---|
-| Макет | `C:\Users\Roman\Desktop\negolosom\design\website.pen` (pen.dev) |
+| Макет | `~/Desktop/negolosom/design/website.pen` (pen.dev) |
 | Исходники скриншотов | там же, `design/site-assets/` |
 | Репозиторий приложения | `baslie/negolosom` (приватный) |
 | APK и журнал изменений | `baslie/negolosom-releases` (публичный) |

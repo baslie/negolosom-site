@@ -2,7 +2,8 @@
 """Готовит скриншоты приложения для карусели на главной.
 
 Источник — экспорт из макета, он лежит вне этого репозитория:
-    C:/Users/Roman/Desktop/negolosom/design/site-assets/screen-*.png
+    ~/Desktop/negolosom/design/site-assets/screen-*.png
+Другой каталог задаётся переменной окружения NEGOLOSOM_DESIGN.
 Десять PNG 1080x2400. Соотношение 9:20 совпадает с карточкой карусели
 (244x542), поэтому кадрировать не нужно — только уменьшить.
 
@@ -13,10 +14,14 @@
 Запуск:  python tools/build-images.py
 """
 
+import os
 from pathlib import Path
 from PIL import Image
 
-SRC = Path("C:/Users/Roman/Desktop/negolosom/design/site-assets")
+SRC = Path(os.environ.get(
+    "NEGOLOSOM_DESIGN",
+    Path.home() / "Desktop" / "negolosom" / "design" / "site-assets",
+))
 OUT = Path(__file__).resolve().parent.parent / "assets" / "img" / "screens"
 WIDTHS = (244, 488)
 
