@@ -26,7 +26,7 @@ assets/
   img/logo.svg                   логотип, он же favicon
   img/og-cover.jpg               обложка для соцсетей 1200x630
   img/apple-touch-icon.png       иконка для iOS 180x180
-  img/screens/                   девять экранов приложения, AVIF и WebP в ширинах 244 и 488
+  img/screens/                   десять экранов приложения, AVIF и WebP в ширинах 244 и 488
 
 tools/                           утилиты, которые НЕ участвуют в отдаче сайта
   build-images.py                скриншоты приложения -> AVIF/WebP
@@ -79,7 +79,7 @@ python tools/sync-shared.py
 ### Картинки экранов
 
 Исходники живут вне этого репозитория —
-`C:\Users\Roman\Desktop\negolosom\design\site-assets\screen-*.png` (девять PNG 1080×2400,
+`C:\Users\Roman\Desktop\negolosom\design\site-assets\screen-*.png` (десять PNG 1080×2400,
 экспорт из макета `website.pen`). После замены исходников:
 
 ```bash

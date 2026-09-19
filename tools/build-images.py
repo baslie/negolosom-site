@@ -3,7 +3,7 @@
 
 Источник — экспорт из макета, он лежит вне этого репозитория:
     C:/Users/Roman/Desktop/negolosom/design/site-assets/screen-*.png
-Девять PNG 1080x2400. Соотношение 9:20 совпадает с карточкой карусели
+Десять PNG 1080x2400. Соотношение 9:20 совпадает с карточкой карусели
 (244x542), поэтому кадрировать не нужно — только уменьшить.
 
 Результат: assets/img/screens/<имя>-<ширина>.{avif,webp}
@@ -31,6 +31,7 @@ NAMES = {
     "screen-07-transcribing-light": "transcribing",
     "screen-08-export-light": "export",
     "screen-09-onboarding-light": "onboarding",
+    "screen-10-search-light": "search",
 }
 
 
