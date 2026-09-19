@@ -157,7 +157,7 @@
         "publisher": { "@id": "https://negolosom.ru/#author" },
         "inLanguage": "ru",
         "datePublished": "2026-04-29",
-        "dateModified": "2026-09-18",
+        "dateModified": "2026-09-19",
         "primaryImageOfPage": {
           "@type": "ImageObject",
           "url": "https://negolosom.ru/assets/img/og-cover.jpg",
@@ -513,41 +513,20 @@
 
       <article class="card">
         <span class="tag">Приватно</span>
-        <div class="card__titlerow">
-          <h3 class="card__title">Всё на телефоне</h3>
-          <button class="info" type="button" aria-expanded="false" aria-controls="tip-privacy" data-disclosure>
-            <span class="visually-hidden">Подробнее о том, что уходит с телефона</span>
-            <span aria-hidden="true">i</span>
-            <span class="tip" id="tip-privacy" role="note" hidden>Аудио и расшифровки никогда не покидают устройство. Наружу уходит только анонимная статистика использования и отчёты об ошибках — без содержимого записей.</span>
-          </button>
-        </div>
-        <p class="card__body">Записи не покидают телефон. Работает в самолёте и метро.</p>
+        <div class="card__titlerow"><h3 class="card__title">Всё на телефоне</h3></div>
+        <p class="card__body">Аудио и расшифровки не покидают устройство — распознавание идёт на самом телефоне, поэтому работает в самолёте и метро. Наружу уходит только обезличенная статистика использования и отчёты об ошибках, без содержимого записей.</p>
       </article>
 
       <article class="card">
         <span class="tag">Точно</span>
-        <div class="card__titlerow">
-          <h3 class="card__title">GigaAM v3</h3>
-          <button class="info" type="button" aria-expanded="false" aria-controls="tip-gigaam" data-disclosure>
-            <span class="visually-hidden">Подробнее про модель GigaAM v3</span>
-            <span aria-hidden="true">i</span>
-            <span class="tip" id="tip-gigaam" role="note" hidden>WER 8,3 % (~92 % точности) в среднем по 10 публичным бенчмаркам. В 2,5 раза точнее Whisper-large-v3. Релиз: ноябрь 2025.</span>
-          </button>
-        </div>
-        <p class="card__body">Модель от Сбера, заточенная под русскую речь.</p>
+        <div class="card__titlerow"><h3 class="card__title">GigaAM v3</h3></div>
+        <p class="card__body">Модель от Сбера, обученная на русской речи. Средний WER — 8,3 % по десяти тестовым наборам: примерно 92 слова из ста распознаются верно. Whisper large-v3 на тех же наборах ошибается в 2,5 раза чаще — 21 %. Релиз модели — ноябрь 2025.</p>
       </article>
 
       <article class="card">
         <span class="tag">16 языков</span>
-        <div class="card__titlerow">
-          <h3 class="card__title">Не только русский</h3>
-          <button class="info" type="button" aria-expanded="false" aria-controls="tip-langs" data-disclosure>
-            <span class="visually-hidden">Список всех языков</span>
-            <span aria-hidden="true">i</span>
-            <span class="tip" id="tip-langs" role="note" hidden>Шестнадцать языков. Русский — GigaAM v3, остальные — Whisper small: английский, немецкий, французский, испанский, итальянский, португальский, польский, турецкий, украинский, болгарский, казахский, китайский, японский, корейский, арабский.</span>
-          </button>
-        </div>
-        <p class="card__body">Whisper small добавляет английский, немецкий, испанский и ещё двенадцать языков.</p>
+        <div class="card__titlerow"><h3 class="card__title">Не только русский</h3></div>
+        <p class="card__body">Русский считает GigaAM v3, остальные пятнадцать языков — Whisper small: английский, немецкий, французский, испанский, итальянский, португальский, польский, турецкий, украинский, болгарский, казахский, китайский, японский, корейский и арабский.</p>
       </article>
 
       <article class="card">
@@ -560,6 +539,37 @@
         <span class="tag">Экспорт</span>
         <div class="card__titlerow"><h3 class="card__title">Текст, файл, субтитры</h3></div>
         <p class="card__body">Расшифровка уходит в .txt, субтитры — в .srt, все записи разом — ZIP-архивом.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== Если коротко ===== -->
+  <section class="container section" id="terminy" aria-labelledby="terminy-title">
+    <div class="sechead" data-reveal-group>
+      <p class="eyebrow">Если коротко</p>
+      <h2 class="h2" id="terminy-title">Что за офлайн и что за модель</h2>
+      <p class="lead">Четыре определения — чтобы не пришлось гадать, что стоит за словами «локально», «GigaAM» и «точность 92 %».</p>
+    </div>
+
+    <div class="qa-list" data-reveal-group>
+      <article class="qa">
+        <h3 class="qa__q">Офлайн-расшифровка голосовых</h3>
+        <p class="qa__a">Офлайн-расшифровка голосовых — это превращение голосового сообщения в текст на самом телефоне, без отправки аудио на чужой сервер. Интернет нужен один раз, чтобы скачать модель распознавания; дальше приложение работает без связи, и запись никуда не уходит.</p>
+      </article>
+
+      <article class="qa">
+        <h3 class="qa__q">«Не пиши голосовое!»</h3>
+        <p class="qa__a">«Не пиши голосовое!» — бесплатное приложение для Android, которое переводит голосовые сообщения, надиктовки, лекции и интервью в текст прямо на устройстве. Нужен Android 7.0 или новее и процессор arm64. Само приложение занимает 30 МБ, модель для русского — ещё 214 МБ. Без рекламы, подписки и регистрации.</p>
+      </article>
+
+      <article class="qa">
+        <h3 class="qa__q">GigaAM v3</h3>
+        <p class="qa__a">GigaAM v3 — открытая модель распознавания русской речи, выпущенная Сбером в ноябре 2025 года. В приложении она отвечает за русский язык: весит 214 МБ и считает речь на процессоре телефона, без обращения к сети. Для остальных пятнадцати языков используется Whisper small.</p>
+      </article>
+
+      <article class="qa">
+        <h3 class="qa__q">WER — доля ошибок распознавания</h3>
+        <p class="qa__a">WER (word error rate) — доля неверно распознанных слов. WER 8,3 % означает, что из ста слов модель верно распознаёт примерно девяносто два. Это средний результат GigaAM v3 по десяти тестовым наборам из <a href="https://github.com/salute-developers/GigaAM/blob/main/evaluation.md" target="_blank" rel="noopener">опубликованных замеров разработчика модели</a>; у Whisper large-v3 на тех же наборах WER 21 %.</p>
       </article>
     </div>
   </section>
