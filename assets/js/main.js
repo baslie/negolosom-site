@@ -6,8 +6,8 @@
  * доехала, соответствующий блок молча не инициализируется, а страница
  * остаётся полностью рабочей.
  *
- * Библиотеки: GSAP + ScrollTrigger, Lenis, Embla Carousel (+ auto-scroll,
- * wheel-gestures). Версии и хеши — в assets/js/vendor/VENDOR.md.
+ * Библиотеки: GSAP + ScrollTrigger, Lenis, Embla Carousel (+ auto-scroll).
+ * Версии и хеши — в assets/js/vendor/VENDOR.md.
  */
 (function () {
   'use strict';
@@ -240,31 +240,18 @@
 
   /* --- Карусель экранов ----------------------------------------------------
 
+     Лента едет сама и не останавливается: у неё нет ни кнопок, ни реакции на
+     наведение и фокус. Единственное, чем на неё можно повлиять, — перетащить
+     пальцем или мышью, и это лишь подталкивает её, не прерывая движения.
+
      Про колесо мыши. Вьюпорту карусели нельзя ставить data-lenis-prevent:
      Lenis тогда не обрабатывает прокрутку в этой зоне, а сам блок при живом
      Embla имеет overflow:hidden — и страница намертво встаёт, стоит навести
      курсор на карусель.
 
-     Разделение выходит само собой: Lenis работает только по вертикали и
-     смотрит на deltaY, а плагин wheel-gestures гасит событие лишь тогда,
-     когда жест преимущественно горизонтальный (preventWheelAction берётся из
-     оси карусели, то есть 'x'). Вертикальное колесо листает страницу,
-     горизонтальный жест трекпада — карусель. */
-
-  var ICONS = {
-    prev: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>',
-    next: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>',
-    pause: '<svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>',
-    play: '<svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l12-7.5z"/></svg>'
-  };
-
-  function makeButton(label, html) {
-    var btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'carousel__btn';
-    btn.innerHTML = '<span class="visually-hidden">' + label + '</span>' + html;
-    return btn;
-  }
+     Плагин wheel-gestures отключён намеренно: прокрутка страницы не должна
+     трогать ленту вообще. Lenis смотрит только на вертикаль, горизонтальные
+     жесты теперь просто игнорируются, и карусель едет своим чередом. */
 
   function initCarousel() {
     var root = $('[data-carousel]');
@@ -299,21 +286,29 @@
 
     viewport.classList.add('is-embla');
 
-    var plugins = [];
-    if (window.EmblaCarouselWheelGestures) {
-      // Без forceWheelAxis: вертикальное колесо продолжает крутить страницу.
-      // Иначе на бесконечной карусели курсор над ней намертво запирает скролл.
-      plugins.push(window.EmblaCarouselWheelGestures());
-    }
+    /* Колесо и горизонтальные жесты трекпада карусель не трогают: прокрутка
+       страницы не должна ни ускорять ленту, ни сбивать её. Остаётся только
+       перетаскивание — мышью на десктопе и пальцем на телефоне. */
 
+    var plugins = [];
     var autoScroll = null;
+
+    /* Лента едет всегда и не останавливается ничем: ни наведением мыши, ни
+       фокусом с клавиатуры, ни перетаскиванием. Свайп её только подталкивает —
+       dragFree отдаёт инерцию, а прокрутка подхватывает ленту и везёт дальше.
+
+       Это осознанное отступление от WCAG 2.2.2: движение дольше пяти секунд
+       положено останавливать видимым элементом управления, а его здесь нет.
+       Тем, кому движение мешает, карусель не двигается вовсе — при
+       prefers-reduced-motion автопрокрутка не запускается, и лента остаётся
+       обычной горизонтальной лентой со scroll-snap. */
     if (window.EmblaCarouselAutoScroll && !reduceMotion.matches) {
       autoScroll = window.EmblaCarouselAutoScroll({
         speed: 0.7,
         startDelay: 700,
         stopOnInteraction: false,
-        stopOnMouseEnter: true,
-        stopOnFocusIn: true
+        stopOnMouseEnter: false,
+        stopOnFocusIn: false
       });
       plugins.push(autoScroll);
     }
@@ -324,45 +319,25 @@
       align: 'start',
       containScroll: false,
       skipSnaps: true,
-      duration: 22
+      duration: 22,
+      watchDrag: true
     }, plugins);
 
-    if (!controls) return;
-
-    var prev = makeButton('Предыдущий экран', ICONS.prev);
-    var next = makeButton('Следующий экран', ICONS.next);
-    prev.addEventListener('click', function () { embla.scrollPrev(); });
-    next.addEventListener('click', function () { embla.scrollNext(); });
-    controls.appendChild(prev);
-    controls.appendChild(next);
-
-    /* Автопрокрутку обязана останавливать видимая кнопка — иначе нарушается
-       WCAG 2.2.2: stopOnMouseEnter спасает мышь, но не клавиатуру. */
+    /* Плагин снимает автопрокрутку сам, если решил, что взаимодействие должно
+       её прервать. Возвращаем ленту в движение на любой такой остановке. */
     if (autoScroll) {
-      var toggle = makeButton('Остановить прокрутку', ICONS.pause + ICONS.play);
-      toggle.dataset.playing = 'true';
-
-      var sync = function () {
+      embla.on('autoScroll:stop', function () {
         var api = embla.plugins().autoScroll;
-        var playing = api ? api.isPlaying() : false;
-        toggle.dataset.playing = String(playing);
-        $('.visually-hidden', toggle).textContent =
-          playing ? 'Остановить прокрутку' : 'Возобновить прокрутку';
-      };
-
-      toggle.addEventListener('click', function () {
-        var api = embla.plugins().autoScroll;
-        if (!api) return;
-        if (api.isPlaying()) api.stop(); else api.play();
-        sync();
+        if (api && !api.isPlaying()) api.play();
       });
-
-      embla.on('autoScroll:play', sync).on('autoScroll:stop', sync);
-      controls.appendChild(toggle);
-      sync();
+      embla.on('pointerUp', function () {
+        var api = embla.plugins().autoScroll;
+        if (api && !api.isPlaying()) api.play();
+      });
     }
 
-    controls.hidden = false;
+    // Управления у карусели больше нет — блок под ней остаётся пустым.
+    if (controls) controls.remove();
   }
 
 
@@ -480,8 +455,7 @@
     '/assets/js/vendor/ScrollTrigger-3.15.0.min.js',
     '/assets/js/vendor/lenis-1.3.26.min.js',
     '/assets/js/vendor/embla-carousel-8.6.0.umd.js',
-    '/assets/js/vendor/embla-carousel-auto-scroll-8.6.0.umd.js',
-    '/assets/js/vendor/embla-carousel-wheel-gestures-8.1.0.umd.js'
+    '/assets/js/vendor/embla-carousel-auto-scroll-8.6.0.umd.js'
   ];
 
   function loadScript(src) {

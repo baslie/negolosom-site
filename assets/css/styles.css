@@ -977,12 +977,13 @@ html.lenis body { height: auto; }
   color: var(--text-2);
 }
 
-/* Строка под каруселью: подсказка слева, управление справа. */
+/* Строка под каруселью: одна подсказка по центру. Кнопок управления нет —
+   лента не останавливается, и останавливать её нечем. */
 .carousel__bar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 16px;
   margin-top: clamp(1.375rem, 1.15rem + .375vw, 1.75rem);
 }
@@ -996,38 +997,6 @@ html.lenis body { height: auto; }
 }
 
 .carousel__hint svg { width: 18px; height: 18px; }
-
-.carousel__controls { display: flex; gap: 8px; }
-
-.carousel__btn {
-  display: inline-grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border: 1px solid var(--border-strong);
-  border-radius: 50%;
-  background: var(--surface);
-  color: var(--text);
-  transition: background-color var(--t-fast) var(--ease),
-              border-color var(--t-fast) var(--ease),
-              opacity var(--t-fast) var(--ease);
-}
-
-.carousel__btn:hover {
-  background: var(--surface-hover);
-  border-color: var(--brand);
-}
-
-.carousel__btn svg { width: 18px; height: 18px; }
-
-/* Кнопки управления имеют смысл только с Embla — в разметке их нет, JS
-   добавляет их сам и снимает hidden. */
-.carousel__controls[hidden] { display: none; }
-
-.carousel__btn[data-playing] .icon-play,
-.carousel__btn[data-playing] .icon-pause { display: none; }
-.carousel__btn[data-playing="true"] .icon-pause { display: block; }
-.carousel__btn[data-playing="false"] .icon-play { display: block; }
 
 
 /* 11  КАК ЭТО РАБОТАЕТ ==================================================== */
