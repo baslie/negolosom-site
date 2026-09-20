@@ -12,9 +12,9 @@
 `node_modules`, ни шага сборки — что лежит в репозитории, то и отдаётся.
 
 ```
-index.html                       главная, девять секций
-obnovleniya/index.html           история версий, 12 выпусков
-voprosy/index.html               восемь вопросов с якорями
+index.html                       главная, восемь секций
+obnovleniya/index.html           история версий, 14 выпусков
+voprosy/index.html               двенадцать вопросов с якорями
 policy/index.html  политика конфиденциальности
 404.html                         страница не найдена (GitHub Pages подхватывает сам)
 
@@ -26,7 +26,7 @@ assets/
   img/logo.svg                   логотип, он же favicon
   img/og-cover.jpg               обложка для соцсетей 1200x630
   img/apple-touch-icon.png       иконка для iOS 180x180
-  img/screens/                   десять экранов приложения, AVIF и WebP в ширинах 244 и 488
+  img/screens/                   двенадцать экранов приложения, AVIF и WebP в ширинах 244 и 488
 
 tools/                           утилиты, которые НЕ участвуют в отдаче сайта
   build-images.py                скриншоты приложения -> AVIF/WebP
@@ -109,11 +109,25 @@ python tools/build-images.py
 - [ ] `llms-full.txt` — шапка и новый выпуск в разделе истории версий
 - [ ] `voprosy/index.html` и `policy/index.html` — если выпуск меняет ответы или
       поведение с данными, поправить и текст, и `dateModified`
+- [ ] `index.html` — карточки секции «Возможности» и `featureList` в JSON-LD, если
+      выпуск добавил то, что видит пользователь
+- [ ] `voprosy/index.html` — новые вопросы: блок в HTML, узел в `FAQPage`, якорь
+- [ ] `design/site-assets` в репозитории приложения — свежие экраны, затем
+      `python tools/build-images.py`, слайды карусели и массив `screenshot`
+- [ ] счётчики словами и цифрами: «N выпусков» (`index.html`, `obnovleniya/index.html` —
+      description, og, twitter, JSON-LD, лид), «N ответов» (`voprosy/index.html`),
+      число экранов — `llms.txt`, `llms-full.txt`, этот README
+- [ ] все пять HTML — `?v=ГГГГ-ММ-ДД` у `styles.css` и `main.js`
+- [ ] `python tools/sync-shared.py` — версия в шапке и подпись под кнопками живут
+      в общих блоках, править их по страницам руками бесполезно
+- [ ] `policy/index.html` — «Обновлено …» и «Действует для версии …», даже если текст
+      политики не менялся
+- [ ] обложка для соцсетей — она собирается из тех же экранов и устаревает вместе с ними
 
 После публикации — пинг поисковиков (Яндекс и Bing понимают IndexNow):
 
 ```
-uv run --directory ~/Desktop/seo-geo-tools seo-geo indexnow submit   --project negolosom https://negolosom.ru/ https://negolosom.ru/obnovleniya/
+uv run --directory ~/Desktop/seo-geo-tools seo-geo indexnow submit --project negolosom \n  https://negolosom.ru/ https://negolosom.ru/obnovleniya/ https://negolosom.ru/voprosy/ https://negolosom.ru/policy/
 ```
 
 ### Иконка сайта

@@ -37,6 +37,8 @@ NAMES = {
     "screen-08-export-light": "export",
     "screen-09-onboarding-light": "onboarding",
     "screen-10-search-light": "search",
+    "screen-11-whats-new-light": "whats-new",
+    "screen-12-append-light": "append",
 }
 
 
