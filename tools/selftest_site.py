@@ -220,6 +220,17 @@ def _swap(site: Path, rel: str, old: str, new: str) -> None:
     write(rel, text.replace(old, new, 1), site)
 
 
+def _desync_cache_bust(site: Path) -> None:
+    """
+    Разводит метку кэша на одной странице. Текущее значение читается, а не зашито:
+    после каждого выпуска оно меняется, и зашитое сделало бы проверку одноразовой.
+    """
+    text = read("voprosy/index.html", site)
+    fixed = re.sub(r"\?v=[\d-]+", "?v=1999-01-01", text, count=1)
+    assert fixed != text, "не нашлось метки кэша"
+    write("voprosy/index.html", fixed, site)
+
+
 def _blank_first_alt(site: Path) -> None:
     """Пустая подпись — самая частая потеря при перевёрстке карусели."""
     text = read("index.html", site)
@@ -246,7 +257,7 @@ BREAKAGES = {
         "ожидалось «пятнадцать выпусков»",
     )[1],
     "метка кэша разная на страницах": lambda site: (
-        _swap(site, "voprosy/index.html", "?v=2026-09-22-1", "?v=2026-09-21-1"),
+        _desync_cache_bust(site),
         "метка кэша",
     )[1],
     "общий блок не разнесён": lambda site: (
