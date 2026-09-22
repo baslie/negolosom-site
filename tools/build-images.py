@@ -4,7 +4,7 @@
 Источник — экспорт из макета, он лежит вне этого репозитория:
     ~/Desktop/negolosom/design/site-assets/screen-*.png
 Другой каталог задаётся переменной окружения NEGOLOSOM_DESIGN.
-Десять PNG 1080x2400. Соотношение 9:20 совпадает с карточкой карусели
+Четырнадцать PNG 1080x2400. Соотношение 9:20 совпадает с карточкой карусели
 (244x542), поэтому кадрировать не нужно — только уменьшить.
 
 Результат: assets/img/screens/<имя>-<ширина>.{avif,webp}
@@ -39,6 +39,8 @@ NAMES = {
     "screen-10-search-light": "search",
     "screen-11-whats-new-light": "whats-new",
     "screen-12-append-light": "append",
+    "screen-13-tags-light": "tags",
+    "screen-14-quick-tile-light": "quick-tile",
 }
 
 

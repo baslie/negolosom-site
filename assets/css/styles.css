@@ -1135,6 +1135,13 @@ html.lenis body { height: auto; }
   color: var(--text-3);
 }
 
+.release-card__note {
+  margin-top: 12px;
+  font-size: var(--fs-xs);
+  line-height: 1.4;
+  color: var(--text-3);
+}
+
 .releases-more { margin-top: clamp(1.5rem, 1.28rem + .375vw, 1.75rem); }
 
 @media (min-width: 900px) {
@@ -1258,6 +1265,22 @@ html.lenis body { height: auto; }
   color: var(--on-dark-3);
   text-align: center;
 }
+
+.download__note {
+  margin-top: 6px;
+  font-size: var(--fs-xxs);
+  line-height: 1.3;
+  color: var(--on-dark-3);
+  text-align: center;
+}
+
+.download__note a {
+  color: var(--on-dark-2);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.download__note a:hover { color: var(--on-dark); }
 
 .download :focus-visible { outline-color: var(--on-dark); }
 
@@ -1464,6 +1487,13 @@ html.lenis body { height: auto; }
 .release .bullets li {
   font-size: 1.0625rem;
   line-height: 1.5;
+}
+
+.release__note {
+  margin-top: 12px;
+  font-size: var(--fs-sm);
+  line-height: 1.45;
+  color: var(--text-3);
 }
 
 @media (min-width: 900px) {

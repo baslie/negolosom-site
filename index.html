@@ -31,7 +31,7 @@
   <meta name="twitter:image" content="https://negolosom.ru/assets/img/og-cover.jpg">
 
   <link rel="preload" href="/assets/fonts/source-sans-3-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/css/styles.css?v=2026-09-20-1">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=2026-09-22-1">
 
   <!-- Стартовые состояния появления включаются только здесь. Если скрипты не
        доедут, main.js или страховочный таймер снимут класс, и контент будет
@@ -46,7 +46,7 @@
     })(document);
   </script>
 
-  <script defer src="/assets/js/main.js?v=2026-09-20-1"></script>
+  <script defer src="/assets/js/main.js?v=2026-09-22-1"></script>
 
   <script type="application/ld+json">
   {
@@ -91,9 +91,9 @@
         "processorRequirements": "arm64 (ARM64-v8a)",
         "storageRequirements": "30 МБ приложение и 214 МБ модель GigaAM v3",
         "inLanguage": "ru",
-        "softwareVersion": "2.8.0",
+        "softwareVersion": "2.9.0",
         "datePublished": "2026-04-29",
-        "dateModified": "2026-09-20",
+        "dateModified": "2026-09-22",
         "fileSize": "30 MB",
         "isAccessibleForFree": true,
         "permissions": [
@@ -129,7 +129,9 @@
           "https://negolosom.ru/assets/img/screens/transcribing-488.webp",
           "https://negolosom.ru/assets/img/screens/search-488.webp",
           "https://negolosom.ru/assets/img/screens/append-488.webp",
-          "https://negolosom.ru/assets/img/screens/whats-new-488.webp"
+          "https://negolosom.ru/assets/img/screens/whats-new-488.webp",
+          "https://negolosom.ru/assets/img/screens/tags-488.webp",
+          "https://negolosom.ru/assets/img/screens/quick-tile-488.webp"
         ],
         "featureList": [
           "Распознавание речи прямо на устройстве, без интернета",
@@ -137,8 +139,10 @@
           "Ещё пятнадцать языков через модель Whisper small",
           "Импорт чужих голосовых и видео через «Поделиться»",
           "Поиск по расшифровкам и именам файлов с переходом по совпадениям",
+          "Теги записей и фильтр по ним над лентой",
+          "Запись из «шторки» быстрых настроек одним тапом",
           "Дозапись к готовой заметке через «Додиктовать»",
-          "Отмена удаления в течение четырёх секунд",
+          "Отмена удаления в течение шести секунд",
           "Экспорт в .txt, субтитры .srt и ZIP-архив всех записей",
           "Синхронизация текста с аудио"
         ],
@@ -163,7 +167,7 @@
         "publisher": { "@id": "https://negolosom.ru/#author" },
         "inLanguage": "ru",
         "datePublished": "2026-04-29",
-        "dateModified": "2026-09-20",
+        "dateModified": "2026-09-22",
         "primaryImageOfPage": {
           "@type": "ImageObject",
           "url": "https://negolosom.ru/assets/img/og-cover.jpg",
@@ -222,7 +226,7 @@
             <svg class="dl__icon" viewBox="0 0 24 23" fill="none" aria-hidden="true"><path d="M14.8263 15.6119C13.8535 15.3689 13.1714 14.4987 13.1714 13.5007V1.74229C13.1714 0.608661 14.2425 -0.22275 15.3475 0.0532736L22.3448 1.80123C23.3176 2.04424 23.9997 2.91444 23.9997 3.91249V15.6709C23.9997 16.8045 22.9285 17.6359 21.8236 17.3598L14.8263 15.6119Z" fill="#0070F0"/><path d="M1.65491 21.0269C0.682102 20.7839 0 19.9137 0 18.9157V7.15729C0 6.02365 1.0712 5.1923 2.17614 5.46831L9.1734 7.21627C10.1463 7.45928 10.8284 8.32945 10.8284 9.32749V21.0859C10.8284 22.2195 9.75712 23.0509 8.65216 22.7749L1.65491 21.0269Z" fill="#0070F0"/><path d="M8.24033 18.3194C7.26756 18.0764 6.58545 17.2062 6.58545 16.2082V4.44982C6.58545 3.31619 7.65661 2.48477 8.76157 2.76079L15.7588 4.5088C16.7317 4.75172 17.4138 5.62198 17.4138 6.62003V18.3784C17.4138 19.512 16.3425 20.3434 15.2377 20.0674L8.24033 18.3194Z" fill="#0070F0"/><path d="M12.8191 19.4668C12.5127 19.3888 12.2945 19.1178 12.2838 18.8017L11.9794 9.82194C11.8913 8.63353 11.0091 7.68824 10.0872 7.40992C10.0355 7.39428 9.9802 7.41534 9.94961 7.45987C9.91842 7.5051 9.93045 7.56779 9.97388 7.60139C10.2016 7.77761 10.8281 8.3527 10.8281 9.34473L10.8263 18.9618L12.8191 19.4668Z" fill="#0259AA"/><path d="M19.4045 16.7568C19.0984 16.6802 18.8801 16.41 18.8693 16.0946L18.5648 7.11544C18.4769 5.92694 17.5946 4.98175 16.6727 4.70333C16.6209 4.68778 16.5657 4.70884 16.5351 4.75337C16.5039 4.79861 16.5159 4.86119 16.5593 4.89489C16.787 5.07111 17.4137 5.64621 17.4137 6.63813L17.4117 16.2585L19.4045 16.7568Z" fill="#0259AA"/></svg>
             <span class="dl__text">
               <b>RuStore</b>
-              <span>Магазин приложений, версия 2.8.0</span>
+              <span>Магазин приложений, версия 2.9.0</span>
             </span>
           </a>
           <a class="dl__item" href="https://github.com/baslie/negolosom-releases/releases/latest/download/negolosom.apk">
@@ -336,7 +340,7 @@
       <div class="sechead sechead--center" data-reveal-group>
         <p class="eyebrow">Экраны</p>
         <h2 class="h2" id="ekrany-title">Вот как это выглядит</h2>
-        <p class="lead">Версия 2.8.0</p>
+        <p class="lead">Версия 2.9.0</p>
       </div>
     </div>
 
@@ -490,6 +494,32 @@
             <li class="carousel__slide">
               <figure class="shot">
                 <picture>
+                  <source type="image/avif" sizes="244px" srcset="/assets/img/screens/tags-244.avif 244w, /assets/img/screens/tags-488.avif 488w">
+                  <source type="image/webp" sizes="244px" srcset="/assets/img/screens/tags-244.webp 244w, /assets/img/screens/tags-488.webp 488w">
+                  <img src="/assets/img/screens/tags-244.webp" width="244" height="542" loading="lazy" decoding="async" alt="Лента записей с рядом тегов над ней: «Все», «Работа», «Идеи», «Дом» и карандаш для правки. На карточке видны теги записи.">
+                </picture>
+              </figure>
+              <div class="shot__cap">
+                <b class="shot__title">Теги</b>
+                <span class="shot__desc">Пометьте запись — и тап по тегу оставит на экране только нужные.</span>
+              </div>
+            </li>
+            <li class="carousel__slide">
+              <figure class="shot">
+                <picture>
+                  <source type="image/avif" sizes="244px" srcset="/assets/img/screens/quick-tile-244.avif 244w, /assets/img/screens/quick-tile-488.avif 488w">
+                  <source type="image/webp" sizes="244px" srcset="/assets/img/screens/quick-tile-244.webp 244w, /assets/img/screens/quick-tile-488.webp 488w">
+                  <img src="/assets/img/screens/quick-tile-244.webp" width="244" height="542" loading="lazy" decoding="async" alt="Настройки, раздел «Быстрый доступ»: пункты «Добавить плитку в шторку» и «Где эта «шторка»?».">
+                </picture>
+              </figure>
+              <div class="shot__cap">
+                <b class="shot__title">Запись из «шторки»</b>
+                <span class="shot__desc">Плитка «Записать» в быстрых настройках — запись одним тапом.</span>
+              </div>
+            </li>
+            <li class="carousel__slide">
+              <figure class="shot">
+                <picture>
                   <source type="image/avif" sizes="244px" srcset="/assets/img/screens/whats-new-244.avif 244w, /assets/img/screens/whats-new-488.avif 488w">
                   <source type="image/webp" sizes="244px" srcset="/assets/img/screens/whats-new-244.webp 244w, /assets/img/screens/whats-new-488.webp 488w">
                   <img src="/assets/img/screens/whats-new-244.webp" width="244" height="542" loading="lazy" decoding="async" alt="Экран «Что нового»: список изменений текущей версии и свёрнутый блок «Что было раньше».">
@@ -586,6 +616,18 @@
       </article>
 
       <article class="card">
+        <span class="tag">Теги</span>
+        <div class="card__titlerow"><h3 class="card__title">Разложить по темам</h3></div>
+        <p class="card__body">Меню записи → «Теги…» помечает её одним или несколькими тегами. Над лентой появляется ряд тегов: тап — и на экране остаются только помеченные. Теги можно переименовать и удалить.</p>
+      </article>
+
+      <article class="card">
+        <span class="tag">Из «шторки»</span>
+        <div class="card__titlerow"><h3 class="card__title">Не открывая приложение</h3></div>
+        <p class="card__body">Плитка «Записать» в «шторке» быстрых настроек начинает запись одним тапом — прямо поверх мессенджера. Уведомление ведёт от «Стоп» до готовой расшифровки и открывает запись тапом.</p>
+      </article>
+
+      <article class="card">
         <span class="tag">Дозапись</span>
         <div class="card__titlerow"><h3 class="card__title">Додиктовать в ту же заметку</h3></div>
         <p class="card__body">Мысль пришла позже — «Додиктовать» в меню записи продолжает её, а не заводит новую. Распознаётся только новый кусок и приклеивается к прежнему тексту, ручные правки остаются на месте.</p>
@@ -594,7 +636,7 @@
       <article class="card">
         <span class="tag">Обратимо</span>
         <div class="card__titlerow"><h3 class="card__title">Удалили не то</h3></div>
-        <p class="card__body">После удаления четыре секунды внизу висит «Отменить» — запись возвращается вместе с аудио и текстом. Работает и для свайпа, и для удаления нескольких записей разом.</p>
+        <p class="card__body">После удаления шесть секунд внизу висит «Отменить» — запись возвращается вместе с аудио и текстом. Работает и для свайпа, и для удаления нескольких записей разом.</p>
       </article>
 
       <article class="card">
@@ -621,7 +663,7 @@
 
       <article class="qa">
         <h3 class="qa__q">«Не пиши голосовое!»</h3>
-        <p class="qa__a">«Не пиши голосовое!» — бесплатное приложение для Android, которое переводит голосовые сообщения, надиктовки, лекции и интервью в текст прямо на устройстве. Нужен Android 7.0 или новее и процессор arm64. Само приложение занимает 30 МБ, модель для русского — ещё 214 МБ. Без рекламы, подписки и регистрации.</p>
+        <p class="qa__a">«Не пиши голосовое!» — бесплатное приложение для Android, которое переводит голосовые сообщения, надиктовки, лекции и интервью в текст прямо на устройстве. Нужен Android 7.0 или новее и процессор arm64. Само приложение занимает 30 МБ, модель для русского — ещё 214 МБ. Без подписки, встроенных покупок и регистрации: разработку окупает один рекламный баннер вверху экрана.</p>
       </article>
 
       <article class="qa">
@@ -648,40 +690,43 @@
       <article class="card release-card">
         <div class="release-card__head">
           <div class="release-card__vrow">
-            <h3 class="release-card__version">Версия 2.8.0</h3>
+            <h3 class="release-card__version">Версия 2.9.0</h3>
             <span class="tag tag--plain">Актуальная версия</span>
           </div>
-          <time class="release-card__date" datetime="2026-09-20">20 сентября 2026</time>
+          <time class="release-card__date" datetime="2026-09-22">22 сентября 2026</time>
         </div>
         <ul class="bullets">
-          <li>Дозапись: «Додиктовать» в меню записи продолжает её в ту же заметку — распознаётся только новый кусок и приклеивается к прежнему тексту.</li>
-          <li>Удаление стало обратимым: после свайпа, удаления из меню и массового удаления четыре секунды висит «Отменить».</li>
-          <li>Место чтения и незаконченная правка не теряются при переходах между чтением, правкой и синхронизацией.</li>
-          <li>Поиск показывает число совпадений на карточке и водит по ним стрелками, а в правке появилась кнопка «Слушать отсюда».</li>
-          <li>Экран «Что нового»: после обновления видно, что изменилось, в том числе в пропущенных версиях.</li>
+          <li>Записывать можно, не открывая приложение: добавьте плитку «Записать» в «шторку» быстрых настроек. Уведомление ведёт от «Стоп» до готовой расшифровки и открывает запись тапом.</li>
+          <li>Появились теги: меню записи → «Теги…» помечает её, а ряд тегов над лентой оставляет на экране только нужные.</li>
+          <li>Дозапись: «Додиктовать» продолжает запись в ту же заметку — распознаётся только новый кусок, ручные правки остаются на месте.</li>
+          <li>Удаление стало обратимым: шесть секунд внизу висит «Отменить» — после свайпа, меню и массового удаления.</li>
+          <li>Правка и поиск переделаны: текст не прыгает, курсор встаёт по касанию, плеер играет с места курсора, поиск считает совпадения и водит по ним стрелками.</li>
         </ul>
       </article>
 
       <article class="card release-card">
         <div class="release-card__head">
           <div class="release-card__vrow">
-            <h3 class="release-card__version">Версия 2.7.0</h3>
+            <h3 class="release-card__version">Версия 2.8.0</h3>
+            <span class="tag tag--plain">Только APK</span>
           </div>
-          <time class="release-card__date" datetime="2026-09-19">19 сентября 2026</time>
+          <time class="release-card__date" datetime="2026-09-20">20 сентября 2026</time>
         </div>
         <ul class="bullets">
-          <li>Поиск по записям: лупа вверху ищет по расшифровкам и именам файлов, найденное подсвечивается прямо в тексте. Отобранное можно отправить или удалить одним махом.</li>
-          <li>Теперь расшифровываются и видео — выберите ролик в «Файле» или пришлите через «Поделиться». Остаётся только звуковая дорожка: получасовое видео занимает мегабайты вместо сотен.</li>
-          <li>Плеер показывает текущее время и общую длительность — «0:42 / 1:45». Под датой записи видно имя исходного файла.</li>
-          <li>Синхронизация текста с аудио появляется сразу после «Распознать заново» и после импорта, а не только у записей с микрофона.</li>
-          <li>Прокрутка расшифровки и незаконченная правка больше не пропадают, когда карточка уезжает за экран.</li>
+          <li>Дозапись: «Додиктовать» в меню записи продолжает её в ту же заметку — распознаётся только новый кусок и приклеивается к прежнему тексту.</li>
+          <li>Удаление стало обратимым: после свайпа, удаления из меню и массового удаления внизу висит «Отменить».</li>
+          <li>Место чтения и незаконченная правка не теряются при переходах между чтением, правкой и синхронизацией.</li>
+          <li>Поиск показывает число совпадений на карточке и водит по ним стрелками, а в правке появилась кнопка «Слушать отсюда».</li>
+          <li>Экран «Что нового»: после обновления видно, что изменилось, в том числе в пропущенных версиях.</li>
         </ul>
+        <p class="release-card__note">В RuStore эта версия не выходила: 2.9.0 была готова раньше и вобрала её пункты. APK остался на GitHub.</p>
       </article>
+
     </div>
 
     <p class="releases-more" data-reveal>
       <a class="arrow-link" href="/obnovleniya/">
-        Вся история версий — 14 выпусков с апреля 2026 года
+        Вся история версий — 15 выпусков с апреля 2026 года
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </a>
     </p>
@@ -740,7 +785,7 @@
     <div class="download" data-reveal>
       <div class="download__copy">
         <h2 class="download__title" id="skachat-title">Наговорите первую заметку</h2>
-        <p class="download__body">Бесплатно, без рекламы и без регистрации. Приложение лежит в RuStore, а если его нет на телефоне — рядом лежит APK.</p>
+        <p class="download__body">Бесплатно, без подписки и регистрации. Приложение лежит в RuStore, а если его нет на телефоне — рядом лежит APK.</p>
         <p class="download__specs">Android 7.0 и новее · только arm64 · 30 МБ + модель 214 МБ</p>
       </div>
       <div class="download__actions">
@@ -752,7 +797,8 @@
           <svg class="btn__icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-0.4 0.08-0.55-0.17-0.55-0.38 0-0.27 0.01-1.13 0.01-2.2 0-0.75-0.25-1.23-0.54-1.48 1.78-0.2 3.65-0.88 3.65-3.95 0-0.88-0.31-1.59-0.82-2.15 0.08-0.2 0.36-1.02-0.08-2.12 0 0-0.67-0.22-2.2 0.82-0.64-0.18-1.32-0.27-2-0.27-0.68 0-1.36 0.09-2 0.27-1.53-1.03-2.2-0.82-2.2-0.82-0.44 1.1-0.16 1.92-0.08 2.12-0.51 0.56-0.82 1.28-0.82 2.15 0 3.06 1.86 3.75 3.64 3.95-0.23 0.2-0.44 0.55-0.51 1.07-0.46 0.21-1.61 0.55-2.33-0.66-0.15-0.24-0.6-0.83-1.23-0.82-0.67 0.01-0.27 0.38 0.01 0.53 0.34 0.19 0.73 0.9 0.82 1.13 0.16 0.45 0.68 1.31 2.69 0.94 0 0.67 0.01 1.3 0.01 1.49 0 0.21-0.15 0.45-0.55 0.38a7.995 7.995 0 0 1-5.47-7.59c0-4.42 3.58-8 8-8z"/></svg>
           APK на GitHub
         </a>
-        <p class="download__version">Версия 2.8.0 от 20 сентября 2026</p>
+        <p class="download__version">Версия 2.9.0 от 22 сентября 2026</p>
+        <p class="download__note"><a href="/voprosy/#apk-ili-rustore">Ставьте из одного источника — почему</a></p>
       </div>
     </div>
   </section>
