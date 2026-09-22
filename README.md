@@ -13,8 +13,8 @@
 
 ```
 index.html                       главная, восемь секций
-obnovleniya/index.html           история версий, 14 выпусков
-voprosy/index.html               двенадцать вопросов с якорями
+obnovleniya/index.html           история версий, 15 выпусков
+voprosy/index.html               пятнадцать вопросов с якорями
 policy/index.html  политика конфиденциальности
 404.html                         страница не найдена (GitHub Pages подхватывает сам)
 
@@ -26,7 +26,7 @@ assets/
   img/logo.svg                   логотип, он же favicon
   img/og-cover.jpg               обложка для соцсетей 1200x630
   img/apple-touch-icon.png       иконка для iOS 180x180
-  img/screens/                   двенадцать экранов приложения, AVIF и WebP в ширинах 244 и 488
+  img/screens/                   четырнадцать экранов приложения, AVIF и WebP в ширинах 244 и 488
 
 tools/                           утилиты, которые НЕ участвуют в отдаче сайта
   build-images.py                скриншоты приложения -> AVIF/WebP
@@ -79,8 +79,9 @@ python tools/sync-shared.py
 ### Картинки экранов
 
 Исходники живут вне этого репозитория —
-`~/Desktop/negolosom/design/site-assets/screen-*.png` (десять PNG 1080×2400,
-экспорт из макета `website.pen`). После замены исходников:
+`~/Desktop/negolosom/design/site-assets/screen-*.png` (четырнадцать PNG 1080×2400;
+их раскладывает `scripts\shots.ps1` в репозитории приложения по манифесту
+`design/frames.json`). После замены исходников:
 
 ```bash
 python tools/build-images.py
@@ -98,31 +99,42 @@ python tools/build-images.py
 
 ### Новый выпуск приложения
 
-Номер версии и даты разъезжаются по многим файлам, а сборщика нет — пройдите по списку целиком:
+Номер версии и даты разъезжаются по двум десяткам мест, а сборщика нет. Раньше здесь
+был список из шестнадцати пунктов; теперь механику делают инструменты, а руками
+остаётся только проза.
 
-- [ ] `obnovleniya/index.html` — новый блок выпуска, `numberOfItems` и `itemListElement` в JSON-LD
-- [ ] `obnovleniya/index.html` — `article:modified_time` и `dateModified`
-- [ ] `index.html` — блок «Что нового» (две последние версии) и подпись под кнопками
-- [ ] `index.html` — `softwareVersion` и `dateModified` в JSON-LD
-- [ ] `sitemap.xml` — `lastmod` изменившихся страниц
-- [ ] `llms.txt` — номер версии и дата в абзаце после `>`
-- [ ] `llms-full.txt` — шапка и новый выпуск в разделе истории версий
-- [ ] `voprosy/index.html` и `policy/index.html` — если выпуск меняет ответы или
-      поведение с данными, поправить и текст, и `dateModified`
+```bash
+# 1. в репозитории приложения — собрать payload
+pwsh -NoProfile -File scripts\site-payload.ps1
+
+# 2. здесь — применить и проверить
+python tools/apply-release.py --payload ../negolosom/build/site-payload/latest.json
+python tools/check-release.py
+```
+
+`apply-release.py` вставляет заготовку выпуска в трёх местах (страница истории,
+карточка на главной, `llms-full.txt`), приводит в порядок разметку JSON-LD, версию,
+даты, `?v=`, счётчики цифрами и прописью, `sitemap.xml` — и разносит общие блоки.
+Повторный прогон не меняет ни байта, так что запускать его можно сколько угодно.
+
+`check-release.py` возвращает 1 и перечисляет расхождения. Он и нашёл две ошибки,
+с которыми сайт жил: `softwareVersion` 2.8.0 на странице версии 2.9.0 и 2.9.0 внутри
+карточки выпуска 2.8.0.
+
+Руками, потому что это проза:
+
+- [ ] отредактировать вставленную заготовку выпуска — на сайте формулировки короче
+      витринных, и заготовка приезжает текстом из журнала как черновик
 - [ ] `index.html` — карточки секции «Возможности» и `featureList` в JSON-LD, если
       выпуск добавил то, что видит пользователь
 - [ ] `voprosy/index.html` — новые вопросы: блок в HTML, узел в `FAQPage`, якорь
-- [ ] `design/site-assets` в репозитории приложения — свежие экраны, затем
-      `python tools/build-images.py`, слайды карусели и массив `screenshot`
-- [ ] счётчики словами и цифрами: «N выпусков» (`index.html`, `obnovleniya/index.html` —
-      description, og, twitter, JSON-LD, лид), «N ответов» (`voprosy/index.html`),
-      число экранов — `llms.txt`, `llms-full.txt`, этот README
-- [ ] все пять HTML — `?v=ГГГГ-ММ-ДД` у `styles.css` и `main.js`
-- [ ] `python tools/sync-shared.py` — версия в шапке и подпись под кнопками живут
-      в общих блоках, править их по страницам руками бесполезно
-- [ ] `policy/index.html` — «Обновлено …» и «Действует для версии …», даже если текст
-      политики не менялся
+- [ ] `policy/index.html` — текст, если выпуск меняет поведение с данными
+- [ ] свежие экраны: `scripts\shots.ps1` в репозитории приложения, затем здесь
+      `python tools/build-images.py`; слайды карусели и подписи — руками
 - [ ] обложка для соцсетей — она собирается из тех же экранов и устаревает вместе с ними
+
+Всё остальное — счётчики, даты, метку кэша, JSON-LD, карту сайта — сверит
+`check-release.py`; забыть их молча больше нельзя.
 
 После публикации — пинг поисковиков (Яндекс и Bing понимают IndexNow):
 

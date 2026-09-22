@@ -14,6 +14,7 @@
 Запуск:  python tools/build-images.py
 """
 
+import json
 import os
 from pathlib import Path
 from PIL import Image
@@ -25,29 +26,34 @@ SRC = Path(os.environ.get(
 OUT = Path(__file__).resolve().parent.parent / "assets" / "img" / "screens"
 WIDTHS = (244, 488)
 
-# Исходное имя -> смысловое имя на сайте.
-NAMES = {
-    "screen-01-empty-light": "empty",
-    "screen-02-list-light": "list",
-    "screen-03-settings-light": "settings",
-    "screen-04-list-dark": "list-dark",
-    "screen-05-card-light": "card",
-    "screen-06-recording-light": "recording",
-    "screen-07-transcribing-light": "transcribing",
-    "screen-08-export-light": "export",
-    "screen-09-onboarding-light": "onboarding",
-    "screen-10-search-light": "search",
-    "screen-11-whats-new-light": "whats-new",
-    "screen-12-append-light": "append",
-    "screen-13-tags-light": "tags",
-    "screen-14-quick-tile-light": "quick-tile",
-}
+# Состав экранов и их смысловые имена живут в манифесте кадров приложения
+# (`design/frames.json`): там же записано, какой снимок Roborazzi во что превращается.
+# Держать вторую копию списка здесь означало бы разъехаться с ним при первом же
+# добавлении экрана.
+FRAMES = Path(os.environ.get(
+    "NEGOLOSOM_FRAMES",
+    Path.home() / "Desktop" / "negolosom" / "design" / "frames.json",
+))
+
+
+def screens() -> list[tuple[str, str]]:
+    """Пары «файл исходника без расширения, смысловое имя» в порядке слайдов."""
+    if not FRAMES.is_file():
+        raise SystemExit(
+            f"нет манифеста кадров: {FRAMES}. Укажите путь через NEGOLOSOM_FRAMES."
+        )
+    manifest = json.loads(FRAMES.read_text(encoding="utf-8"))
+    site = sorted(
+        (frame["site"] for frame in manifest["frames"] if "site" in frame),
+        key=lambda item: item["slide"],
+    )
+    return [(Path(item["file"]).stem, item["name"]) for item in site]
 
 
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     total = 0
-    for stem, name in sorted(NAMES.items(), key=lambda kv: kv[1]):
+    for stem, name in screens():
         src = SRC / f"{stem}.png"
         if not src.exists():
             raise SystemExit(f"нет исходника: {src}")

@@ -6,3 +6,4 @@ Thumbs.db
 # Артефакты локальной проверки
 .playwright-mcp/
 shot-*.png
+__pycache__/

@@ -92,7 +92,10 @@ def main() -> None:
                 text = new
                 touched.append(name)
 
-        path.write_text(text, encoding="utf-8")
+        # newline="" обязателен: без него Python на Windows пишет CRLF, и каждый
+        # прогон переводил все четыре страницы целиком — правка в две строки
+        # выглядела в диффе как переписанный файл.
+        path.write_text(text, encoding="utf-8", newline="")
         print(f"{rel}: {', '.join(touched) if touched else 'общих блоков нет'}")
 
 
