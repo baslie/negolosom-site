@@ -83,6 +83,7 @@
   --bg: #eeebe4;
   --surface: #ffffff;
   --surface-hover: #f7f5ef;
+  --skeleton: #e4e0d7;       /* заглушка скриншота, пока он грузится */
   --tag-bg: #e6f0e9;
 
   --text: #1e1e1e;
@@ -963,6 +964,35 @@ html.lenis body { height: auto; }
   object-fit: cover;
 }
 
+/* Скелетон, пока скриншот грузится: по серой карточке бежит блик. Он лежит
+   под картинкой — пустой <img> прозрачен, поэтому блик виден, а приходящие
+   пиксели его закрывают. Когда картинка загрузилась, main.js ставит
+   .is-loaded: блик убирается, и анимация перестаёт тратить кадры.
+   Двигается только transform, так что работа уходит в композитинг. */
+.shot:not(.is-loaded) { background: var(--skeleton); }
+
+.shot:not(.is-loaded)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 20%, rgba(255, 255, 255, .7) 50%, transparent 80%);
+  translate: -100% 0;
+  animation: shot-shimmer 1.4s var(--ease) infinite;
+}
+
+.shot picture {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes shot-shimmer {
+  to { translate: 100% 0; }
+}
+
+/* Проявление по готовности. Без JS класса .js-shots нет — картинка видна сразу. */
+.js-shots .shot img { opacity: 0; transition: opacity .4s var(--ease); }
+.js-shots .shot.is-loaded img { opacity: 1; }
+
 .shot__cap { display: grid; gap: 4px; }
 
 .shot__title {
@@ -1742,6 +1772,8 @@ body.is-locked { overflow: hidden; }
   .js-anim [data-reveal],
   .js-anim [data-reveal-group] > * { opacity: 1; transform: none; }
   .fab__card { transition: none; }
+  .shot:not(.is-loaded)::before { animation: none; translate: none; opacity: 0; }
+  .js-shots .shot img,
   .author__img,
   .arrow-link svg,
   .qlist__item svg { transition: none; }

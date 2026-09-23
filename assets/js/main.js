@@ -236,6 +236,27 @@
   }
 
 
+  /* --- Скелетоны скриншотов ------------------------------------------------ */
+
+  /* Пока скриншот не загрузился, карточка .shot показывает скелетон (CSS).
+     Здесь только отмечаем готовые: .is-loaded убирает блик и проявляет
+     картинку. Уже загруженные (из кеша) отмечаем сразу, до .js-shots, —
+     иначе они мигнули бы прозрачностью. Ошибка загрузки тоже снимает
+     скелетон: вечный блик над битой картинкой хуже пустой карточки. */
+  function watchShots(scope) {
+    $$('.shot', scope).forEach(function (shot) {
+      var img = $('img', shot);
+      if (!img || shot.classList.contains('is-loaded')) return;
+      var done = function () { shot.classList.add('is-loaded'); };
+      if (img.complete) done();
+      else {
+        img.addEventListener('load', done, { once: true });
+        img.addEventListener('error', done, { once: true });
+      }
+    });
+  }
+
+
   /* --- Фото автора -------------------------------------------------------- */
 
   /* На мыши снимки меняет CSS-ховер. На тач-экране ховера нет, поэтому
@@ -297,6 +318,8 @@
         $$('img', copy).forEach(function (img) { img.setAttribute('loading', 'lazy'); });
         track.appendChild(copy);
       });
+      // Копия недогруженного слайда уносит с собой скелетон, но не слушатель.
+      watchShots(track);
     }
 
     viewport.classList.add('is-embla');
@@ -514,6 +537,8 @@
   initDisclosures();
   initAuthorPhoto();
   initSkipLink();
+  watchShots(document);
+  document.documentElement.classList.add('js-shots');
 
   if (document.readyState === 'complete') whenIdle(loadVendors);
   else window.addEventListener('load', function () { whenIdle(loadVendors); });
