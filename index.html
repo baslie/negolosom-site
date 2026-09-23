@@ -31,7 +31,7 @@
   <meta name="twitter:image" content="https://negolosom.ru/assets/img/og-cover.jpg">
 
   <link rel="preload" href="/assets/fonts/source-sans-3-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/css/styles.css?v=2026-09-22-2">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=2026-09-23">
 
   <!-- Стартовые состояния появления включаются только здесь. Если скрипты не
        доедут, main.js или страховочный таймер снимут класс, и контент будет
@@ -46,7 +46,7 @@
     })(document);
   </script>
 
-  <script defer src="/assets/js/main.js?v=2026-09-22-2"></script>
+  <script defer src="/assets/js/main.js?v=2026-09-23"></script>
 
   <script type="application/ld+json">
   {
@@ -59,6 +59,16 @@
         "url": "https://roman-purtow.ru",
         "jobTitle": "Разработчик приложения",
         "description": "Делает приложение «Не пиши голосовое!» один: код, сайт и поддержка.",
+        "image": "https://negolosom.ru/assets/img/author/roman-320.webp",
+        "subjectOf": {
+          "@type": "Article",
+          "headline": "За 2 дня навайбкодил офлайн-расшифровщик голосовых под Android",
+          "url": "https://vc.ru/life/2882180-oflajn-rasshifrovshchik-golosovykh-soobshcheniy-dlya-android",
+          "datePublished": "2026-04-23",
+          "inLanguage": "ru",
+          "author": { "@id": "https://negolosom.ru/#author" },
+          "publisher": { "@type": "Organization", "name": "vc.ru", "url": "https://vc.ru" }
+        },
         "knowsAbout": [
           "Распознавание речи на устройстве",
           "Разработка приложений для Android",
@@ -167,7 +177,7 @@
         "publisher": { "@id": "https://negolosom.ru/#author" },
         "inLanguage": "ru",
         "datePublished": "2026-04-29",
-        "dateModified": "2026-09-22",
+        "dateModified": "2026-09-23",
         "primaryImageOfPage": {
           "@type": "ImageObject",
           "url": "https://negolosom.ru/assets/img/og-cover.jpg",
@@ -568,6 +578,34 @@
         <p class="step__body">«Копировать» или «Отправить». Расшифровка уходит текстом или файлом, субтитры — в .srt, все записи разом — ZIP-архивом.</p>
       </li>
     </ol>
+  </section>
+
+  <!-- ===== От автора ===== -->
+  <section class="container section" id="ot-avtora" aria-labelledby="ot-avtora-title">
+    <div class="sechead" data-reveal-group>
+      <p class="eyebrow">От автора</p>
+      <h2 class="h2" id="ot-avtora-title">Зачем я это сделал</h2>
+    </div>
+
+    <figure class="author__card" data-reveal>
+      <!-- Фото — пасхалка: при наведении (на тач-экране — по тапу) меняется на второе. Имя стоит в подписи, поэтому alt пустой. -->
+      <div class="author__photo" aria-hidden="true">
+        <img class="author__img author__img--default" src="/assets/img/author/roman-320.webp" alt="" width="160" height="160" loading="lazy" decoding="async">
+        <img class="author__img author__img--hover" src="/assets/img/author/roman-lol-320.webp" alt="" width="160" height="160" loading="lazy" decoding="async">
+      </div>
+      <div class="author__text">
+        <blockquote class="author__quote" cite="https://vc.ru/life/2882180-oflajn-rasshifrovshchik-golosovykh-soobshcheniy-dlya-android">
+          <p>Я часто наговариваю себе заметки. Иду в лес рядом с домом, где интернет ловит примерно никак, балдею от природы, деревьев... И вдруг идея! Достаю телефон, диктую, а уже дома разбираю бэклог.</p>
+        </blockquote>
+        <figcaption class="author__caption">
+          <span><span class="author__name">Роман Пуртов</span>, автор приложения</span>
+          <a class="arrow-link" href="https://vc.ru/life/2882180-oflajn-rasshifrovshchik-golosovykh-soobshcheniy-dlya-android" target="_blank" rel="nofollow noopener">
+            Вся история на vc.ru
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </figcaption>
+      </div>
+    </figure>
   </section>
 
   <!-- ===== Возможности ===== -->

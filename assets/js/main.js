@@ -236,6 +236,21 @@
   }
 
 
+  /* --- Фото автора -------------------------------------------------------- */
+
+  /* На мыши снимки меняет CSS-ховер. На тач-экране ховера нет, поэтому
+     второе фото проявляется по тапу, а следующий тап возвращает первое. */
+  function initAuthorPhoto() {
+    var photo = $('.author__photo');
+    if (!photo) return;
+
+    photo.addEventListener('click', function () {
+      if (window.matchMedia('(hover: hover)').matches) return;
+      photo.classList.toggle('is-swapped');
+    });
+  }
+
+
   /* --- Плавающая кнопка --------------------------------------------------- */
 
   /* --- Карусель экранов ----------------------------------------------------
@@ -497,6 +512,7 @@
   initBurger();
   initDownloadMenu();
   initDisclosures();
+  initAuthorPhoto();
   initSkipLink();
 
   if (document.readyState === 'complete') whenIdle(loadVendors);
