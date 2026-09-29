@@ -196,6 +196,57 @@
   }
 
 
+  /* --- Окно перед скачиванием APK ------------------------------------------ */
+
+  /* Сборки из RuStore и с GitHub подписаны разными ключами: APK не встанет
+     поверх версии из магазина, а переустановка сотрёт записи. Поэтому любая
+     ссылка на APK сначала открывает окно с предупреждением, и файл отдаёт
+     только кнопка внутри него. Без JS или без <dialog> ссылки качают
+     напрямую, как раньше. */
+  function initApkDialog() {
+    var dialog = $('[data-apk-dialog]');
+    if (!dialog || typeof dialog.showModal !== 'function') return;
+
+    var opener = null;
+    var close = function () { if (dialog.open) dialog.close(); };
+
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest && e.target.closest('a[href$="negolosom.apk"]');
+      if (!link || dialog.contains(link)) return;
+      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+      e.preventDefault();
+      var dl = $('[data-dl]');
+      if (dl) dl.open = false;
+      opener = link;
+      lockScroll(true);
+      dialog.showModal();
+    });
+
+    // Кнопка «скачать» — обычная ссылка: окно закрываем, файл качает браузер.
+    $$('[data-apk-confirm], [data-apk-close]', dialog).forEach(function (el) {
+      el.addEventListener('click', close);
+    });
+
+    // Клик по затемнению: у ::backdrop своей цели нет, событие приходит на сам
+    // <dialog> — отличаем его от клика по полям карточки по координатам.
+    dialog.addEventListener('click', function (e) {
+      if (e.target !== dialog) return;
+      var r = dialog.getBoundingClientRect();
+      var inside = e.clientX >= r.left && e.clientX <= r.right &&
+                   e.clientY >= r.top && e.clientY <= r.bottom;
+      if (!inside) close();
+    });
+
+    dialog.addEventListener('close', function () {
+      lockScroll(false);
+      // Ссылка из мобильного меню к этому моменту уже скрыта вместе с меню.
+      if (opener && opener.offsetParent !== null) opener.focus({ preventScroll: true });
+      opener = null;
+    });
+  }
+
+
   /* --- Подсказки «i» ------------------------------------------------------ */
 
   /* Это disclosure, а не tooltip: открывается по клику и по клавиатуре,
@@ -534,6 +585,7 @@
   initHeaderState();
   initBurger();
   initDownloadMenu();
+  initApkDialog();
   initDisclosures();
   initAuthorPhoto();
   initSkipLink();

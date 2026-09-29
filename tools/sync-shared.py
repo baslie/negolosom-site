@@ -28,7 +28,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "index.html"
 
-BLOCKS = ("header", "menu", "download", "footer", "fab")
+BLOCKS = ("header", "menu", "download", "footer", "apk-dialog", "fab")
 
 # Страница -> какой ссылке в шапке ставить aria-current.
 TARGETS = {

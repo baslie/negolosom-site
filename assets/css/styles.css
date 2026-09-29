@@ -23,6 +23,7 @@
    15  ПАНЕЛЬ СКАЧИВАНИЯ
    16  ПОДВАЛ
    17  ПЛАВАЮЩАЯ КНОПКА
+   17a ОКНО ПЕРЕД СКАЧИВАНИЕМ APK
    18  СТРАНИЦА ОБНОВЛЕНИЙ
    19  СТРАНИЦА ВОПРОСОВ И ПОЛИТИКИ
    20  СТРАНИЦА 404
@@ -1562,6 +1563,106 @@ html.lenis body { height: auto; }
 }
 
 
+/* 17a ОКНО ПЕРЕД СКАЧИВАНИЕМ APK ========================================== */
+
+/* Нативный <dialog> через showModal(): фокус заперт, Escape закрывает, фон
+   под ::backdrop инертен — без рукописной ловушки фокуса. */
+.apk-dialog {
+  width: min(440px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: clamp(20px, 16px + 1vw, 28px);
+  border: 0;
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow-lift);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  opacity: 0;
+  scale: .96;
+  transition: opacity var(--t-base) var(--ease), scale var(--t-base) var(--ease),
+              overlay var(--t-base) allow-discrete, display var(--t-base) allow-discrete;
+}
+
+.apk-dialog[open] { opacity: 1; scale: 1; }
+
+@starting-style {
+  .apk-dialog[open] { opacity: 0; scale: .96; }
+}
+
+.apk-dialog::backdrop {
+  background: rgba(30, 30, 30, 0);
+  transition: background-color var(--t-base) var(--ease),
+              overlay var(--t-base) allow-discrete, display var(--t-base) allow-discrete;
+}
+
+.apk-dialog[open]::backdrop { background: rgba(30, 30, 30, .45); }
+
+@starting-style {
+  .apk-dialog[open]::backdrop { background: rgba(30, 30, 30, 0); }
+}
+
+.apk-dialog__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.apk-dialog__title {
+  padding-top: 6px;
+  font-size: var(--fs-card);
+  font-weight: 700;
+  line-height: var(--lh-head);
+}
+
+.apk-dialog__close {
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin: -2px -10px 0 0;
+  border-radius: var(--r-sm);
+  color: var(--text-2);
+  transition: background-color var(--t-fast) var(--ease);
+}
+
+.apk-dialog__close:hover { background: var(--surface-hover); }
+.apk-dialog__close svg { width: 22px; height: 22px; }
+
+.apk-dialog__body {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+  color: var(--text-2);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+}
+
+.apk-dialog__ok { color: var(--text); font-weight: 600; }
+
+.apk-dialog__actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+/* Светлая кнопка на белой карточке сливается с фоном — нужен контур. */
+.apk-dialog .btn--light { box-shadow: inset 0 0 0 1px var(--border-strong); }
+
+.apk-dialog__more {
+  justify-self: center;
+  margin-top: 4px;
+  color: var(--brand-ink);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.apk-dialog__more:hover { text-decoration: underline; }
+
+
 /* 18  СТРАНИЦА ОБНОВЛЕНИЙ ================================================= */
 
 /* Заголовочный блок внутренней страницы: шире колонки текста не растёт,
@@ -1772,6 +1873,7 @@ body.is-locked { overflow: hidden; }
   .js-anim [data-reveal],
   .js-anim [data-reveal-group] > * { opacity: 1; transform: none; }
   .fab__card { transition: none; }
+  .apk-dialog, .apk-dialog::backdrop { transition: none; scale: 1; }
   .shot:not(.is-loaded)::before { animation: none; translate: none; opacity: 0; }
   .js-shots .shot img,
   .author__img,
@@ -1783,7 +1885,7 @@ body.is-locked { overflow: hidden; }
 /* 23  ПЕЧАТЬ ============================================================== */
 
 @media print {
-  .site-header, .menu, .fab, .carousel, .download, .skip-link { display: none !important; }
+  .site-header, .menu, .fab, .carousel, .download, .apk-dialog, .skip-link { display: none !important; }
   body { background: #fff; color: #000; }
   .section { padding-block: 1rem; }
   a[href^="http"]::after { content: " (" attr(href) ")"; font-size: .75em; }

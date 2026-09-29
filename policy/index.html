@@ -31,7 +31,7 @@
   <meta name="twitter:image" content="https://negolosom.ru/assets/img/og-cover.jpg">
 
   <link rel="preload" href="/assets/fonts/source-sans-3-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/css/styles.css?v=2026-09-27-2">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=2026-09-29">
 
   <script>
     (function (d) {
@@ -43,7 +43,7 @@
     })(document);
   </script>
 
-  <script defer src="/assets/js/main.js?v=2026-09-27-2"></script>
+  <script defer src="/assets/js/main.js?v=2026-09-29"></script>
 
   <script type="application/ld+json">
   {
@@ -378,6 +378,28 @@
   </div>
 </footer>
 <!-- #endregion @shared:footer -->
+
+<!-- #region @shared:apk-dialog -->
+<dialog class="apk-dialog" data-apk-dialog aria-labelledby="apk-dialog-title" aria-describedby="apk-dialog-body">
+  <div class="apk-dialog__head">
+    <h2 class="apk-dialog__title" id="apk-dialog-title">Уже стоит версия из RuStore?</h2>
+    <button class="apk-dialog__close" type="button" data-apk-close>
+      <span class="visually-hidden">Закрыть</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+  </div>
+  <div class="apk-dialog__body" id="apk-dialog-body">
+    <p>Тогда APK поверх неё не встанет. Android попросит удалить приложение, а с ним пропадут все записи.</p>
+    <p>Сначала сохраните их: настройки → «Данные» → «Экспортировать все записи».</p>
+    <p class="apk-dialog__ok">Приложения нет? Просто скачивайте.</p>
+  </div>
+  <div class="apk-dialog__actions">
+    <a class="btn btn--block" href="https://github.com/baslie/negolosom-releases/releases/latest/download/negolosom.apk" data-apk-confirm>Понятно, скачать APK</a>
+    <a class="btn btn--light btn--block" href="https://www.rustore.ru/catalog/app/com.baslie.negolosom" target="_blank" rel="noopener">Лучше обновлюсь в RuStore</a>
+    <a class="apk-dialog__more" href="/voprosy/#apk-ili-rustore">Подробнее — в вопросах</a>
+  </div>
+</dialog>
+<!-- #endregion @shared:apk-dialog -->
 
 <!-- #region @shared:fab -->
 <aside class="fab" data-fab aria-label="Связаться с автором">
