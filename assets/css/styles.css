@@ -919,7 +919,10 @@ html.lenis body { height: auto; }
   pointer-events: none;
 }
 
-.carousel { --slide-w: min(244px, 62vw); }
+.carousel {
+  --slide-w: min(244px, 62vw);
+  --slide-gap: clamp(36px, 5.6vw, 76px);
+}
 
 .carousel__viewport {
   overflow-x: auto;
@@ -934,16 +937,24 @@ html.lenis body { height: auto; }
 /* Пока Embla не подключился, карусель — обычный горизонтальный скролл.
    Она полностью работоспособна без JS, Embla лишь добавляет автопрокрутку
    и бесконечность. */
-.carousel__viewport:not(.is-embla) .carousel__track { padding-inline: var(--gutter); }
+.carousel__viewport:not(.is-embla) .carousel__track {
+  padding-inline-start: var(--gutter);
+  padding-inline-end: max(0px, calc(var(--gutter) - var(--slide-gap)));
+}
 .carousel__viewport.is-embla { overflow: hidden; }
 
+/* Промежуток — паддинг справа у каждого слайда, а не `gap` ленты. В режиме
+   loop Embla переставляет первые слайды в хвост, а `gap` есть только между
+   соседями в разметке: на стыке последнего и первого слайда он пропадал,
+   и картинки слипались. Паддинг едет вместе со слайдом, поэтому шов такой же,
+   как любой другой промежуток. */
 .carousel__track {
   display: flex;
-  gap: clamp(36px, 5.6vw, 76px);
 }
 
 .carousel__slide {
-  flex: 0 0 var(--slide-w);
+  flex: 0 0 calc(var(--slide-w) + var(--slide-gap));
+  padding-inline-end: var(--slide-gap);
   scroll-snap-align: center;
   display: flex;
   flex-direction: column;
