@@ -36,6 +36,7 @@ from sitelib import (  # noqa: E402
     HTML_PAGES,
     ROOT,
     Counter,
+    SP,
     Rule,
     apply_rules,
     date_words,
@@ -299,7 +300,7 @@ def counter_rules(counter: Counter, value: int) -> list[Rule]:
     if counter.digit_files:
         rules.append(Rule(
             f"{counter.key} цифрами", list(counter.digit_files),
-            rf"\d+ (?:{forms})\b", f"{value} {plural(value, *noun)}", counter.digit_expect,
+            rf"\d+{SP}(?:{forms})\b", f"{value} {plural(value, *noun)}", counter.digit_expect,
         ))
 
     def replace(match: re.Match) -> str:
@@ -310,7 +311,7 @@ def counter_rules(counter: Counter, value: int) -> list[Rule]:
 
     rules.append(Rule(
         f"{counter.key} прописью", list(counter.word_files),
-        rf"(?i:{ANY_NUMERAL}) (?:{forms})\b", replace, counter.word_expect,
+        rf"(?i:{ANY_NUMERAL}){SP}(?:{forms})\b", replace, counter.word_expect,
     ))
     return rules
 
@@ -322,14 +323,17 @@ def text_rules(payload: dict, counts: dict, cache_bust: str | None) -> list[Rule
 
     return [
         Rule("подпись версии в шапке", ["index.html"],
-             r"(<span>Магазин приложений, версия )[\d.]+(</span>)", rf"\g<1>{version}\g<2>", 1),
+             rf"(<span>Магазин{SP}приложений,{SP}версия{SP})[\d.]+(</span>)",
+             rf"\g<1>{version}\g<2>", 1),
         Rule("версия над экранами", ["index.html"],
-             r'(<p class="lead">Версия )[\d.]+(</p>)', rf"\g<1>{version}\g<2>", 1),
+             rf'(<p class="lead">Версия{SP})[\d.]+(</p>)', rf"\g<1>{version}\g<2>", 1),
+        # В HTML на месте пробела может стоять неразрывный — его ставит типограф.
         Rule("подпись под кнопками", ["index.html"],
-             r'(<p class="download__version">Версия )[\d.]+( от )[^<]+(</p>)',
+             rf'(<p class="download__version">Версия{SP})[\d.]+({SP}от{SP})[^<]+(</p>)',
              rf"\g<1>{version}\g<2>{spoken}\g<3>", 1),
         Rule("строка политики", ["policy/index.html"],
-             r"(Обновлено )[^.]+( года\. Действует для версии приложения )[\d.]+",
+             rf"(Обновлено{SP})[^.]+?({SP}года\.{SP}Действует{SP}для{SP}версии"
+             rf"{SP}приложения{SP})[\d.]+",
              rf"\g<1>{spoken}\g<2>{version}", 1),
         Rule("версия в llms.txt", ["llms.txt"],
              r"(Текущая версия )[\d.]+( от )[^.]+( года)", rf"\g<1>{version}\g<2>{spoken}\g<3>", 1),

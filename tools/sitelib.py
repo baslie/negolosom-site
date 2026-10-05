@@ -20,6 +20,8 @@ import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 
+from typograph import SP, typograph
+
 ROOT = Path(__file__).resolve().parent.parent
 
 #: Страницы сайта. Порядок важен только для вывода.
@@ -51,8 +53,19 @@ def read(rel: str, root: Path = ROOT) -> str:
 
 
 def write(rel: str, text: str, root: Path = ROOT) -> None:
-    """Переводы строк — LF: так велит `.gitattributes`, и так лежит весь сайт."""
-    (root / rel).write_text(text, encoding="utf-8", newline="")
+    """
+    Переводы строк — LF: так велит `.gitattributes`, и так лежит весь сайт.
+
+    HTML-страница перед записью проходит через типограф: так текст, который
+    вставляют инструменты, приходит на сайт уже с неразрывными пробелами,
+    и повторный прогон не видит разницы с тем, что лежит на диске.
+    """
+    (root / rel).write_text(finish(rel, text), encoding="utf-8", newline="")
+
+
+def finish(rel: str, text: str) -> str:
+    """Текст файла в том виде, в каком он ляжет на диск."""
+    return typograph(text) if rel.endswith(".html") else text
 
 
 # ---------------------------------------------------------------------------
@@ -421,7 +434,7 @@ def apply_rules(rules: list[Rule], root: Path = ROOT, dry_run: bool = False) -> 
 
     changed = []
     for rel, text in texts.items():
-        if text != read(rel, root):
+        if finish(rel, text) != read(rel, root):
             changed.append(rel)
             if not dry_run:
                 write(rel, text, root)

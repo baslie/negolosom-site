@@ -32,6 +32,7 @@ from sitelib import (  # noqa: E402
     COUNTERS,
     HTML_PAGES,
     ROOT,
+    SP,
     graph_nodes,
     node_of_type,
     numeral,
@@ -43,6 +44,7 @@ from sitelib import (  # noqa: E402
     setup_stdout,
     squash,
 )
+from typograph import NBSP, missing  # noqa: E402
 
 SITE = "https://negolosom.ru"
 SHARED_REGION = re.compile(
@@ -152,9 +154,9 @@ def check_counters(report: Report, root: Path, values: dict[str, int]) -> None:
 
         seen_digits = 0
         for rel in counter.digit_files:
-            for match in re.finditer(rf"\d+ (?:{counter.forms()})\b", read(rel, root)):
+            for match in re.finditer(rf"\d+{SP}(?:{counter.forms()})\b", read(rel, root)):
                 seen_digits += 1
-                report.check(match.group(0) == digits,
+                report.check(match.group(0).replace(NBSP, " ") == digits,
                              f"{rel}: «{match.group(0)}», ожидалось «{digits}»")
         if counter.digit_files:
             report.check(seen_digits == counter.digit_expect,
@@ -163,10 +165,10 @@ def check_counters(report: Report, root: Path, values: dict[str, int]) -> None:
 
         seen_words = 0
         for rel in counter.word_files:
-            for match in re.finditer(rf"(?i:{ANY_NUMERAL}) (?:{counter.forms()})\b",
+            for match in re.finditer(rf"(?i:{ANY_NUMERAL}){SP}(?:{counter.forms()})\b",
                                      read(rel, root)):
                 seen_words += 1
-                report.check(match.group(0).lower() == words,
+                report.check(match.group(0).lower().replace(NBSP, " ") == words,
                              f"{rel}: «{match.group(0)}», ожидалось «{words}»")
         report.check(seen_words == counter.word_expect,
                      f"счётчик «{counter.key}» прописью встретился {seen_words} раз, "
@@ -287,6 +289,21 @@ def check_llms(report: Report, root: Path, releases: list) -> None:
     )
 
 
+def check_typography(report: Report, root: Path) -> None:
+    """
+    Неразрывные пробелы на месте. Текст, вставленный инструментами, их уже несёт;
+    ловится то, что вписано руками, — его чинит `python tools/typograph.py`.
+    """
+    for rel in HTML_PAGES:
+        places = missing(read(rel, root))
+        examples = "; ".join(places[:3]) + (" …" if len(places) > 3 else "")
+        report.check(
+            not places,
+            f"{rel}: не хватает неразрывных пробелов — {len(places)} "
+            f"(python tools/typograph.py): {examples}",
+        )
+
+
 def check_local_links(report: Report, root: Path) -> None:
     for rel in HTML_PAGES:
         html = read(rel, root)
@@ -311,6 +328,7 @@ def run(root: Path = ROOT, frames: Path | None = None) -> Report:
     check_shared_blocks(report, root)
     check_llms(report, root, releases)
     check_local_links(report, root)
+    check_typography(report, root)
     return report
 
 
